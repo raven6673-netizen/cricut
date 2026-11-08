@@ -69,7 +69,8 @@ Its Bluetooth name (`Maker-XXXX`, printed on the label) normally ends in the las
 
 ## Status / caveats
 
-- These scripts have not been tested against real hardware yet. Please report results (`cricut-linux doctor` output helps).
+- Tested so far on Bazzite (NVIDIA): the Maker is detected over USB (`20d3:0015`, `/dev/ttyACM0`) and Design Space installs and launches. Cutting is not confirmed yet. Please report results (`cricut-linux doctor` output helps).
+- If Design Space shows no window, run `cricut-linux stop` and then `cricut-linux run`. It renders in software by default because Chromium's GPU process fails under Wine; `run --gpu` tries hardware rendering instead.
 - How well Design Space runs under Wine depends on the Design Space and Wine/runner versions. If sign-in or the canvas misbehaves, try another runner in Bottles (e.g. a newer `soda`/`caffe`/`kron4ek` build).
 - A fully native Linux cutter for the Maker is not possible yet. The Maker's protocol is encrypted and undocumented, so native support would first need protocol research.
 

@@ -34,7 +34,8 @@ Setup (run in order):
   map-port [DEV] [COMn]  Expose DEV (default /dev/cricut) to Wine as COMn (default COM3)
 
 Daily use:
-  run                    Launch Design Space
+  run [--gpu]            Launch Design Space (software rendering unless --gpu)
+  stop                   Close Design Space / all Bottles processes (if it hangs or won't open)
   bt-find                Scan for the Maker over Bluetooth (named Maker-XXXX on its label)
   bt-pair <MAC>          Pair/trust the Maker over Bluetooth (bluetoothctl)
   bt-bridge <MAC> [COMn] Bridge Bluetooth RFCOMM to a pty mapped as COMn (default COM4)
@@ -245,10 +246,27 @@ cmd_map_port() { map_port "${1:-/dev/cricut}" "${2:-COM3}"; }
 
 cmd_run() {
   [[ -d "$BOTTLE_DIR" ]] || die "bottle missing → cricut-linux install"
-  local exe
+  local exe gpu=0
+  [[ "${1:-}" == --gpu ]] && { gpu=1; shift; }
   exe="$(find "$BOTTLE_DIR/drive_c" -iname 'Cricut Design Space.exe' -print -quit 2>/dev/null || true)"
   [[ -n "$exe" ]] || die "Cricut Design Space.exe not found in bottle; did the installer complete?"
-  bottles_cli run -b "$BOTTLE_NAME" -e "$exe"
+  # Design Space is single-instance: a second launch just hands off to the first
+  # copy (Chromium "Lock file can not be created! Error code: 32").
+  if pgrep -f 'Cricut Design Space.exe' >/dev/null 2>&1; then
+    say "Design Space is already running (maybe started by the installer)."
+    echo "  If no window is visible, run: cricut-linux stop   then: cricut-linux run"
+    return 0
+  fi
+  # Chromium's separate GPU process usually fails under Wine (error_code=39);
+  # software rendering is reliable. --gpu tries hardware acceleration instead.
+  local args=("$@")
+  (( gpu )) || args=(--disable-gpu --disable-gpu-compositing "${args[@]}")
+  bottles_cli run -b "$BOTTLE_NAME" -e "$exe" ${args[*]:+-a "${args[*]}"}
+}
+
+cmd_stop() {
+  say "Stopping Design Space and everything else running in Bottles"
+  flatpak kill "$BOTTLES_APP" 2>/dev/null && ok "Stopped" || ok "Nothing was running"
 }
 
 cmd_bt_find() {
@@ -311,6 +329,7 @@ case "${1:-}" in
   install) shift; cmd_install "$@" ;;
   map-port) shift; cmd_map_port "$@" ;;
   run) shift; cmd_run "$@" ;;
+  stop) shift; cmd_stop "$@" ;;
   bt-find) shift; cmd_bt_find "$@" ;;
   tap) shift; cmd_tap "$@" ;;
   dump) shift; cmd_dump "$@" ;;
