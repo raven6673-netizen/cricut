@@ -27,7 +27,8 @@ Setup (run in order):
   detect                 List USB serial devices (plug in + power on the Maker first)
   udev <VID:PID>         Install a udev rule: /dev/cricut symlink + desktop-user access (sudo)
   install-bottles        Install Bottles from Flathub and grant it serial-device access
-  install <Setup.exe>    Create the '${BOTTLE_NAME}' bottle and run the Design Space installer
+  download               Download + verify the latest Design Space installer to ~/Downloads
+  install [Setup.exe]    Create the '${BOTTLE_NAME}' bottle and run the installer (downloads it if omitted)
   map-port [DEV] [COMn]  Expose DEV (default /dev/cricut) to Wine as COMn (default COM3)
 
 Daily use:
@@ -51,7 +52,7 @@ cmd_doctor() {
       ok "Bottles has device access"
     else bad "Bottles lacks device access → cricut-linux install-bottles"; fi
   else bad "Bottles missing → cricut-linux install-bottles"; fi
-  [[ -d "$BOTTLE_DIR" ]] && ok "Bottle '${BOTTLE_NAME}' exists" || bad "Bottle missing → cricut-linux install <CricutDesignSpace-Install.exe>"
+  [[ -d "$BOTTLE_DIR" ]] && ok "Bottle '${BOTTLE_NAME}' exists" || bad "Bottle missing → cricut-linux install"
 
   say "USB"
   [[ -f "$UDEV_RULE" ]] && ok "udev rule present ($UDEV_RULE)" || bad "No udev rule → cricut-linux detect, then cricut-linux udev VID:PID"
@@ -123,8 +124,45 @@ cmd_install_bottles() {
   ok "Done"
 }
 
+CRICUT_API="https://apis.cricut.com/desktopdownload"
+DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
+
+# Cricut's API hands back short-lived signed URLs; resolve one and print it.
+cricut_signed_url() {
+  curl -fsSL "${CRICUT_API}/$1" | python3 -c 'import sys, json; print(json.load(sys.stdin)["result"])'
+}
+
+# Download the latest Design Space Windows installer, verify its SHA-512,
+# and print the installer path on stdout (progress goes to stderr).
+cmd_download() {
+  local meta_url meta file hash exe_url out
+  say "Looking up the latest Design Space release" >&2
+  meta_url="$(cricut_signed_url 'UpdateJson?operatingSystem=win32native&shard=a')" || die "could not reach Cricut's download API"
+  meta="$(curl -fsSL "$meta_url")"
+  file="$(python3 -c 'import sys, json; print(json.load(sys.stdin)["latestInstallFile"])' <<<"$meta")"
+  hash="$(python3 -c 'import sys, json; print(json.load(sys.stdin)["latestUpdateFileHash"])' <<<"$meta")"
+  [[ "$file" =~ ^CricutDesignSpace-Install-v[0-9.]+\.exe$ ]] || die "unexpected installer name from API: $file"
+  out="${DOWNLOAD_DIR}/${file}"
+  mkdir -p "$DOWNLOAD_DIR"
+
+  if [[ -f "$out" ]] && sha512sum "$out" | awk '{print toupper($1)}' | grep -qx "${hash^^}"; then
+    ok "Already downloaded and verified: $out" >&2
+  else
+    exe_url="$(cricut_signed_url "InstallerFile?shard=a&operatingSystem=win32native&fileName=${file}")"
+    say "Downloading $file (~300 MB) to $DOWNLOAD_DIR" >&2
+    curl -fL --progress-bar -o "${out}.part" "$exe_url" >&2
+    sha512sum "${out}.part" | awk '{print toupper($1)}' | grep -qx "${hash^^}" \
+      || { rm -f "${out}.part"; die "SHA-512 mismatch — download corrupted or tampered with"; }
+    mv "${out}.part" "$out"
+    ok "Downloaded and verified (SHA-512): $out" >&2
+  fi
+  printf '%s\n' "$out"
+}
+
 cmd_install() {
-  local exe="${1:-}"; [[ -f "$exe" ]] || die "usage: cricut-linux install /path/to/CricutDesignSpace-Install.exe (download from design.cricut.com)"
+  local exe="${1:-}"
+  [[ -n "$exe" ]] || exe="$(cmd_download)"
+  [[ -f "$exe" ]] || die "installer not found: $exe"
   exe="$(readlink -f "$exe")"
   flatpak info "$BOTTLES_APP" >/dev/null 2>&1 || die "Bottles not installed → cricut-linux install-bottles"
   if [[ ! -d "$BOTTLE_DIR" ]]; then
@@ -185,6 +223,7 @@ case "${1:-}" in
   detect) shift; cmd_detect "$@" ;;
   udev) shift; cmd_udev "$@" ;;
   install-bottles) shift; cmd_install_bottles "$@" ;;
+  download) shift; cmd_download "$@" >/dev/null ;;
   install) shift; cmd_install "$@" ;;
   map-port) shift; cmd_map_port "$@" ;;
   run) shift; cmd_run "$@" ;;

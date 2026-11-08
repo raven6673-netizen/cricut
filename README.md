@@ -22,10 +22,11 @@ cricut-linux doctor
    ```bash
    cricut-linux install-bottles
    ```
-2. **Install Design Space.** Download the Windows installer from design.cricut.com, then:
+2. **Install Design Space.** This downloads the latest Windows installer straight from Cricut, checks its SHA-512 against Cricut's published hash, and runs it in a new bottle:
    ```bash
-   cricut-linux install ~/Downloads/CricutDesignSpace-Install-*.exe
+   cricut-linux install
    ```
+   (`cricut-linux download` fetches the installer on its own; `cricut-linux install /path/to/installer.exe` uses one you already have.)
 3. **USB.** Plug in and power on the Maker:
    ```bash
    cricut-linux detect              # note the VID:PID of the Maker's line
