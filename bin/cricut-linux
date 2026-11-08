@@ -63,7 +63,7 @@ cmd_doctor() {
   [[ -d "$BOTTLE_DIR" ]] && ok "Bottle '${BOTTLE_NAME}' exists" || bad "Bottle missing → cricut-linux install"
 
   say "USB"
-  [[ -f "$UDEV_RULE" ]] && ok "udev rule present ($UDEV_RULE)" || bad "No udev rule → cricut-linux detect, then cricut-linux udev VID:PID"
+  [[ -f "$UDEV_RULE" ]] && ok "udev rule present ($UDEV_RULE)" || bad "No udev rule → cricut-linux udev"
   if [[ -e /dev/cricut ]]; then
     ok "/dev/cricut -> $(readlink -f /dev/cricut)"
     [[ -r /dev/cricut && -w /dev/cricut ]] && ok "read/write access OK" || bad "No access to /dev/cricut (log out/in after installing rule)"
@@ -93,7 +93,7 @@ find_cricut_usb() {
     man="$(cat "$d/manufacturer" 2>/dev/null || true)"
     prod="$(cat "$d/product" 2>/dev/null || true)"
     grep -qiE 'cricut|provo' <<<"$man $prod" || continue
-    tty="$(find "$d"/ -maxdepth 4 -path '*/tty/tty*' -printf '/dev/%f ' 2>/dev/null || true)"
+    tty="$(find "$d"/ -maxdepth 4 -regex '.*/tty/tty[^/]*' -printf '/dev/%f ' 2>/dev/null || true)"
     printf '%s:%s\t%s %s\t%s\n' "$(cat "$d/idVendor")" "$(cat "$d/idProduct")" "$man" "$prod" "${tty% }"
   done
 }
