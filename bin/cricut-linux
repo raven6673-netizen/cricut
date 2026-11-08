@@ -261,7 +261,8 @@ cmd_run() {
   # software rendering is reliable. --gpu tries hardware acceleration instead.
   local args=("$@")
   (( gpu )) || args=(--disable-gpu --disable-gpu-compositing "${args[@]}")
-  bottles_cli run -b "$BOTTLE_NAME" -e "$exe" ${args[*]:+-a "${args[*]}"}
+  # bottles-cli takes program arguments positionally, after "--".
+  bottles_cli run -b "$BOTTLE_NAME" -e "$exe" -- "${args[@]}"
 }
 
 cmd_stop() {
