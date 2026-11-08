@@ -158,7 +158,15 @@ cmd_install_bottles() {
   command -v flatpak >/dev/null || die "flatpak not found"
   if ! flatpak info "$BOTTLES_APP" >/dev/null 2>&1; then
     say "Installing Bottles from Flathub"
-    flatpak install --user -y flathub "$BOTTLES_APP"
+    # Bazzite configures Flathub as a system remote, so a --user install finds nothing.
+    local scope
+    if flatpak remotes --system --columns=name 2>/dev/null | grep -qx flathub; then scope=--system
+    else
+      scope=--user
+      flatpak remotes --user --columns=name 2>/dev/null | grep -qx flathub \
+        || flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    fi
+    flatpak install "$scope" -y flathub "$BOTTLES_APP"
   else ok "Bottles already installed"; fi
   say "Granting Bottles access to devices (serial ports) and the cricut-linux state dir"
   flatpak override --user --device=all "$BOTTLES_APP"
