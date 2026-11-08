@@ -261,8 +261,14 @@ cmd_run() {
   # software rendering is reliable. --gpu tries hardware acceleration instead.
   local args=("$@")
   (( gpu )) || args=(--disable-gpu --disable-gpu-compositing "${args[@]}")
+  # Output goes to a log file: Design Space's Node.js crashes with "open EBADF"
+  # under Wine when its stdout/stderr is a pipe, and the Wine noise is not useful here.
+  mkdir -p "$STATE_DIR"
+  local log="$STATE_DIR/design-space.log"
+  say "Starting Design Space (output: $log)"
+  echo "  It can take a minute to appear. Follow the log with: tail -f $log"
   # bottles-cli takes program arguments positionally, after "--".
-  bottles_cli run -b "$BOTTLE_NAME" -e "$exe" -- "${args[@]}"
+  bottles_cli run -b "$BOTTLE_NAME" -e "$exe" -- "${args[@]}" >"$log" 2>&1 </dev/null
 }
 
 cmd_stop() {
