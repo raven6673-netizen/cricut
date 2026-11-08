@@ -1,0 +1,195 @@
+#!/usr/bin/env bash
+# cricut-linux: run Cricut Design Space on Bazzite (Fedora Atomic) via Bottles,
+# with the Cricut Maker reachable over USB or Bluetooth as a Wine COM port.
+set -euo pipefail
+
+BOTTLES_APP="com.usebottles.bottles"
+BOTTLE_NAME="${CRICUT_BOTTLE:-CricutDesignSpace}"
+BOTTLE_DIR="${HOME}/.var/app/${BOTTLES_APP}/data/bottles/bottles/${BOTTLE_NAME}"
+STATE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/cricut-linux"
+UDEV_RULE="/etc/udev/rules.d/70-cricut.rules"
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+BT_BRIDGE="${SCRIPT_DIR}/../tools/cricut-bt-bridge.py"
+
+say()  { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
+ok()   { printf '  \033[32m✔\033[0m %s\n' "$*"; }
+bad()  { printf '  \033[31m✘\033[0m %s\n' "$*"; }
+die()  { printf '\033[31merror:\033[0m %s\n' "$*" >&2; exit 1; }
+
+bottles_cli() { flatpak run --command=bottles-cli "$BOTTLES_APP" "$@"; }
+
+usage() {
+  cat <<EOF
+Usage: cricut-linux <command> [args]
+
+Setup (run in order):
+  doctor                 Check the system and show what is missing
+  detect                 List USB serial devices (plug in + power on the Maker first)
+  udev <VID:PID>         Install a udev rule: /dev/cricut symlink + desktop-user access (sudo)
+  install-bottles        Install Bottles from Flathub and grant it serial-device access
+  install <Setup.exe>    Create the '${BOTTLE_NAME}' bottle and run the Design Space installer
+  map-port [DEV] [COMn]  Expose DEV (default /dev/cricut) to Wine as COMn (default COM3)
+
+Daily use:
+  run                    Launch Design Space
+  bt-pair <MAC>          Pair/trust the Maker over Bluetooth (bluetoothctl)
+  bt-bridge <MAC> [COMn] Bridge Bluetooth RFCOMM to a pty mapped as COMn (default COM4)
+
+Env: CRICUT_BOTTLE (bottle name, default CricutDesignSpace)
+EOF
+}
+
+cmd_doctor() {
+  say "System"
+  if [[ -e /run/ostree-booted ]]; then ok "Atomic/ostree system detected"; else bad "Not an ostree system (scripts still work, Bazzite assumed)"; fi
+  grep -qi bazzite /etc/os-release 2>/dev/null && ok "Bazzite" || bad "Not Bazzite (continuing anyway)"
+
+  say "Bottles"
+  if command -v flatpak >/dev/null && flatpak info "$BOTTLES_APP" >/dev/null 2>&1; then
+    ok "Bottles installed"
+    if flatpak override --user --show "$BOTTLES_APP" 2>/dev/null | grep -q 'devices=.*all'; then
+      ok "Bottles has device access"
+    else bad "Bottles lacks device access → cricut-linux install-bottles"; fi
+  else bad "Bottles missing → cricut-linux install-bottles"; fi
+  [[ -d "$BOTTLE_DIR" ]] && ok "Bottle '${BOTTLE_NAME}' exists" || bad "Bottle missing → cricut-linux install <CricutDesignSpace-Install.exe>"
+
+  say "USB"
+  [[ -f "$UDEV_RULE" ]] && ok "udev rule present ($UDEV_RULE)" || bad "No udev rule → cricut-linux detect, then cricut-linux udev VID:PID"
+  if [[ -e /dev/cricut ]]; then
+    ok "/dev/cricut -> $(readlink -f /dev/cricut)"
+    [[ -r /dev/cricut && -w /dev/cricut ]] && ok "read/write access OK" || bad "No access to /dev/cricut (log out/in after installing rule)"
+  else bad "/dev/cricut not present (Maker unplugged/off, or rule not installed)"; fi
+
+  say "Wine COM ports"
+  if [[ -d "$BOTTLE_DIR/dosdevices" ]]; then
+    local found=0 l
+    for l in "$BOTTLE_DIR"/dosdevices/com*; do
+      [[ -L "$l" ]] || continue; found=1; ok "$(basename "$l") -> $(readlink "$l")"
+    done
+    (( found )) || bad "No COM ports mapped → cricut-linux map-port"
+  fi
+
+  say "Bluetooth"
+  command -v bluetoothctl >/dev/null && ok "bluetoothctl available" || bad "bluetoothctl missing"
+  python3 -c 'import socket; socket.AF_BLUETOOTH, socket.BTPROTO_RFCOMM' 2>/dev/null \
+    && ok "Python has RFCOMM support (bt-bridge usable)" || bad "Python lacks AF_BLUETOOTH; bt-bridge unavailable"
+}
+
+cmd_detect() {
+  say "USB serial devices"
+  local any=0 dev sys vid pid man prod
+  for dev in /dev/ttyACM* /dev/ttyUSB*; do
+    [[ -e "$dev" ]] || continue; any=1
+    sys="$(udevadm info -q property -n "$dev" 2>/dev/null)"
+    vid="$(sed -n 's/^ID_VENDOR_ID=//p' <<<"$sys")"
+    pid="$(sed -n 's/^ID_MODEL_ID=//p' <<<"$sys")"
+    man="$(sed -n 's/^ID_VENDOR=//p' <<<"$sys")"
+    prod="$(sed -n 's/^ID_MODEL=//p' <<<"$sys")"
+    printf '  %-14s %s:%s  %s %s\n' "$dev" "${vid:-????}" "${pid:-????}" "$man" "$prod"
+  done
+  (( any )) || { bad "No /dev/ttyACM* or /dev/ttyUSB* found. Is the Maker on and plugged in?"; echo; say "All USB devices (lsusb):"; lsusb 2>/dev/null || true; return 1; }
+  echo
+  echo "Tip: unplug the Maker, run detect again — the line that disappears is the Maker."
+  echo "Then: cricut-linux udev VID:PID"
+}
+
+cmd_udev() {
+  local id="${1:-}"; [[ "$id" =~ ^[0-9a-fA-F]{4}:[0-9a-fA-F]{4}$ ]] || die "usage: cricut-linux udev VID:PID (from 'cricut-linux detect')"
+  local vid="${id%%:*}" pid="${id##*:}"
+  local rule
+  rule=$(cat <<EOF
+# Cricut Maker serial port — installed by cricut-linux
+# uaccess grants the logged-in desktop user access (no dialout group needed on Atomic).
+SUBSYSTEM=="tty", ATTRS{idVendor}=="${vid,,}", ATTRS{idProduct}=="${pid,,}", SYMLINK+="cricut", TAG+="uaccess", MODE="0660"
+EOF
+)
+  say "Writing $UDEV_RULE (sudo)"
+  printf '%s\n' "$rule" | sudo tee "$UDEV_RULE" >/dev/null
+  sudo udevadm control --reload-rules
+  sudo udevadm trigger --subsystem-match=tty
+  ok "Rule installed. Unplug/replug the Maker, then check: ls -l /dev/cricut"
+}
+
+cmd_install_bottles() {
+  command -v flatpak >/dev/null || die "flatpak not found"
+  if ! flatpak info "$BOTTLES_APP" >/dev/null 2>&1; then
+    say "Installing Bottles from Flathub"
+    flatpak install --user -y flathub "$BOTTLES_APP"
+  else ok "Bottles already installed"; fi
+  say "Granting Bottles access to devices (serial ports) and the cricut-linux state dir"
+  flatpak override --user --device=all "$BOTTLES_APP"
+  mkdir -p "$STATE_DIR"
+  flatpak override --user --filesystem="$STATE_DIR" "$BOTTLES_APP"
+  ok "Done"
+}
+
+cmd_install() {
+  local exe="${1:-}"; [[ -f "$exe" ]] || die "usage: cricut-linux install /path/to/CricutDesignSpace-Install.exe (download from design.cricut.com)"
+  exe="$(readlink -f "$exe")"
+  flatpak info "$BOTTLES_APP" >/dev/null 2>&1 || die "Bottles not installed → cricut-linux install-bottles"
+  if [[ ! -d "$BOTTLE_DIR" ]]; then
+    say "Creating bottle '${BOTTLE_NAME}'"
+    bottles_cli new --bottle-name "$BOTTLE_NAME" --environment application
+  fi
+  # Installer lives outside the sandbox; grant read access to its directory.
+  flatpak override --user --filesystem="$(dirname "$exe"):ro" "$BOTTLES_APP"
+  say "Running installer (follow the Windows setup wizard)"
+  bottles_cli run -b "$BOTTLE_NAME" -e "$exe"
+  ok "Installer finished. Next: cricut-linux map-port"
+}
+
+# Map a Linux device path into the bottle as a Windows COM port.
+map_port() {
+  local dev="$1" com="${2^^}"
+  [[ "$com" =~ ^COM[0-9]+$ ]] || die "port must look like COM3"
+  [[ -d "$BOTTLE_DIR" ]] || die "bottle not found: $BOTTLE_DIR"
+  local link="$BOTTLE_DIR/dosdevices/${com,,}"
+  mkdir -p "$BOTTLE_DIR/dosdevices"
+  ln -sfn "$dev" "$link"
+  # Registry entry makes the mapping survive Wine's own port auto-detection.
+  bottles_cli reg -b "$BOTTLE_NAME" add -k 'HKEY_LOCAL_MACHINE\Software\Wine\Ports' -v "$com" -d "$dev" -t REG_SZ >/dev/null 2>&1 \
+    || say "note: registry write via bottles-cli failed; the dosdevices symlink alone usually suffices"
+  ok "$com -> $dev"
+}
+
+cmd_map_port() { map_port "${1:-/dev/cricut}" "${2:-COM3}"; }
+
+cmd_run() {
+  [[ -d "$BOTTLE_DIR" ]] || die "bottle missing → cricut-linux install"
+  local exe
+  exe="$(find "$BOTTLE_DIR/drive_c" -iname 'Cricut Design Space.exe' -print -quit 2>/dev/null || true)"
+  [[ -n "$exe" ]] || die "Cricut Design Space.exe not found in bottle; did the installer complete?"
+  bottles_cli run -b "$BOTTLE_NAME" -e "$exe"
+}
+
+cmd_bt_pair() {
+  local mac="${1:-}"; [[ "$mac" =~ ^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$ ]] || die "usage: cricut-linux bt-pair AA:BB:CC:DD:EE:FF (find it with: bluetoothctl scan on)"
+  say "Pairing $mac (Cricut's default PIN is usually 0000 if asked)"
+  bluetoothctl pair "$mac" || true
+  bluetoothctl trust "$mac"
+  ok "Paired/trusted. Next: cricut-linux bt-bridge $mac"
+}
+
+cmd_bt_bridge() {
+  local mac="${1:-}" com="${2:-COM4}"
+  [[ -n "$mac" ]] || die "usage: cricut-linux bt-bridge MAC [COMn]"
+  mkdir -p "$STATE_DIR"
+  local link="$STATE_DIR/cricut-bt"
+  map_port "$link" "$com"
+  say "Bridging $mac → $link ($com). Leave this running while cutting; Ctrl+C to stop."
+  exec python3 "$BT_BRIDGE" "$mac" --link "$link"
+}
+
+case "${1:-}" in
+  doctor) shift; cmd_doctor "$@" ;;
+  detect) shift; cmd_detect "$@" ;;
+  udev) shift; cmd_udev "$@" ;;
+  install-bottles) shift; cmd_install_bottles "$@" ;;
+  install) shift; cmd_install "$@" ;;
+  map-port) shift; cmd_map_port "$@" ;;
+  run) shift; cmd_run "$@" ;;
+  bt-pair) shift; cmd_bt_pair "$@" ;;
+  bt-bridge) shift; cmd_bt_bridge "$@" ;;
+  -h|--help|help|"") usage ;;
+  *) usage; exit 1 ;;
+esac
