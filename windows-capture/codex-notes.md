@@ -49,3 +49,14 @@ The one-inch circle sent 1,296 bytes in the design-associated portion of the tra
 - Before 12:05:44 EST — The operator confirmed the mat was out. Exact physical Load, Go, and Unload press times were unavailable.
 - 12:05:44.503–12:05:44.602 EST — Codex clicked **Done**. Design Space returned to the canvas.
 - 12:07:55 EST — USBPcap stopped automatically. The capture is 166,205 bytes.
+
+## Run 13
+
+- 2026-11-21 12:14:11 EST — USBPcap started `cricut-20261121-121409.pcap` with a five-minute timeout.
+- By 12:15:14 EST — The operator closed Design Space. The Windows process check found neither Design Space nor either USB helper running.
+- 12:15:21.649 EST — Relaunched Design Space. By 12:16:49 EST, it showed the Maker connected and the 1 × 1 in Basic Cut square was staged with Vinyl, Default pressure, Mirror Off, and a 12 × 12 in mat.
+- Around 12:16:49 EST — Design Space showed **Detecting**, following Load and Go.
+- By 12:17:09 EST — Design Space showed **Cutting**.
+- Before 12:17:32 EST — The mat thumbnail showed a completion checkmark, and the operator confirmed the mat was out. Exact physical Load, Go, and Unload press times and cut completion time were unavailable.
+- 12:17:32.024–12:17:32.134 EST — Codex clicked **Done** and verified Design Space returned to the canvas.
+- 12:19:11 EST — USBPcap confirmed automatic stop. The capture is 139,288 bytes.
