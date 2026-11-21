@@ -75,11 +75,16 @@ so a usbmon capture needs its own header parser.
 | two 1 × 1 in squares | 64, 32, 32, 32 → **512 + 160** (= 672) → … 32 |
 
 | one 1 in circle | 64, 32, 32, 32 → **512 + 512 + 272** (= 1296) → … 32 |
+| one 3 in square | 64, 32, 32, 32 → **336** → … 32 |
 
-So design data is **not a flat per-shape cost**: a 1 in square is 336 B but a 1 in circle is 1296 B (≈ 3.9×).
-Geometry is encoded **per path segment** — a curve is polygonised into many short segments, so it needs far more
-records than a 4-corner shape. Frames are capped at **512 bytes** (the circle filled two 512-byte frames plus a
-272-byte remainder). Straight-edged shapes stay cheap; curve/node count drives the size.
+So the byte count tracks **node/segment count, not physical size or shape count**: a 1 in and a 3 in square are
+both 336 B (4 corners), two squares are 672 B (8 corners), and a 1 in circle is 1296 B (a polygonised curve, many
+segments). ~336 B per 4-corner path. Frames are capped at **512 bytes** (the circle filled two 512-byte frames plus
+a 272-byte remainder). Because each path's cost is predictable, the frame sizes reveal a job's rough complexity even
+without the key.
+
+**A cut's end** (first captured in run 8): the busy status poll (18/s while cutting) drops back to the idle poll
+(every 3 s) when the machine finishes.
 
 **Not known yet:** the key exchange (how the `c7` frame relates to the nonces), the cipher mode, and the
 content of the 336-byte records. USB traffic alone can't answer these; it would take analysing the
@@ -96,7 +101,9 @@ rules out for the clean-room MatCraft work.
 | 5 | reconnect | 1 × 1 in square (confirmed) | 64/32/32/32 + 336 + 32 | no |
 | 6 | new (relaunch) | two 1 × 1 in squares (operator-confirmed) | 64/32/32/32 + 512 + 160 + 32 | no |
 | 7 | new (dev addr 12) | one 1 in circle | 64/32/32/32 + 512 + 512 + 272 + 32 | no (stopped mid-cut) |
+| 8 | same session as 7 | one 3 in square | 64/32/32/32 + 336 + 32 (same ciphertext as 7's open/close) | circle's end captured; square mid-cut |
 
-Run 7 settled the per-shape question: a 1 in circle is 1296 B vs 336 B for a 1 in square, so geometry is per
-path segment, not per shape, and frames cap at 512 B. Next useful runs: a larger square (does size alone change
-the byte count, or only node count?), and one capture kept running until after the mat is unloaded.
+Run 8 showed a 3 in square is also 336 B, so byte count is node-count-driven, not size. It reused run 7's session
+(identical open/close ciphertext, no new handshake), and captured the circle's cut finishing (busy poll → idle poll).
+Next useful runs: a shape with a known node count (e.g. a star or a many-sided polygon) to measure bytes-per-node,
+and one capture kept running until after the mat is unloaded.
