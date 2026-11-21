@@ -90,11 +90,25 @@ Measured bytes-per-node (run 9): **≈ 84 B per node, near-linear, ~0 fixed over
 are 84×4 = 336 B, two squares 84×8 = 672 B, a 5-point star (10 nodes) 864 B (~86/node), and a 1 in circle
 1296 B fits ~15–16 polygon segments. Job size ≈ 84 B × node count.
 
-**A full cut's lifecycle** (first captured whole in run 11, via `-MaxSeconds`): job frames → busy status poll at
-18/s while cutting (~52 s for a 1 in square) → back to the idle 3 s poll when the machine finishes. The cut
-**duration** is therefore visible on the wire even though the job content is encrypted. **Mat unload** shows no
-distinct traffic — the idle poll after a cut is uniform, so unloading is either silent to Design Space (a local
-Maker button) or simply wasn't exercised in capture. Treat unload as not-yet-characterised.
+**The cut flow on the wire** (run 12, full flow load → Go → cut → unload → Done, aligned with Codex's button
+timestamps). Two things carry the state:
+- **The status poll's ciphertext encodes machine state.** The poll is one fixed OUT command repeated, but its
+  ciphertext differs per phase because the plaintext carries a state field: a slow idle poll (~1 per 3 s) while
+  Design Space waits at a prompt, a fast poll (~9/s, OUT `58 7c 76 85…` in run 12) with a varying reply while an
+  operation runs, and — after the cut — the idle poll resumes at a **different** ciphertext (`ec b5 58 bf…`),
+  i.e. a new state (mat unloaded / job done).
+- **Each state transition is a short burst of distinct command frames** breaking the poll.
+
+Steps:
+- **Load** (press load/unload to feed the mat): a command burst then ~24 s of elevated traffic as the mat loads and
+  homes.
+- **Go**: the job frames (64/32/32/32 + geometry + 32), then the fast status poll for the cut.
+- **Cut complete → unload → Done**: at the end of the cut (run 12 ~+171.6 s, matching Codex's Done click at
+  12:05:44) three distinct command frames (`7d 85…`, `89 9e…`, `d5 aa…`) appear and the poll switches to the new
+  idle ciphertext. So a driver can detect "finished" by watching for this transition.
+
+The prompts between steps are the idle-wait periods; a burst of distinct frames (plus motor-busy traffic for the
+mechanical steps) marks each button press.
 
 **Not known yet:** the key exchange (how the `c7` frame relates to the nonces), the cipher mode, and the
 content of the 336-byte records. USB traffic alone can't answer these; it would take analysing the
@@ -115,6 +129,13 @@ rules out for the clean-room MatCraft work.
 | 9 | new (restart, 2 handshakes) | one 5-point star | 64/32/32/32 + 512 + 352 + 32 | no (stopped mid-cut) |
 | 10 | same session as 9 | one 1 in square (full-cut attempt) | 64/32/32/32 + 336 + 32 | no — STOP made ~33 s after Go, mid-cut |
 | 11 | same session as 9 | one 1 in square (timed 4-min capture) | 64/32/32/32 + 336 + 32 | **yes — full cut** (job → ~52 s cut → idle); no distinct unload traffic |
+| 12 | same session as 9 | one 1 in square, full load→Go→cut→unload→Done (5-min) | 64/32/32/32 + 336 + 32 | **yes — full flow**; load, cut, unload/Done signatures all captured |
+
+Run 12 mapped the full prompt/button flow (with Codex's button timestamps): load (command burst + ~24 s motor-busy)
+→ Go (job) → cut (fast status poll) → unload/Done (command burst at ~+171.6 s, matching the 12:05:44 Done click) →
+idle at a new poll ciphertext. The status poll's ciphertext encodes machine state, so a Linux driver can read
+"cutting" vs "done" from the poll alone. The remaining wall is the encrypted job content, which needs the Design
+Space binaries (out of scope for clean-room MatCraft).
 
 Run 11 used `-MaxSeconds 240` and captured a complete cut for the first time: a 1 in square cut for ~52 s, then the
 machine returned to the idle poll. Mat unload produced no distinguishable traffic. Still open: whether unload is
