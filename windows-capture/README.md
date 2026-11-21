@@ -130,6 +130,12 @@ rules out for the clean-room MatCraft work.
 | 10 | same session as 9 | one 1 in square (full-cut attempt) | 64/32/32/32 + 336 + 32 | no — STOP made ~33 s after Go, mid-cut |
 | 11 | same session as 9 | one 1 in square (timed 4-min capture) | 64/32/32/32 + 336 + 32 | **yes — full cut** (job → ~52 s cut → idle); no distinct unload traffic |
 | 12 | same session as 9 | one 1 in square, full load→Go→cut→unload→Done (5-min) | 64/32/32/32 + 336 + 32 | **yes — full flow**; load, cut, unload/Done signatures all captured |
+| 13 | **new (restart)** | one 1 in square, full flow (5-min) | 64/32/32/32 + 336 + 32 | **yes — verifies run 12 on a new key** |
+
+Run 13 reproduced run 12 on a fresh connection: new handshake/key (all-new job ciphertext), the same mat-load burst,
+and the status poll again switching ciphertext at the cut→done transition (cutting `d6 d5 dd…` ≠ done `6b 6f b9…`,
+both new vs run 12). The state-poll behaviour is confirmed reproducible across session keys. The protocol and
+workflow map is now as complete as USB traffic allows; the only remaining unknown is the encrypted job content.
 
 Run 12 mapped the full prompt/button flow (with Codex's button timestamps): load (command burst + ~24 s motor-busy)
 → Go (job) → cut (fast status poll) → unload/Done (command burst at ~+171.6 s, matching the 12:05:44 Done click) →
