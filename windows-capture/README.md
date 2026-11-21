@@ -24,6 +24,8 @@ Bluetooth address). `.gitignore` excludes them.
    ```
    Optional: `-StopDir <folder>` adds folders that are watched for `STOP`, for example the
    working folder of a sandboxed agent that can't write to the capture folder.
+   Optional: `-MaxSeconds 240` auto-stops after 4 minutes, so the capture spans a whole cut and
+   mat unload without a hand-timed `STOP` (a `STOP` still ends it earlier). Use this for full-cut runs.
 4. Run the job in Design Space. Write down local times for Go, cut finished and mat unloaded.
 5. Once the mat is unloaded, create an empty `STOP` file. `CAPTURE_DONE` appears when the capture
    file is closed.

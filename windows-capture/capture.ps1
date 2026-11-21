@@ -3,6 +3,8 @@ Capture USB traffic between Cricut Design Space and a Cricut machine on Windows 
 
 Run elevated (USBPcap needs admin). The capture runs until a file named STOP appears in
 $OutDir or any of the -StopDir folders, so another agent or person can end it without admin.
+With -MaxSeconds N the capture also stops on its own after N seconds, so it spans a whole cut
+and mat unload without relying on a hand-timed STOP (a STOP still ends it earlier).
 
 Find the hub and device address first (no admin needed):
   & "C:\Program Files\USBPcap\USBPcapCMD.exe" --extcap-interfaces
@@ -18,7 +20,8 @@ param(
     [string]$OutDir = (Join-Path $env:USERPROFILE "Downloads\cricut-capture"),
     [string]$Hub = "\\.\USBPcap1",
     [string]$Devices = "5",
-    [string[]]$StopDir = @()
+    [string[]]$StopDir = @(),
+    [int]$MaxSeconds = 0
 )
 $ErrorActionPreference = "Stop"
 $exe = "C:\Program Files\USBPcap\USBPcapCMD.exe"
@@ -34,12 +37,16 @@ try {
     $p = Start-Process -FilePath $exe -ArgumentList $cmdArgs -PassThru -WindowStyle Hidden
     Start-Sleep -Seconds 2
     if ($p.HasExited) { Write-Log "USBPcapCMD exited early, code $($p.ExitCode)"; exit 1 }
-    "$out`nstarted $(Get-Date -Format s)" | Set-Content -Path (Join-Path $OutDir "CAPTURE_RUNNING") -Encoding utf8
-    Write-Log "capture started pid=$($p.Id) -> $out"
+    $deadline = if ($MaxSeconds -gt 0) { (Get-Date).AddSeconds($MaxSeconds) } else { [datetime]::MaxValue }
+    $runLine = "$out`nstarted $(Get-Date -Format s)"
+    if ($MaxSeconds -gt 0) { $runLine += "`nmax-seconds $MaxSeconds (auto-stop $(Get-Date $deadline -Format s))" }
+    $runLine | Set-Content -Path (Join-Path $OutDir "CAPTURE_RUNNING") -Encoding utf8
+    Write-Log "capture started pid=$($p.Id) -> $out$(if($MaxSeconds -gt 0){" (max $MaxSeconds s)"})"
 
-    while (-not ($stopFiles | Where-Object { Test-Path $_ }) -and -not $p.HasExited) { Start-Sleep -Milliseconds 500 }
+    while (-not ($stopFiles | Where-Object { Test-Path $_ }) -and -not $p.HasExited -and (Get-Date) -lt $deadline) { Start-Sleep -Milliseconds 500 }
 
-    if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force; Write-Log "STOP seen, capture stopped" }
+    $reason = if ($stopFiles | Where-Object { Test-Path $_ }) { "STOP seen" } elseif ((Get-Date) -ge $deadline) { "max-seconds reached" } else { "process exited" }
+    if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force; Write-Log "$reason, capture stopped" }
     else { Write-Log "USBPcapCMD exited on its own, code $($p.ExitCode)" }
     Remove-Item (Join-Path $OutDir "CAPTURE_RUNNING") -ErrorAction SilentlyContinue
     "$out`nstopped $(Get-Date -Format s)`nbytes $((Get-Item $out).Length)" | Set-Content -Path (Join-Path $OutDir "CAPTURE_DONE") -Encoding utf8
