@@ -1,9 +1,10 @@
-# cricut-linux
+# Cricut Maker tools
 
-Run **Cricut Design Space** on **Bazzite** (Fedora Atomic) and cut with a **Cricut Maker** over **USB or Bluetooth**.
+[MatCraft](app/README.md) is the native Rust app for Linux and Windows. The original Linux scripts below install and connect Design Space under Bottles.
 
-Cricut does not ship Design Space for Linux, and the Maker only accepts jobs from Design Space. This project runs the Windows
-app in [Bottles](https://usebottles.com) (Flatpak) and exposes the Maker to Wine as a COM port:
+## Design Space on Bazzite
+
+The scripts expose the Maker to Wine as a COM port.
 
 - **USB:** a udev rule creates a stable `/dev/cricut` and grants your desktop user access (via `uaccess`, so you don't have to fiddle with the `dialout` group on an immutable OS). The device is then linked into the bottle as `COM3`.
 - **Bluetooth:** a small user-space bridge (`tools/cricut-bt-bridge.py`) connects to the Maker's RFCOMM serial channel and presents it as a pty, mapped as `COM4`. No root, and no deprecated `rfcomm` tool or `rpm-ostree` layering.
@@ -50,7 +51,6 @@ Run `cricut-linux doctor` at any point to see what is missing.
 
 - These scripts have not been tested against real hardware yet. Please report results (`cricut-linux doctor` output helps).
 - How well Design Space runs under Wine depends on the Design Space and Wine/runner versions. If sign-in or the canvas misbehaves, try another runner in Bottles (e.g. a newer `soda`/`caffe`/`kron4ek` build).
-- A fully native Linux cutter for the Maker is not possible yet. The Maker's protocol is encrypted and undocumented, so native support would first need protocol research.
 
 ## Layout
 

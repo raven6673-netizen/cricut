@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+/app/target/
+/app/target-*/
+/app/mechanics-live.json
