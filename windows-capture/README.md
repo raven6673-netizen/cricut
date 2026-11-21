@@ -108,6 +108,11 @@ rules out for the clean-room MatCraft work.
 | 7 | new (dev addr 12) | one 1 in circle | 64/32/32/32 + 512 + 512 + 272 + 32 | no (stopped mid-cut) |
 | 8 | same session as 7 | one 3 in square | 64/32/32/32 + 336 + 32 (same ciphertext as 7's open/close) | circle's end captured; square mid-cut |
 | 9 | new (restart, 2 handshakes) | one 5-point star | 64/32/32/32 + 512 + 352 + 32 | no (stopped mid-cut) |
+| 10 | same session as 9 | one 1 in square (full-cut attempt) | 64/32/32/32 + 336 + 32 | no — STOP made ~33 s after Go, mid-cut |
+
+Run 10 again stopped mid-cut: the manual STOP keeps arriving before the cut finishes. To finally capture a cut to
+mat unload, run the capture for a fixed generous duration (e.g. 4 min) instead of a hand-timed STOP, or verify
+Design Space shows "finished" and the mat is out before creating STOP.
 
 Run 9 measured bytes-per-node: a 5-point star (10 nodes) is 864 B, so job size ≈ 84 B × node count (near-linear,
 ~0 overhead). A clean restart gave a fresh handshake and key. Still open: a capture kept running until after the mat
