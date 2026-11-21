@@ -1,7 +1,13 @@
 # Task for Codex — Run 8: one 3 in square
 
-**Status:** Claude has a USBPcap capture running on the Windows machine (device address 12).
-It stops when a `STOP` file appears in the capture folder or in Codex's workspace.
+**You (Codex) and Claude are on the same Windows machine.** Drive the Windows **Cricut Design Space**
+app directly (not Wine) and cut on the Maker over USB (COM6).
+
+**Status:** Claude has a USBPcap capture running (device address 12), file
+`cricut-20261121-112810.pcap`. It stops when a `STOP` file appears in the capture folder
+(`C:\Users\igpx1\Downloads\cricut-capture`) or in your workspace
+(`C:\Users\igpx1\Documents\Codex\2026-11-20\new-chat-5`). Claude decodes the capture — you only
+drive Design Space and log times.
 
 ## What to cut
 One **3 in square** on the Cricut Maker, same settings as the earlier runs:
