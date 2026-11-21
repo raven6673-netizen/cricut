@@ -74,8 +74,12 @@ so a usbmon capture needs its own header parser.
 | one 1 × 1 in square | 64, 32, 32, 32 → **336** → … 32 |
 | two 1 × 1 in squares | 64, 32, 32, 32 → **512 + 160** (= 672) → … 32 |
 
-So design data is **336 bytes per square**, split into frames of at most 512 bytes. Because each shape
-adds a fixed amount, the frame sizes reveal roughly how many shapes a job has, even without the key.
+| one 1 in circle | 64, 32, 32, 32 → **512 + 512 + 272** (= 1296) → … 32 |
+
+So design data is **not a flat per-shape cost**: a 1 in square is 336 B but a 1 in circle is 1296 B (≈ 3.9×).
+Geometry is encoded **per path segment** — a curve is polygonised into many short segments, so it needs far more
+records than a 4-corner shape. Frames are capped at **512 bytes** (the circle filled two 512-byte frames plus a
+272-byte remainder). Straight-edged shapes stay cheap; curve/node count drives the size.
 
 **Not known yet:** the key exchange (how the `c7` frame relates to the nonces), the cipher mode, and the
 content of the 336-byte records. USB traffic alone can't answer these; it would take analysing the
@@ -91,6 +95,8 @@ rules out for the clean-room MatCraft work.
 | 4 | new (relaunch) + reconnect | same | same sizes, new ciphertext | yes |
 | 5 | reconnect | 1 × 1 in square (confirmed) | 64/32/32/32 + 336 + 32 | no |
 | 6 | new (relaunch) | two 1 × 1 in squares (operator-confirmed) | 64/32/32/32 + 512 + 160 + 32 | no |
+| 7 | new (dev addr 12) | one 1 in circle | 64/32/32/32 + 512 + 512 + 272 + 32 | no (stopped mid-cut) |
 
-Next useful runs: a different shape (circle, larger square) to test whether 336 B is per shape or per path
-segment, and one capture kept running until after the mat is unloaded.
+Run 7 settled the per-shape question: a 1 in circle is 1296 B vs 336 B for a 1 in square, so geometry is per
+path segment, not per shape, and frames cap at 512 B. Next useful runs: a larger square (does size alone change
+the byte count, or only node count?), and one capture kept running until after the mat is unloaded.
