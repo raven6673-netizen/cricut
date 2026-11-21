@@ -76,12 +76,17 @@ so a usbmon capture needs its own header parser.
 
 | one 1 in circle | 64, 32, 32, 32 → **512 + 512 + 272** (= 1296) → … 32 |
 | one 3 in square | 64, 32, 32, 32 → **336** → … 32 |
+| one 5-point star | 64, 32, 32, 32 → **512 + 352** (= 864) → … 32 |
 
 So the byte count tracks **node/segment count, not physical size or shape count**: a 1 in and a 3 in square are
 both 336 B (4 corners), two squares are 672 B (8 corners), and a 1 in circle is 1296 B (a polygonised curve, many
 segments). ~336 B per 4-corner path. Frames are capped at **512 bytes** (the circle filled two 512-byte frames plus
 a 272-byte remainder). Because each path's cost is predictable, the frame sizes reveal a job's rough complexity even
 without the key.
+
+Measured bytes-per-node (run 9): **≈ 84 B per node, near-linear, ~0 fixed overhead** — 1 in and 3 in squares
+are 84×4 = 336 B, two squares 84×8 = 672 B, a 5-point star (10 nodes) 864 B (~86/node), and a 1 in circle
+1296 B fits ~15–16 polygon segments. Job size ≈ 84 B × node count.
 
 **A cut's end** (first captured in run 8): the busy status poll (18/s while cutting) drops back to the idle poll
 (every 3 s) when the machine finishes.
@@ -102,8 +107,8 @@ rules out for the clean-room MatCraft work.
 | 6 | new (relaunch) | two 1 × 1 in squares (operator-confirmed) | 64/32/32/32 + 512 + 160 + 32 | no |
 | 7 | new (dev addr 12) | one 1 in circle | 64/32/32/32 + 512 + 512 + 272 + 32 | no (stopped mid-cut) |
 | 8 | same session as 7 | one 3 in square | 64/32/32/32 + 336 + 32 (same ciphertext as 7's open/close) | circle's end captured; square mid-cut |
+| 9 | new (restart, 2 handshakes) | one 5-point star | 64/32/32/32 + 512 + 352 + 32 | no (stopped mid-cut) |
 
-Run 8 showed a 3 in square is also 336 B, so byte count is node-count-driven, not size. It reused run 7's session
-(identical open/close ciphertext, no new handshake), and captured the circle's cut finishing (busy poll → idle poll).
-Next useful runs: a shape with a known node count (e.g. a star or a many-sided polygon) to measure bytes-per-node,
-and one capture kept running until after the mat is unloaded.
+Run 9 measured bytes-per-node: a 5-point star (10 nodes) is 864 B, so job size ≈ 84 B × node count (near-linear,
+~0 overhead). A clean restart gave a fresh handshake and key. Still open: a capture kept running until after the mat
+is unloaded (every run so far has stopped mid-cut), and whether the per-node cost changes with path type (line vs curve).
