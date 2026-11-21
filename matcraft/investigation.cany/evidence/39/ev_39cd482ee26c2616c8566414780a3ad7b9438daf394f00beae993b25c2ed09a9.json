@@ -1,0 +1,110 @@
+{
+  "id": "ev_39cd482ee26c2616c8566414780a3ad7b9438daf394f00beae993b25c2ed09a9",
+  "subject": {
+    "kind": "asar",
+    "sha256": "b295a54672751a0d6cbf55981b8d41d7af34da9ee5aae83551b4e7b3e810330d",
+    "name": "app.asar"
+  },
+  "operation": "core_evidence_browse",
+  "params": {
+    "show": {
+      "kind": "summary"
+    },
+    "source": {
+      "evidence_id": "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e",
+      "kind": "saved"
+    }
+  },
+  "result": {
+    "coverage": {
+      "at_end": true,
+      "examined": 1,
+      "next_offset": null,
+      "status": "all-in-view",
+      "total": 1
+    },
+    "from_evidence": "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e",
+    "from_tool": "js_app_map",
+    "shown": {
+      "carries_target_content": false,
+      "confidence": "derived",
+      "coverage": {
+        "examined": 50,
+        "next_offset": 50,
+        "status": "partial",
+        "total": 196
+      },
+      "evidence_id": "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e",
+      "limitations": [
+        {
+          "code": "input",
+          "message": "analysed resources/app.asar found inside the folder"
+        },
+        {
+          "code": "dynamic_ipc_channels",
+          "message": "127 IPC call(s) use a channel name computed at run time; they are not in the channel map."
+        },
+        {
+          "code": "node_cap",
+          "message": "134659 graph nodes were dropped at the 25000-node cap; raise max_nodes to keep them."
+        },
+        {
+          "code": "static_only",
+          "message": "Static reading only: code built at run time (eval, computed requires, remote content) is invisible; IPC pairs need literal channel names."
+        },
+        {
+          "code": "paged_modules",
+          "message": "Only one page of module summaries is included; tools that take this evidence need every module, so pass the input path to them or use offset=0 with a limit above modules_total."
+        }
+      ],
+      "lists": {
+        "api_operations": 0,
+        "bundlers": 2,
+        "edges": 45386,
+        "effects": 245,
+        "endpoints": 1057,
+        "exposed": 0,
+        "ipc": 1,
+        "limitations": 3,
+        "modules": 50,
+        "native_modules": 0,
+        "nodes": 25000,
+        "pages": 7,
+        "preloads": 0,
+        "renderers": 0,
+        "routes": 3,
+        "source_maps": 12,
+        "storage": 286,
+        "vendors": 52,
+        "windows": 1,
+        "workers": 7
+      },
+      "operation": "js_app_map",
+      "subject": {
+        "kind": "asar",
+        "name": "app.asar",
+        "sha256": "b295a54672751a0d6cbf55981b8d41d7af34da9ee5aae83551b4e7b3e810330d"
+      },
+      "summary": "Web app Cricut Design Space 10.12.122: 196 source files, 1 IPC channel(s) (0 paired), 1 window(s), 175 endpoint(s), 3 route(s), bundled with tsc/webpack."
+    }
+  },
+  "summary": "Part of js_app_map evidence (all-in-view).",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 1,
+    "total": 1
+  },
+  "locations": [],
+  "links": [
+    "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e"
+  ]
+}

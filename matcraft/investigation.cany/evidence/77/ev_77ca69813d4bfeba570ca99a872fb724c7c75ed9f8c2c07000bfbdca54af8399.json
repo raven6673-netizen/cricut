@@ -1,0 +1,45 @@
+{
+  "id": "ev_77ca69813d4bfeba570ca99a872fb724c7c75ed9f8c2c07000bfbdca54af8399",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_function_pseudocode",
+  "params": {
+    "function": "0x4ff470"
+  },
+  "result": {
+    "engine": "ghidra",
+    "entry": "0x4ff470",
+    "function": "FUN_004ff470",
+    "pseudo_code": "\r\n/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */\r\n\r\nundefined4 __thiscall FUN_004ff470(int *param_1,undefined4 param_2)\r\n\r\n{\r\n  undefined4 uVar1;\r\n  uint uVar2;\r\n  uint uVar3;\r\n  uint uVar4;\r\n  int iVar5;\r\n  int local_2c;\r\n  int local_28;\r\n  int local_24;\r\n  undefined1 local_20 [4];\r\n  int *local_1c;\r\n  code *local_18;\r\n  undefined1 local_14 [3];\r\n  undefined1 local_11;\r\n  void *local_10;\r\n  undefined1 *puStack_c;\r\n  undefined4 local_8;\r\n  \r\n  puStack_c = &LAB_0091781d;\r\n  local_10 = ExceptionList;\r\n  ExceptionList = &local_10;\r\n  local_2c = 0;\r\n  local_28 = 0;\r\n  local_24 = 0;\r\n  local_8 = 0;\r\n  local_1c = param_1;\r\n  local_11 = (**(code **)(*param_1 + 0x14))(DAT_00a2d3c0 ^ (uint)&stack0xfffffffc);\r\n  FUN_00453400(&local_11,&local_2c);\r\n  local_11 = 0x17;\r\n  FUN_00453400(&local_11,&local_2c);\r\n  local_18 = (code *)0x0;\r\n  FUN_00452a60(local_20,local_14,&local_18,&local_2c);\r\n  local_18 = (code *)0x0;\r\n  FUN_00452a60(local_20,local_14,&local_18,&local_2c);\r\n  local_18 = (code *)0x0;\r\n  FUN_00452a60(local_20,local_14,&local_18,&local_2c);\r\n  local_18 = (code *)(float)((double)(float)param_1[3] * _DAT_0095ebc0);\r\n  FUN_00452a60(local_20,local_14,&local_18,&local_2c);\r\n  local_18 = *(code **)(*param_1 + 0x20);\r\n  uVar4 = 0;\r\n  iVar5 = 0;\r\n  uVar2 = local_28 - local_2c;\r\n  if (uVar2 != 0) {\r\n    if (0x7fffffff < uVar2) {\r\n                    /* WARNING: Subroutine does not return */\r\n      FUN_00426c90(0,0,0,param_2);\r\n    }\r\n    if (uVar2 < 0x1000) {\r\n      uVar3 = FUN_00893228(uVar2);\r\n    }\r\n    else {\r\n      if (uVar2 + 0x23 <= uVar2) {\r\n                    /* WARNING: Subroutine does not return */\r\n        FUN_004094a0();\r\n      }\r\n      iVar5 = FUN_00893228(uVar2 + 0x23);\r\n      if (iVar5 == 0) goto LAB_004ff665;\r\n      uVar3 = iVar5 + 0x23U & 0xffffffe0;\r\n      *(int *)(uVar3 - 4) = iVar5;\r\n    }\r\n    iVar5 = local_28 - local_2c;\r\n    uVar4 = uVar3;\r\n    FUN_008974f0(uVar3,local_2c,iVar5,uVar3,uVar3,uVar3 + uVar2);\r\n    iVar5 = iVar5 + uVar3;\r\n  }\r\n  uVar1 = (*local_18)(uVar4,iVar5);\r\n  if (local_2c != 0) {\r\n    uVar4 = local_24 - local_2c;\r\n    local_8 = 1;\r\n    iVar5 = local_2c;\r\n    if (0xfff < uVar4) {\r\n      iVar5 = *(int *)(local_2c + -4);\r\n      uVar4 = uVar4 + 0x23;\r\n      if (0x1f < (local_2c - iVar5) - 4U) {\r\nLAB_004ff665:\r\n                    /* WARNING: Subroutine does not return */\r\n        __invoke_watson((wchar_t *)0x0,(wchar_t *)0x0,(wchar_t *)0x0,0,0);\r\n      }\r\n    }\r\n    FUN_00893258(iVar5,uVar4);\r\n  }\r\n  ExceptionList = local_10;\r\n  return uVar1;\r\n}\r\n\r\n",
+    "signature": "undefined4 __thiscall FUN_004ff470(int *param_1,undefined4 param_2);"
+  },
+  "summary": "Pseudo-C for FUN_004ff470 from the Deep engine (90 lines).",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "ghidra",
+    "engine_version": "12.1.4",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "deep_engine",
+      "message": "the pseudo-C comes from the external Deep engine (Ghidra), not the original source"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x4ff470"
+    }
+  ],
+  "links": [],
+  "carries_target_content": true
+}

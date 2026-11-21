@@ -1,0 +1,970 @@
+{
+  "id": "ev_f00a2ce707ddd1c48babcf8d69c14e8cedaf0580677994b975a6dc49a956a08a",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_strings_find",
+  "params": {
+    "case_sensitive": false,
+    "limit": 100,
+    "mode": "regex",
+    "offset": 0,
+    "pattern": "bluetooth|rfcomm|baud|00001101|COM\\d|serial"
+  },
+  "result": {
+    "matches": [
+      {
+        "address": "0x95ac18",
+        "references": [
+          {
+            "from": "0x42d4fa",
+            "function": "sub_42d3d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "inMessage.Serial"
+      },
+      {
+        "address": "0x95c050",
+        "references": [
+          {
+            "from": "0x44d066",
+            "function": "sub_44cf80"
+          },
+          {
+            "from": "0x478143",
+            "function": "sub_4780e0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Bluetooth Module"
+      },
+      {
+        "address": "0x95d1e8",
+        "references": [
+          {
+            "from": "0x4774e3",
+            "function": "sub_477370"
+          }
+        ],
+        "section": ".rdata",
+        "text": "unable to reset bluetooth module of bootloader device"
+      },
+      {
+        "address": "0x95e9ac",
+        "references": [
+          {
+            "from": "0x4a2df2",
+            "function": "sub_4a2630"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Handling non-BluetoothCT device logic"
+      },
+      {
+        "address": "0x961a60",
+        "references": [
+          {
+            "from": "0x4e3351",
+            "function": "sub_4e3190"
+          }
+        ],
+        "section": ".rdata",
+        "text": "HeliumBluetoothAlertCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x962e30",
+        "references": [
+          {
+            "from": "0x4fa0b3",
+            "function": "sub_4f9f40"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaBluetoothAlertCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x9636b8",
+        "references": [
+          {
+            "from": "0x5034fe",
+            "function": "sub_5034b0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Helium2BluetoothAlertCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x964852",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_name_to_machine_type"
+      },
+      {
+        "address": "0x964876",
+        "references": [],
+        "section": ".rdata",
+        "text": "2B.NativeModel.Bridge.PBCommonBridge.BluetoothNameToMachineTypeEntry"
+      },
+      {
+        "address": "0x96492a",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_read_size"
+      },
+      {
+        "address": "0x964947",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_read_data"
+      },
+      {
+        "address": "0x9649c8",
+        "references": [],
+        "section": ".rdata",
+        "text": "2,.NativeModel.Bridge.PBCricutDeviceSerialized"
+      },
+      {
+        "address": "0x964a06",
+        "references": [],
+        "section": ".rdata",
+        "text": "2,.NativeModel.Bridge.PBCricutDeviceSerialized"
+      },
+      {
+        "address": "0x965403",
+        "references": [],
+        "section": ".rdata",
+        "text": "this_computer_bluetooth_version"
+      },
+      {
+        "address": "0x965900",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_timeout"
+      },
+      {
+        "address": "0x965f15",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothNameToMachineTypeEntry"
+      },
+      {
+        "address": "0x967a45",
+        "references": [],
+        "section": ".rdata",
+        "text": "serial"
+      },
+      {
+        "address": "0x968d39",
+        "references": [],
+        "section": ".rdata",
+        "text": "PBCricutDeviceSerialized"
+      },
+      {
+        "address": "0x968dc4",
+        "references": [],
+        "section": ".rdata",
+        "text": "serial"
+      },
+      {
+        "address": "0x969050",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_paired"
+      },
+      {
+        "address": "0x96907f",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_version"
+      },
+      {
+        "address": "0x96909e",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_name"
+      },
+      {
+        "address": "0x96940d",
+        "references": [],
+        "section": ".rdata",
+        "text": "lib_usb_serial"
+      },
+      {
+        "address": "0x969927",
+        "references": [],
+        "section": ".rdata",
+        "text": "2%.NativeModel.Bridge.PBBluetoothVendor"
+      },
+      {
+        "address": "0x96a9d0",
+        "references": [],
+        "section": ".rdata",
+        "text": "2,.NativeModel.Bridge.PBCricutDeviceSerialized"
+      },
+      {
+        "address": "0x96b38f",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_state"
+      },
+      {
+        "address": "0x96b3e4",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_authorization"
+      },
+      {
+        "address": "0x96bdca",
+        "references": [],
+        "section": ".rdata",
+        "text": "PBBluetoothVendor"
+      },
+      {
+        "address": "0x96ec98",
+        "references": [
+          {
+            "from": "0x539662",
+            "function": "sub_539550"
+          },
+          {
+            "from": "0x540bed",
+            "function": "sub_53ef30"
+          },
+          {
+            "from": "0x540c88",
+            "function": "sub_53ef30"
+          },
+          {
+            "from": "0x56b3d9",
+            "function": "sub_56b2d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCommonBridge.BluetoothNameToMachineTypeEntry.key"
+      },
+      {
+        "address": "0x96efb0",
+        "references": [
+          {
+            "from": "0x53e286",
+            "function": "sub_53cae0"
+          },
+          {
+            "from": "0x54084f",
+            "function": "sub_53ef30"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCommonBridge.this_computer_bluetooth_version"
+      },
+      {
+        "address": "0x96f0e8",
+        "references": [
+          {
+            "from": "0x51aaaa",
+            "function": "sub_51a980"
+          },
+          {
+            "from": "0x51aea1",
+            "function": "sub_51ae50"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBMachineStatus.serial"
+      },
+      {
+        "address": "0x96f3b4",
+        "references": [
+          {
+            "from": "0x52a732",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52b737",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.device_type"
+      },
+      {
+        "address": "0x96f3ec",
+        "references": [
+          {
+            "from": "0x52a809",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52b7fd",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.serial"
+      },
+      {
+        "address": "0x96f420",
+        "references": [
+          {
+            "from": "0x52a9c0",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52b9da",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.key"
+      },
+      {
+        "address": "0x96f450",
+        "references": [
+          {
+            "from": "0x52ae1d",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52bdf1",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.mac_address"
+      },
+      {
+        "address": "0x96f488",
+        "references": [
+          {
+            "from": "0x52ae5e",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52be2a",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.bluetooth_version"
+      },
+      {
+        "address": "0x96f4c8",
+        "references": [
+          {
+            "from": "0x52aefa",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52be96",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.pid_hex"
+      },
+      {
+        "address": "0x96f4fc",
+        "references": [
+          {
+            "from": "0x52af96",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52bf02",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.vid_hex"
+      },
+      {
+        "address": "0x96f530",
+        "references": [
+          {
+            "from": "0x52b06c",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52bfd3",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.lib_usb_serial"
+      },
+      {
+        "address": "0x96f56c",
+        "references": [
+          {
+            "from": "0x52b0ad",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52c00c",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.lib_usb_port_str"
+      },
+      {
+        "address": "0x96f5ac",
+        "references": [
+          {
+            "from": "0x52b4d3",
+            "function": "sub_52a620"
+          },
+          {
+            "from": "0x52c407",
+            "function": "sub_52b6d0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCricutDeviceSerialized.bluetooth_name"
+      },
+      {
+        "address": "0x970df7",
+        "references": [],
+        "section": ".rdata",
+        "text": "\n\nserialNum1"
+      },
+      {
+        "address": "0x970e0b",
+        "references": [],
+        "section": ".rdata",
+        "text": "\n\nserialNum2"
+      },
+      {
+        "address": "0x970e1f",
+        "references": [],
+        "section": ".rdata",
+        "text": "\n\nserialNum3"
+      },
+      {
+        "address": "0x970e33",
+        "references": [],
+        "section": ".rdata",
+        "text": "\n\nserialNum4"
+      },
+      {
+        "address": "0x9723db",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetoothVersion"
+      },
+      {
+        "address": "0x973a5b",
+        "references": [],
+        "section": ".rdata",
+        "text": "BLUETOOTH_MODULE_MT"
+      },
+      {
+        "address": "0x9779d8",
+        "references": [],
+        "section": ".rdata",
+        "text": "PBSerialNumber"
+      },
+      {
+        "address": "0x9779ea",
+        "references": [],
+        "section": ".rdata",
+        "text": "serial"
+      },
+      {
+        "address": "0x977b06",
+        "references": [],
+        "section": ".rdata",
+        "text": "serial"
+      },
+      {
+        "address": "0x977bb6",
+        "references": [],
+        "section": ".rdata",
+        "text": "<\n\nset_serial"
+      },
+      {
+        "address": "0x977bc9",
+        "references": [],
+        "section": ".rdata",
+        "text": "2\".NativeModel.Bridge.PBSerialNumberB"
+      },
+      {
+        "address": "0x977bf4",
+        "references": [],
+        "section": ".rdata",
+        "text": "<\n\nget_serial"
+      },
+      {
+        "address": "0x977c07",
+        "references": [],
+        "section": ".rdata",
+        "text": "2\".NativeModel.Bridge.PBSerialNumberB"
+      },
+      {
+        "address": "0x978082",
+        "references": [],
+        "section": ".rdata",
+        "text": "serial"
+      },
+      {
+        "address": "0x97ac84",
+        "references": [
+          {
+            "from": "0x5a1715",
+            "function": "sub_5a1650"
+          },
+          {
+            "from": "0x5a17fb",
+            "function": "sub_5a17e0"
+          },
+          {
+            "from": "0x5a8448",
+            "function": "sub_5a83c0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBSerialNumber.serial"
+      },
+      {
+        "address": "0x97acb0",
+        "references": [
+          {
+            "from": "0x5a1ea1",
+            "function": "sub_5a1b80"
+          },
+          {
+            "from": "0x5a2187",
+            "function": "sub_5a2000"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBGetFullStatus.serial"
+      },
+      {
+        "address": "0x97ad44",
+        "references": [
+          {
+            "from": "0x5a4d23",
+            "function": "sub_5a4950"
+          },
+          {
+            "from": "0x5a4fb9",
+            "function": "sub_5a4e10"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBSetPlatformSequence.serial"
+      },
+      {
+        "address": "0x97c259",
+        "references": [],
+        "section": ".rdata",
+        "text": ".\n)riAssociateBluetoothNamesWithMachineTypes"
+      },
+      {
+        "address": "0x97c603",
+        "references": [],
+        "section": ".rdata",
+        "text": "riInvalidSerialDetected"
+      },
+      {
+        "address": "0x97e52b",
+        "references": [],
+        "section": ".rdata",
+        "text": "BLUETOOTH_CT"
+      },
+      {
+        "address": "0x97e79d",
+        "references": [],
+        "section": ".rdata",
+        "text": "REFRESH_BLUETOOTH_SOCKET_MA"
+      },
+      {
+        "address": "0x97fb0d",
+        "references": [],
+        "section": ".rdata",
+        "text": "serial"
+      },
+      {
+        "address": "0x980325",
+        "references": [],
+        "section": ".rdata",
+        "text": "serial"
+      },
+      {
+        "address": "0x980455",
+        "references": [],
+        "section": ".rdata",
+        "text": "serial"
+      },
+      {
+        "address": "0x982014",
+        "references": [
+          {
+            "from": "0x5bcc98",
+            "function": "sub_5bcb70"
+          },
+          {
+            "from": "0x5bcf0d",
+            "function": "sub_5bcec0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBForceGaugeDevice.serial"
+      },
+      {
+        "address": "0x982238",
+        "references": [
+          {
+            "from": "0x5c0758",
+            "function": "sub_5c04c0"
+          },
+          {
+            "from": "0x5c09e9",
+            "function": "sub_5c0890"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBForceGaugeHistory.serial"
+      },
+      {
+        "address": "0x9822f8",
+        "references": [
+          {
+            "from": "0x5c10bd",
+            "function": "sub_5c0ec0"
+          },
+          {
+            "from": "0x5c1387",
+            "function": "sub_5c1290"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBForceGaugeHistories.serial"
+      },
+      {
+        "address": "0x9841b0",
+        "references": [
+          {
+            "from": "0x5e757b",
+            "function": "sub_5e7430"
+          }
+        ],
+        "section": ".rdata",
+        "text": "System.DeviceInterface.Bluetooth.VendorId"
+      },
+      {
+        "address": "0x984208",
+        "references": [
+          {
+            "from": "0x5e7599",
+            "function": "sub_5e7430"
+          }
+        ],
+        "section": ".rdata",
+        "text": "System.DeviceInterface.Bluetooth.ProductId"
+      },
+      {
+        "address": "0x9857f0",
+        "references": [
+          {
+            "from": "0x60cf38",
+            "function": "sub_60cec0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "CHECK failed: (byte_size_before_serialization) == (byte_size_after_serialization): "
+      },
+      {
+        "address": "0x985844",
+        "references": [
+          {
+            "from": "0x60cf26",
+            "function": "sub_60cec0"
+          }
+        ],
+        "section": ".rdata",
+        "text": " was modified concurrently during serialization."
+      },
+      {
+        "address": "0x985878",
+        "references": [
+          {
+            "from": "0x60cff9",
+            "function": "sub_60cec0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "CHECK failed: (bytes_produced_by_serialization) == (byte_size_before_serialization): "
+      },
+      {
+        "address": "0x9858d0",
+        "references": [
+          {
+            "from": "0x60cfea",
+            "function": "sub_60cec0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Byte size calculation and serialization were inconsistent.  This may indicate a bug in protocol buffers or it may be caused by concurrent modification of "
+      },
+      {
+        "address": "0x9886f8",
+        "references": [
+          {
+            "from": "0x656033",
+            "function": "sub_655350"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Unexpected failure while serializing option submessage "
+      },
+      {
+        "address": "0x98ab10",
+        "references": [
+          {
+            "from": "0x696c6e",
+            "function": "sub_696bf0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "CHECK failed: (min_bytes) <= (std::numeric_limits<size_t>::max() - SerialArena::kBlockHeaderSize): "
+      },
+      {
+        "address": "0x98ad78",
+        "references": [
+          {
+            "from": "0x698c43",
+            "function": "sub_698c20"
+          }
+        ],
+        "section": ".rdata",
+        "text": "serializing"
+      },
+      {
+        "address": "0x994d1c",
+        "references": [
+          {
+            "from": "0x7902e6",
+            "function": "sub_7901b0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "' serial number while connecting"
+      },
+      {
+        "address": "0x994e64",
+        "references": [
+          {
+            "from": "0x790d12",
+            "function": "sub_790cc0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "USB/Serial ["
+      },
+      {
+        "address": "0x994e78",
+        "references": [
+          {
+            "from": "0xa2c670",
+            "function": null
+          }
+        ],
+        "section": ".rdata",
+        "text": "usb_serial_device_inquirer_handle_t"
+      },
+      {
+        "address": "0x995068",
+        "references": [
+          {
+            "from": "0xa2c674",
+            "function": null
+          }
+        ],
+        "section": ".rdata",
+        "text": "Windows.Devices.Bluetooth.BluetoothDevice"
+      },
+      {
+        "address": "0x9950f0",
+        "references": [
+          {
+            "from": "0xa2c678",
+            "function": null
+          }
+        ],
+        "section": ".rdata",
+        "text": "Windows.Devices.Bluetooth.Rfcomm.RfcommServiceId"
+      },
+      {
+        "address": "0x9959b4",
+        "references": [
+          {
+            "from": "0x7a0e8b",
+            "function": "sub_7a0e80"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Serial number output pointer is null."
+      },
+      {
+        "address": "0x995a00",
+        "references": [
+          {
+            "from": "0x7a0ef4",
+            "function": "sub_7a0e80"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Failed to get serial number."
+      },
+      {
+        "address": "0x995ac0",
+        "references": [
+          {
+            "from": "0x7a11db",
+            "function": "sub_7a11d0"
+          },
+          {
+            "from": "0x7a12bd",
+            "function": "sub_7a1280"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Serial port output pointer is null."
+      },
+      {
+        "address": "0x995bd0",
+        "references": [
+          {
+            "from": "0x7a1586",
+            "function": "sub_7a1560"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Serial port is null."
+      },
+      {
+        "address": "0x997f48",
+        "references": [
+          {
+            "from": "0x7a6019",
+            "function": "sub_7a5fb0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "HidD_GetSerialNumberString"
+      },
+      {
+        "address": "0x998380",
+        "references": [
+          {
+            "from": "0x7a3154",
+            "function": "sub_7a30c0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Device with requested VID/PID/(SerialNumber) not found"
+      },
+      {
+        "address": "0xa258b6",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothFindFirstDevice"
+      },
+      {
+        "address": "0xa258d2",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothFindNextDevice"
+      },
+      {
+        "address": "0xa258ec",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothFindDeviceClose"
+      },
+      {
+        "address": "0xa25908",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothRemoveDevice"
+      },
+      {
+        "address": "0xa25920",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothAuthenticateDeviceEx"
+      },
+      {
+        "address": "0xa25940",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothSetServiceState"
+      },
+      {
+        "address": "0xa2595c",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothRegisterForAuthenticationEx"
+      },
+      {
+        "address": "0xa25984",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothUnregisterAuthentication"
+      },
+      {
+        "address": "0xa259a8",
+        "references": [],
+        "section": ".rdata",
+        "text": "BluetoothSendAuthenticationResponseEx"
+      },
+      {
+        "address": "0xa2e900",
+        "references": [],
+        "section": ".data",
+        "text": ".?AU?$default_delete@Vbluetooth_serial_transport@bluetooth@device_io@cricut@@@std@@"
+      },
+      {
+        "address": "0xa2e960",
+        "references": [],
+        "section": ".data",
+        "text": ".?AU?$default_delete@Vusb_serial_transport@usb@device_io@cricut@@@std@@"
+      },
+      {
+        "address": "0xa2ea14",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVBluetoothModuleDevice@@"
+      }
+    ],
+    "total": 151
+  },
+  "summary": "151 strings match \"bluetooth|rfcomm|baud|00001101|COM\\d|serial\".",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "data_sections_only",
+      "message": "only strings stored in the file are searched (absence is not proof)"
+    }
+  ],
+  "coverage": {
+    "status": "partial",
+    "examined": 100,
+    "total": 151,
+    "next_offset": 100
+  },
+  "locations": [],
+  "links": []
+}

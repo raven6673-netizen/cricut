@@ -1,0 +1,59 @@
+{
+  "id": "ev_ef71a567df9875989d15b516e62c431754e930edf01fb98c74d5d77f5a3c2305",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_bytes_find",
+  "params": {
+    "encoding": "both",
+    "limit": 40,
+    "offset": 0,
+    "path": null,
+    "pattern": "81 ?? 01 02 00 00",
+    "text": null
+  },
+  "result": {
+    "file_size": 6770808,
+    "limit": 40,
+    "match_cap_reached": false,
+    "matches": [],
+    "native_container": "pe",
+    "offset": 0,
+    "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\plugins\\device-common\\CricutDevice.exe",
+    "searched_for": [
+      {
+        "kind": "pattern",
+        "length": 6
+      }
+    ],
+    "total_matches": 0
+  },
+  "summary": "0 match(es) for pattern in CricutDevice.exe.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "file_bytes_only",
+      "message": "The file's bytes are searched as stored: compressed, encrypted or packed regions and data built at run time are not seen, so no match is not proof of absence."
+    },
+    {
+      "code": "unmapped_regions",
+      "message": "Matches in headers, overlays or debug data that are not loaded into memory have no virtual address."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 0,
+    "total": 0
+  },
+  "locations": [],
+  "links": []
+}

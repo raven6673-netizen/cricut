@@ -1,0 +1,176 @@
+{
+  "id": "ev_eb6bca7f4d5eb8d43300bcfffbbefea6611aefa0aa8387089a5d9e8ae4eeedff",
+  "subject": {
+    "kind": "folder",
+    "name": "Cricut Design Space"
+  },
+  "operation": "app_folder_explain",
+  "params": {
+    "max_depth": 4,
+    "max_entries": 20000,
+    "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space"
+  },
+  "result": {
+    "bundle": null,
+    "candidates": [
+      {
+        "markers": [
+          {
+            "count": 1,
+            "marker": "app_asar",
+            "means": "the packed web app Electron loads",
+            "paths": [
+              "resources/app.asar"
+            ],
+            "weight": "strong"
+          },
+          {
+            "count": 1,
+            "marker": "asar",
+            "means": "a packed web app in Electron's archive format",
+            "paths": [
+              "resources/app.asar"
+            ],
+            "weight": "medium"
+          }
+        ],
+        "next": [
+          {
+            "args": {
+              "input_path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\app.asar"
+            },
+            "tool": "js_app_map",
+            "why": "map the app's JavaScript, IPC and routes"
+          },
+          {
+            "args": {
+              "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\app.asar"
+            },
+            "tool": "core_archive_show",
+            "why": "list what's in the packed app"
+          }
+        ],
+        "runtime": "electron",
+        "score": 8,
+        "secondary": false,
+        "strength": "strong",
+        "title": "Electron (a web app in a desktop shell)"
+      },
+      {
+        "markers": [
+          {
+            "count": 15,
+            "marker": "program",
+            "means": "a program in a machine's own code",
+            "paths": [
+              "Cricut Design Space.exe",
+              "Uninstall Cricut Design Space.exe",
+              "resources/plugins/canvas/cricut-magick.exe",
+              "resources/plugins/canvas/CricutCanvas.exe",
+              "resources/plugins/cricut-device-io/crashpad_handler.exe"
+            ],
+            "weight": "weak"
+          }
+        ],
+        "next": [
+          {
+            "args": {
+              "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\Cricut Design Space.exe"
+            },
+            "tool": "core_target_triage",
+            "why": "what the program is and what it does"
+          },
+          {
+            "args": {
+              "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\Cricut Design Space.exe"
+            },
+            "tool": "native_rust_binary_show",
+            "why": "whether it was written in Rust"
+          }
+        ],
+        "runtime": "native",
+        "score": 1,
+        "secondary": true,
+        "strength": "weak",
+        "title": "Native code (no bigger runtime recognised for this)"
+      }
+    ],
+    "folder": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space",
+    "game": null,
+    "next_steps": [
+      {
+        "args": {
+          "input_path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\app.asar"
+        },
+        "tool": "js_app_map",
+        "why": "map the app's JavaScript, IPC and routes"
+      },
+      {
+        "args": {
+          "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\app.asar"
+        },
+        "tool": "core_archive_show",
+        "why": "list what's in the packed app"
+      },
+      {
+        "args": {
+          "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\Cricut Design Space.exe"
+        },
+        "tool": "core_target_triage",
+        "why": "what the program is and what it does"
+      },
+      {
+        "args": {
+          "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\Cricut Design Space.exe"
+        },
+        "tool": "native_rust_binary_show",
+        "why": "whether it was written in Rust"
+      }
+    ],
+    "walk": {
+      "bytes_read": 67540664,
+      "capped": true,
+      "entries": 123,
+      "files_looked_inside": 31,
+      "folders": 19,
+      "folders_not_walked": [],
+      "links_not_followed": 0,
+      "max_depth": 4,
+      "max_entries": 20000
+    }
+  },
+  "summary": "Cricut Design Space: looks built on Electron (a web app in a desktop shell).",
+  "confidence": "inferred",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "presence_not_proof",
+      "message": "A file being in the folder doesn't prove the app runs it: it may be unused, left over from an update, or there for another reason. Nothing was started, so these are inferences."
+    },
+    {
+      "code": "small_reads_only",
+      "message": "Only names, the ends of some files and the start of the main programs were read. The app's contents weren't unpacked or analysed; next_steps says what to run for that."
+    },
+    {
+      "code": "walk_capped",
+      "message": "max_entries (20000) or max_depth (4) stopped the walk, so what's further in wasn't seen. Raise them to see more."
+    }
+  ],
+  "coverage": {
+    "status": "partial",
+    "examined": 123
+  },
+  "locations": [
+    {
+      "kind": "path",
+      "value": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space"
+    }
+  ],
+  "links": []
+}

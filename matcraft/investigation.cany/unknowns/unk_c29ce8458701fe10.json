@@ -1,0 +1,13 @@
+{
+  "id": "unk_c29ce8458701fe10",
+  "revision": 1,
+  "question": "Does the Maker at 00:06:66:8D:2B:FE answer a read-only request over Bluetooth on Bazzite?",
+  "severity": "high",
+  "domain": "Bazzite Bluetooth",
+  "status": "open",
+  "probes": [
+    "Use Bluetooth with the powered-on Maker and check for a reply to Read buttons & lights in MatCraft. Live test unavailable in this run."
+  ],
+  "evidence_for": [],
+  "evidence_against": []
+}

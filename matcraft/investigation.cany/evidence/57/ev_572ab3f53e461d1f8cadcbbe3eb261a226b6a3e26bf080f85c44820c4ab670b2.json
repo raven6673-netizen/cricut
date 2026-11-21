@@ -1,0 +1,88 @@
+{
+  "id": "ev_572ab3f53e461d1f8cadcbbe3eb261a226b6a3e26bf080f85c44820c4ab670b2",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_strings_find",
+  "params": {
+    "case_sensitive": false,
+    "limit": 60,
+    "mode": "literal",
+    "offset": 0,
+    "pattern": "CricutDevice::"
+  },
+  "result": {
+    "matches": [
+      {
+        "address": "0x95d1b4",
+        "references": [
+          {
+            "from": "0x476502",
+            "function": "sub_4763b0"
+          },
+          {
+            "from": "0x48df43",
+            "function": "sub_48de60"
+          }
+        ],
+        "section": ".rdata",
+        "text": "CricutDevice::encrypt_command_bytes(Out of Memory!)"
+      },
+      {
+        "address": "0x963acc",
+        "references": [
+          {
+            "from": "0x50f7ba",
+            "function": "sub_50f540"
+          },
+          {
+            "from": "0x50fc9d",
+            "function": "sub_50fae0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "CricutDevice::read_response(CRC Mismatch!)"
+      },
+      {
+        "address": "0x963af8",
+        "references": [
+          {
+            "from": "0x50f796",
+            "function": "sub_50f540"
+          },
+          {
+            "from": "0x50fc7f",
+            "function": "sub_50fae0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "CricutDevice::read_response(Unable to decrypt response!)"
+      }
+    ],
+    "total": 3
+  },
+  "summary": "3 strings match \"CricutDevice::\".",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "data_sections_only",
+      "message": "only strings stored in the file are searched (absence is not proof)"
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 3,
+    "total": 3
+  },
+  "locations": [],
+  "links": []
+}

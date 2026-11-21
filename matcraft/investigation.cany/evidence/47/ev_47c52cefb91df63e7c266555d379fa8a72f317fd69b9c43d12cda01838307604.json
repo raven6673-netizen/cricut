@@ -1,0 +1,87 @@
+{
+  "id": "ev_47c52cefb91df63e7c266555d379fa8a72f317fd69b9c43d12cda01838307604",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_strings_find",
+  "params": {
+    "case_sensitive": false,
+    "limit": 100,
+    "mode": "regex",
+    "offset": 0,
+    "pattern": "^Athena\\w+ - "
+  },
+  "result": {
+    "matches": [
+      {
+        "address": "0x962e30",
+        "references": [
+          {
+            "from": "0x4fa0b3",
+            "function": "sub_4f9f40"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaBluetoothAlertCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x962fc0",
+        "references": [
+          {
+            "from": "0x4fb480",
+            "function": "sub_4fb370"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaAbortCuttingCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x9633e0",
+        "references": [
+          {
+            "from": "0x4fe95e",
+            "function": "sub_4fe820"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaClearErrorCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x963450",
+        "references": [
+          {
+            "from": "0x4fed3b",
+            "function": "sub_4fec60"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaCPRToggleCommand - Unexpected response received from device!"
+      }
+    ],
+    "total": 4
+  },
+  "summary": "4 strings match \"^Athena\\w+ - \".",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "data_sections_only",
+      "message": "only strings stored in the file are searched (absence is not proof)"
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 4,
+    "total": 4
+  },
+  "locations": [],
+  "links": []
+}

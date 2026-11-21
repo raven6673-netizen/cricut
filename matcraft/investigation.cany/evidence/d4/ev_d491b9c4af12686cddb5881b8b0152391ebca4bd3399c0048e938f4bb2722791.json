@@ -1,0 +1,54 @@
+{
+  "id": "ev_d491b9c4af12686cddb5881b8b0152391ebca4bd3399c0048e938f4bb2722791",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_xrefs_list",
+  "params": {
+    "address": "0x4fe820",
+    "limit": 200,
+    "offset": 0
+  },
+  "result": {
+    "address": "0x4fe820",
+    "name": "sub_4fe820",
+    "references_from": [],
+    "references_to": [
+      {
+        "from": "0x9633d0",
+        "function": null,
+        "kind": "pointer"
+      }
+    ],
+    "total_to": 1
+  },
+  "summary": "0x4fe820 is referenced from 1 places and refers to 0.",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "static_references",
+      "message": "references made through computed pointers at run time are not seen"
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 1,
+    "total": 1
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x4fe820"
+    }
+  ],
+  "links": []
+}

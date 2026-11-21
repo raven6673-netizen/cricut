@@ -1,0 +1,42 @@
+{
+  "id": "ev_93af5a6f1063a2ea4e8ec39d69d67c2802ba9082494fee1dac2ba7feb6d935ca",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_bytes_show",
+  "params": {
+    "address": "0x4e9b70",
+    "length": 24
+  },
+  "result": {
+    "address": "0x4e9b70",
+    "ascii": ".................A......",
+    "file_offset": 954224,
+    "hex": "b8c7000000c3cccccccccccccccccccc8b4110c3cccccccc",
+    "length": 24
+  },
+  "summary": "24 bytes at 0x4e9b70.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 24,
+    "total": 24
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x4e9b70"
+    }
+  ],
+  "links": []
+}

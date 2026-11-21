@@ -1,0 +1,46 @@
+{
+  "id": "ev_876d95c02e8b86dcc08c3de814feeef7fa333e59f12bb9fbe39e76854f08fd69",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_data_show",
+  "params": {
+    "address": "0x95ebc0",
+    "type": "f64"
+  },
+  "result": {
+    "address": "0x95ebc0",
+    "name": null,
+    "references_to": 15,
+    "section": ".rdata",
+    "type": "f64",
+    "value": "0.017453292519943295"
+  },
+  "summary": "0x95ebc0 looks like f64.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "no_type_recovery",
+      "message": "the clean-room engine doesn't recover declared types; this reads the bytes and infers what they look like"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x95ebc0"
+    }
+  ],
+  "links": []
+}

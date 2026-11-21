@@ -1,0 +1,439 @@
+{
+  "id": "ev_b5d4784fd442af74fbbaae83dccd7c8b2654265839f5536d65ef301faad69a23",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_strings_find",
+  "params": {
+    "case_sensitive": false,
+    "limit": 60,
+    "mode": "regex",
+    "offset": 0,
+    "pattern": "(send|stream|cut)_?(path|data|segment|vector|points)|bezier|polyline|PBCutPath|cut_path|PathData"
+  },
+  "result": {
+    "matches": [
+      {
+        "address": "0x964c27",
+        "references": [],
+        "section": ".rdata",
+        "text": "2!.NativeModel.Bridge.PBMatPathData"
+      },
+      {
+        "address": "0x965043",
+        "references": [],
+        "section": ".rdata",
+        "text": "<\n\rtest_cut_path"
+      },
+      {
+        "address": "0x965059",
+        "references": [],
+        "section": ".rdata",
+        "text": "2!.NativeModel.Bridge.PBTestCutPathB"
+      },
+      {
+        "address": "0x9650c2",
+        "references": [],
+        "section": ".rdata",
+        "text": "calibration_cut_path"
+      },
+      {
+        "address": "0x9650dc",
+        "references": [],
+        "section": ".rdata",
+        "text": "2(.NativeModel.Bridge.PBCalibrationCutPathB"
+      },
+      {
+        "address": "0x96515a",
+        "references": [],
+        "section": ".rdata",
+        "text": "confirmation_cut_path"
+      },
+      {
+        "address": "0x965175",
+        "references": [],
+        "section": ".rdata",
+        "text": "2).NativeModel.Bridge.PBConfirmationCutPathB"
+      },
+      {
+        "address": "0x96784a",
+        "references": [],
+        "section": ".rdata",
+        "text": "custom_bezier_tolerance"
+      },
+      {
+        "address": "0x967cc4",
+        "references": [],
+        "section": ".rdata",
+        "text": "\t\n\rPBMatPathData"
+      },
+      {
+        "address": "0x967ce8",
+        "references": [],
+        "section": ".rdata",
+        "text": "2!.NativeModel.Bridge.PBMatPathData"
+      },
+      {
+        "address": "0x96813f",
+        "references": [],
+        "section": ".rdata",
+        "text": "last_cut_path_index"
+      },
+      {
+        "address": "0x968513",
+        "references": [],
+        "section": ".rdata",
+        "text": "2!.NativeModel.Bridge.PBMatPathData"
+      },
+      {
+        "address": "0x968549",
+        "references": [],
+        "section": ".rdata",
+        "text": "2!.NativeModel.Bridge.PBMatPathData"
+      },
+      {
+        "address": "0x96a517",
+        "references": [],
+        "section": ".rdata",
+        "text": "<\n\rtest_cut_path"
+      },
+      {
+        "address": "0x96a52d",
+        "references": [],
+        "section": ".rdata",
+        "text": "2!.NativeModel.Bridge.PBTestCutPathB"
+      },
+      {
+        "address": "0x96a596",
+        "references": [],
+        "section": ".rdata",
+        "text": "calibration_cut_path"
+      },
+      {
+        "address": "0x96a5b0",
+        "references": [],
+        "section": ".rdata",
+        "text": "2(.NativeModel.Bridge.PBCalibrationCutPathB"
+      },
+      {
+        "address": "0x96a62e",
+        "references": [],
+        "section": ".rdata",
+        "text": "confirmation_cut_path"
+      },
+      {
+        "address": "0x96a649",
+        "references": [],
+        "section": ".rdata",
+        "text": "2).NativeModel.Bridge.PBConfirmationCutPathB"
+      },
+      {
+        "address": "0x96a785",
+        "references": [],
+        "section": ".rdata",
+        "text": "\"\"\n\rPBTestCutPath"
+      },
+      {
+        "address": "0x96a7ad",
+        "references": [],
+        "section": ".rdata",
+        "text": "PBCalibrationCutPath"
+      },
+      {
+        "address": "0x96a7d8",
+        "references": [],
+        "section": ".rdata",
+        "text": "PBConfirmationCutPath"
+      },
+      {
+        "address": "0x96ab70",
+        "references": [],
+        "section": ".rdata",
+        "text": "2!.NativeModel.Bridge.PBMatPathData"
+      },
+      {
+        "address": "0x96ae9a",
+        "references": [],
+        "section": ".rdata",
+        "text": "2!.NativeModel.Bridge.PBMatPathData\""
+      },
+      {
+        "address": "0x96f1e0",
+        "references": [
+          {
+            "from": "0x51db4a",
+            "function": "sub_51da10"
+          },
+          {
+            "from": "0x51e75b",
+            "function": "sub_51e700"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBMatPathData.path_data"
+      },
+      {
+        "address": "0x96f20c",
+        "references": [
+          {
+            "from": "0x51dbd0",
+            "function": "sub_51da10"
+          },
+          {
+            "from": "0x51e794",
+            "function": "sub_51e700"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBMatPathData.path_color"
+      },
+      {
+        "address": "0x96f238",
+        "references": [
+          {
+            "from": "0x51dc1c",
+            "function": "sub_51da10"
+          },
+          {
+            "from": "0x51e7cd",
+            "function": "sub_51e700"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBMatPathData.path_id"
+      },
+      {
+        "address": "0x96f264",
+        "references": [
+          {
+            "from": "0x51dc68",
+            "function": "sub_51da10"
+          },
+          {
+            "from": "0x51e806",
+            "function": "sub_51e700"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBMatPathData.image_id"
+      },
+      {
+        "address": "0x96f290",
+        "references": [
+          {
+            "from": "0x51dcb4",
+            "function": "sub_51da10"
+          },
+          {
+            "from": "0x51e83f",
+            "function": "sub_51e700"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBMatPathData.image_name"
+      },
+      {
+        "address": "0x96f2bc",
+        "references": [
+          {
+            "from": "0x51dd00",
+            "function": "sub_51da10"
+          },
+          {
+            "from": "0x51e878",
+            "function": "sub_51e700"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBMatPathData.image_type"
+      },
+      {
+        "address": "0x96f2e8",
+        "references": [
+          {
+            "from": "0x51dd4c",
+            "function": "sub_51da10"
+          },
+          {
+            "from": "0x51e8b1",
+            "function": "sub_51e700"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBMatPathData.import_type"
+      },
+      {
+        "address": "0x96f8c0",
+        "references": [
+          {
+            "from": "0x5178e9",
+            "function": "sub_517830"
+          },
+          {
+            "from": "0x5179f2",
+            "function": "sub_5179b0"
+          },
+          {
+            "from": "0x5481c4",
+            "function": "sub_548120"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBTestCutPath.paths"
+      },
+      {
+        "address": "0x96f8e8",
+        "references": [
+          {
+            "from": "0x5181f9",
+            "function": "sub_518140"
+          },
+          {
+            "from": "0x518302",
+            "function": "sub_5182c0"
+          },
+          {
+            "from": "0x546b14",
+            "function": "sub_546a70"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBCalibrationCutPath.paths"
+      },
+      {
+        "address": "0x96f918",
+        "references": [
+          {
+            "from": "0x519759",
+            "function": "sub_5196a0"
+          },
+          {
+            "from": "0x519862",
+            "function": "sub_519820"
+          },
+          {
+            "from": "0x546f04",
+            "function": "sub_546e60"
+          }
+        ],
+        "section": ".rdata",
+        "text": "NativeModel.Bridge.PBConfirmationCutPath.paths"
+      },
+      {
+        "address": "0x97785d",
+        "references": [],
+        "section": ".rdata",
+        "text": "\n\ncut_bezier"
+      },
+      {
+        "address": "0x97cb20",
+        "references": [],
+        "section": ".rdata",
+        "text": "riMATCUTNeedPathData"
+      },
+      {
+        "address": "0x97cb3b",
+        "references": [],
+        "section": ".rdata",
+        "text": "riMATCUTSetPathData"
+      },
+      {
+        "address": "0x97cb55",
+        "references": [],
+        "section": ".rdata",
+        "text": "riMATCUTProcessingPathData"
+      },
+      {
+        "address": "0x97cb73",
+        "references": [],
+        "section": ".rdata",
+        "text": "'\n\"riMATCUTProcessingPathDataComplete"
+      },
+      {
+        "address": "0x97e4b0",
+        "references": [],
+        "section": ".rdata",
+        "text": ")\n%PTP_FORCE_USE_DRAGKNIFE_OFFSET_BEZIER"
+      },
+      {
+        "address": "0x97e8ef",
+        "references": [],
+        "section": ".rdata",
+        "text": "DRAW_DEVICE_CUT_PATH_MA"
+      },
+      {
+        "address": "0x97eb10",
+        "references": [],
+        "section": ".rdata",
+        "text": "kInvalidPathDataEmptyPath"
+      },
+      {
+        "address": "0x97eb35",
+        "references": [],
+        "section": ".rdata",
+        "text": "-\n kInvalidPathDataInvalidCharacter"
+      },
+      {
+        "address": "0x97eb67",
+        "references": [],
+        "section": ".rdata",
+        "text": "kInvalidPathDataMissingFiducial"
+      },
+      {
+        "address": "0x9826d3",
+        "references": [],
+        "section": ".rdata",
+        "text": "bezier_divisions"
+      },
+      {
+        "address": "0xa33b84",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVPBCalibrationCutPath@Bridge@NativeModel@@"
+      },
+      {
+        "address": "0xa33d88",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVPBConfirmationCutPath@Bridge@NativeModel@@"
+      },
+      {
+        "address": "0xa343a8",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVPBMatPathData@Bridge@NativeModel@@"
+      },
+      {
+        "address": "0xa3474c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVPBTestCutPath@Bridge@NativeModel@@"
+      }
+    ],
+    "total": 49
+  },
+  "summary": "49 strings match \"(send|stream|cut)_?(path|data|segment|vector|points)|bezier|polyline|PBCutPath|cut_path|PathData\".",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "data_sections_only",
+      "message": "only strings stored in the file are searched (absence is not proof)"
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 49,
+    "total": 49
+  },
+  "locations": [],
+  "links": []
+}

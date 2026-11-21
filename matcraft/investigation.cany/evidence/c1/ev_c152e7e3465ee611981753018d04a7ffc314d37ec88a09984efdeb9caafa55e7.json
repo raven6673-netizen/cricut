@@ -1,0 +1,45 @@
+{
+  "id": "ev_c152e7e3465ee611981753018d04a7ffc314d37ec88a09984efdeb9caafa55e7",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_function_pseudocode",
+  "params": {
+    "function": "0x452a60"
+  },
+  "result": {
+    "engine": "ghidra",
+    "entry": "0x452a60",
+    "function": "FUN_00452a60",
+    "pseudo_code": "\r\nvoid FUN_00452a60(undefined4 *param_1,int param_2,int param_3,int *param_4)\r\n\r\n{\r\n  uint uVar1;\r\n  undefined1 *puVar2;\r\n  int iVar3;\r\n  int iVar4;\r\n  int iVar5;\r\n  uint local_c;\r\n  uint local_8;\r\n  \r\n  do {\r\n    if (param_2 == param_3) {\r\n      *param_1 = param_4;\r\n      return;\r\n    }\r\n    puVar2 = (undefined1 *)param_4[1];\r\n    if (puVar2 == (undefined1 *)param_4[2]) {\r\n      iVar4 = (int)puVar2 - *param_4;\r\n      if (iVar4 == 0x7fffffff) {\r\n                    /* WARNING: Subroutine does not return */\r\n        FUN_00426c90();\r\n      }\r\n      local_c = param_4[2] - *param_4;\r\n      uVar1 = iVar4 + 1;\r\n      if (0x7fffffff - (local_c >> 1) < local_c) {\r\n        local_c = 0x7fffffff;\r\n      }\r\n      else {\r\n        local_c = (local_c >> 1) + local_c;\r\n        if (local_c < uVar1) {\r\n          local_c = uVar1;\r\n        }\r\n      }\r\n      local_8 = local_c;\r\n      iVar5 = FUN_00412eb0(param_4,&local_c);\r\n      *(undefined1 *)(iVar4 + iVar5) = *(undefined1 *)(param_2 + -1);\r\n      iVar3 = *param_4;\r\n      if (puVar2 == (undefined1 *)param_4[1]) {\r\n        FUN_008974f0(iVar5,iVar3,param_4[1] - iVar3);\r\n      }\r\n      else {\r\n        FUN_008974f0(iVar5,iVar3,(int)puVar2 - iVar3);\r\n        FUN_008974f0((undefined1 *)(iVar4 + iVar5) + 1,puVar2,param_4[1] - (int)puVar2);\r\n      }\r\n      iVar4 = *param_4;\r\n      if (iVar4 != 0) {\r\n        FUN_00427980(iVar4,param_4[2] - iVar4);\r\n      }\r\n      *param_4 = iVar5;\r\n      param_4[1] = uVar1 + iVar5;\r\n      param_4[2] = local_8 + iVar5;\r\n    }\r\n    else {\r\n      *puVar2 = *(undefined1 *)(param_2 + -1);\r\n      param_4[1] = param_4[1] + 1;\r\n    }\r\n    param_2 = param_2 + -1;\r\n  } while( true );\r\n}\r\n\r\n",
+    "signature": "void FUN_00452a60(undefined4 *param_1,int param_2,int param_3,int *param_4);"
+  },
+  "summary": "Pseudo-C for FUN_00452a60 from the Deep engine (62 lines).",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "ghidra",
+    "engine_version": "12.1.4",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "deep_engine",
+      "message": "the pseudo-C comes from the external Deep engine (Ghidra), not the original source"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x452a60"
+    }
+  ],
+  "links": [],
+  "carries_target_content": true
+}

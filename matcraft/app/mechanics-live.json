@@ -1,0 +1,33 @@
+{
+  "port": "COM6",
+  "machine": "USB 20D3:0015 serial 0580717011",
+  "answers": [
+    {
+      "command": "get interface state",
+      "code": 115,
+      "sent": "00 01 73",
+      "header": "00 06",
+      "body": "73 CF 0F 00 03 00",
+      "encrypted": false,
+      "note": "reply starts with the command's code"
+    },
+    {
+      "command": "read error severity",
+      "code": 11,
+      "sent": "00 01 0B",
+      "header": "00 02",
+      "body": "0B 00",
+      "encrypted": false,
+      "note": "reply starts with the command's code"
+    },
+    {
+      "command": "get persistent value count",
+      "code": 164,
+      "sent": "00 01 A4",
+      "header": "00 05",
+      "body": "A4 DE 00 00 00",
+      "encrypted": false,
+      "note": "reply starts with the command's code"
+    }
+  ]
+}

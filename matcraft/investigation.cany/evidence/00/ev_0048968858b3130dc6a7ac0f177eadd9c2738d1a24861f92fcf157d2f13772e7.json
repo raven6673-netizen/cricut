@@ -1,0 +1,454 @@
+{
+  "id": "ev_0048968858b3130dc6a7ac0f177eadd9c2738d1a24861f92fcf157d2f13772e7",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_bytes_find",
+  "params": {
+    "encoding": "both",
+    "limit": 40,
+    "offset": 0,
+    "path": null,
+    "pattern": "c6 45 ?? 17",
+    "text": null
+  },
+  "result": {
+    "file_size": 6770808,
+    "limit": 40,
+    "match_cap_reached": false,
+    "matches": [
+      {
+        "address": "0x40a541",
+        "bytes": "c645fc17",
+        "file_offset": 39233,
+        "file_offset_hex": "0x9941",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x44fe1f",
+        "bytes": "c645fc17",
+        "file_offset": 324127,
+        "file_offset_hex": "0x4f21f",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x456b3d",
+        "bytes": "c645fc17",
+        "file_offset": 352061,
+        "file_offset_hex": "0x55f3d",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x45e597",
+        "bytes": "c645fc17",
+        "file_offset": 383383,
+        "file_offset_hex": "0x5d997",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x45f7ef",
+        "bytes": "c645fc17",
+        "file_offset": 388079,
+        "file_offset_hex": "0x5ebef",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x45f9fa",
+        "bytes": "c645fc17",
+        "file_offset": 388602,
+        "file_offset_hex": "0x5edfa",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x45fae4",
+        "bytes": "c645fc17",
+        "file_offset": 388836,
+        "file_offset_hex": "0x5eee4",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x45fc13",
+        "bytes": "c645fc17",
+        "file_offset": 389139,
+        "file_offset_hex": "0x5f013",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x45fdaa",
+        "bytes": "c645fc17",
+        "file_offset": 389546,
+        "file_offset_hex": "0x5f1aa",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x4c9bc1",
+        "bytes": "c645fc17",
+        "file_offset": 823233,
+        "file_offset_hex": "0xc8fc1",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x4ce270",
+        "bytes": "c645fc17",
+        "file_offset": 841328,
+        "file_offset_hex": "0xcd670",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x4ff4d1",
+        "bytes": "c645f317",
+        "file_offset": 1042641,
+        "file_offset_hex": "0xfe8d1",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x550a92",
+        "bytes": "c645fc17",
+        "file_offset": 1375890,
+        "file_offset_hex": "0x14fe92",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x55414d",
+        "bytes": "c645fc17",
+        "file_offset": 1389901,
+        "file_offset_hex": "0x15354d",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x598424",
+        "bytes": "c645fc17",
+        "file_offset": 1669156,
+        "file_offset_hex": "0x197824",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x5d9b93",
+        "bytes": "c645fc17",
+        "file_offset": 1937299,
+        "file_offset_hex": "0x1d8f93",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x5dae9b",
+        "bytes": "c645fc17",
+        "file_offset": 1942171,
+        "file_offset_hex": "0x1da29b",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x5e7a12",
+        "bytes": "c645fc17",
+        "file_offset": 1994258,
+        "file_offset_hex": "0x1e6e12",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x5e7ab1",
+        "bytes": "c645fc17",
+        "file_offset": 1994417,
+        "file_offset_hex": "0x1e6eb1",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x5e7b2a",
+        "bytes": "c645fc17",
+        "file_offset": 1994538,
+        "file_offset_hex": "0x1e6f2a",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x5e7ba3",
+        "bytes": "c645fc17",
+        "file_offset": 1994659,
+        "file_offset_hex": "0x1e6fa3",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x633f4c",
+        "bytes": "c645fc17",
+        "file_offset": 2306892,
+        "file_offset_hex": "0x23334c",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x63dc0f",
+        "bytes": "c645fc17",
+        "file_offset": 2347023,
+        "file_offset_hex": "0x23d00f",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x641b78",
+        "bytes": "c645fc17",
+        "file_offset": 2363256,
+        "file_offset_hex": "0x240f78",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x647472",
+        "bytes": "c645fc17",
+        "file_offset": 2386034,
+        "file_offset_hex": "0x246872",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x655df1",
+        "bytes": "c645fc17",
+        "file_offset": 2445809,
+        "file_offset_hex": "0x2551f1",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x65aca5",
+        "bytes": "c645fc17",
+        "file_offset": 2465957,
+        "file_offset_hex": "0x25a0a5",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x65ec55",
+        "bytes": "c645fc17",
+        "file_offset": 2482261,
+        "file_offset_hex": "0x25e055",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x6d9d79",
+        "bytes": "c645fc17",
+        "file_offset": 2986361,
+        "file_offset_hex": "0x2d9179",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x784aac",
+        "bytes": "c645fc17",
+        "file_offset": 3686060,
+        "file_offset_hex": "0x383eac",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x79a349",
+        "bytes": "c645fc17",
+        "file_offset": 3774281,
+        "file_offset_hex": "0x399749",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x79cac8",
+        "bytes": "c645fc17",
+        "file_offset": 3784392,
+        "file_offset_hex": "0x39bec8",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x7af6b6",
+        "bytes": "c645fc17",
+        "file_offset": 3861174,
+        "file_offset_hex": "0x3aeab6",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x7b0916",
+        "bytes": "c645fc17",
+        "file_offset": 3865878,
+        "file_offset_hex": "0x3afd16",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x7b7938",
+        "bytes": "c645fc17",
+        "file_offset": 3894584,
+        "file_offset_hex": "0x3b6d38",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x832389",
+        "bytes": "c645fc17",
+        "file_offset": 4396937,
+        "file_offset_hex": "0x431789",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x832514",
+        "bytes": "c645fc17",
+        "file_offset": 4397332,
+        "file_offset_hex": "0x431914",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x83253f",
+        "bytes": "c645fc17",
+        "file_offset": 4397375,
+        "file_offset_hex": "0x43193f",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x8325d2",
+        "bytes": "c645fc17",
+        "file_offset": 4397522,
+        "file_offset_hex": "0x4319d2",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      },
+      {
+        "address": "0x8326c7",
+        "bytes": "c645fc17",
+        "file_offset": 4397767,
+        "file_offset_hex": "0x431ac7",
+        "length": 4,
+        "matched": "pattern",
+        "section": ".text"
+      }
+    ],
+    "native_container": "pe",
+    "offset": 0,
+    "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\plugins\\device-common\\CricutDevice.exe",
+    "searched_for": [
+      {
+        "kind": "pattern",
+        "length": 4
+      }
+    ],
+    "total_matches": 42
+  },
+  "summary": "42 match(es) for pattern in CricutDevice.exe; showing 40 from #0.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "file_bytes_only",
+      "message": "The file's bytes are searched as stored: compressed, encrypted or packed regions and data built at run time are not seen, so no match is not proof of absence."
+    },
+    {
+      "code": "unmapped_regions",
+      "message": "Matches in headers, overlays or debug data that are not loaded into memory have no virtual address."
+    }
+  ],
+  "coverage": {
+    "status": "partial",
+    "examined": 40,
+    "total": 42,
+    "next_offset": 40
+  },
+  "locations": [
+    {
+      "kind": "file_offset",
+      "value": "0x9941"
+    },
+    {
+      "kind": "file_offset",
+      "value": "0x4f21f"
+    },
+    {
+      "kind": "file_offset",
+      "value": "0x55f3d"
+    },
+    {
+      "kind": "file_offset",
+      "value": "0x5d997"
+    },
+    {
+      "kind": "file_offset",
+      "value": "0x5ebef"
+    },
+    {
+      "kind": "file_offset",
+      "value": "0x5edfa"
+    },
+    {
+      "kind": "file_offset",
+      "value": "0x5eee4"
+    },
+    {
+      "kind": "file_offset",
+      "value": "0x5f013"
+    }
+  ],
+  "links": []
+}

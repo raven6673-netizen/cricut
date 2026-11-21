@@ -1,0 +1,467 @@
+{
+  "original_file": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\plugins\\device-common\\CricutDevice.exe",
+  "original_note": "Read from C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\plugins\\device-common\\CricutDevice.exe (not run).",
+  "machine_note": "Real machine: USB 20D3:0015 serial 0580717011 on COM6, asked 3 read-only questions (saved in mechanics-live.json).",
+  "rows": [
+    {
+      "name": "machine bluetooth address",
+      "group": "connection",
+      "sheet": "00:06:66:8D:2B:FE",
+      "matcraft": "00:06:66:8D:2B:FE",
+      "original": null,
+      "machine": null,
+      "how": "MatCraft's default address",
+      "verdict": "Same"
+    },
+    {
+      "name": "link type",
+      "group": "connection",
+      "sheet": "bluetooth rfcomm serial",
+      "matcraft": "bluetooth rfcomm serial",
+      "original": null,
+      "machine": null,
+      "how": "MatCraft opens an RFCOMM socket on Linux (or a serial port)",
+      "verdict": "Same"
+    },
+    {
+      "name": "rfcomm channel",
+      "group": "connection",
+      "sheet": "1",
+      "matcraft": "1",
+      "original": null,
+      "machine": null,
+      "how": "MatCraft's default channel",
+      "verdict": "Estimated"
+    },
+    {
+      "name": "header length",
+      "group": "framing",
+      "sheet": "2",
+      "matcraft": "2",
+      "original": null,
+      "machine": "2",
+      "how": "length of what MatCraft puts before a 1-byte command",
+      "verdict": "Same"
+    },
+    {
+      "name": "encrypted flag",
+      "group": "framing",
+      "sheet": "0x80 in first header byte",
+      "matcraft": "0x80 in first header byte",
+      "original": "0x80 in first header byte",
+      "machine": "3 plain replies, top bit clear",
+      "how": "header MatCraft writes for an encrypted message; original's `or al, 80h` at 0x48def4",
+      "verdict": "Same"
+    },
+    {
+      "name": "max reply body",
+      "group": "framing",
+      "sheet": "512",
+      "matcraft": "512",
+      "original": "512",
+      "machine": "longest reply 6 bytes",
+      "how": "fed a 512- and a 513-byte reply to MatCraft's reader; original's `cmp edi, 200h` at 0x50f624",
+      "verdict": "Same"
+    },
+    {
+      "name": "aes key length",
+      "group": "framing",
+      "sheet": "32",
+      "matcraft": "32",
+      "original": null,
+      "machine": null,
+      "how": "round trip through MatCraft's AES with a 32-byte key",
+      "verdict": "Same"
+    },
+    {
+      "name": "encrypted padding",
+      "group": "framing",
+      "sheet": "len - len%16 + 16, last byte = 8-bit sum",
+      "matcraft": "len - len%16 + 16, last byte = 8-bit sum",
+      "original": null,
+      "machine": null,
+      "how": "sizes MatCraft encrypts for 1, 15, 16, 17, 31 and 32-byte messages, and its sum byte",
+      "verdict": "Same"
+    },
+    {
+      "name": "reply byte swap",
+      "group": "framing",
+      "sheet": "swap first two bytes if first != 0",
+      "matcraft": "swap first two bytes if first != 0",
+      "original": null,
+      "machine": null,
+      "how": "decrypted reply as MatCraft hands it on",
+      "verdict": "Same"
+    },
+    {
+      "name": "plain frame header",
+      "group": "framing",
+      "sheet": "same 2-byte header, top bit clear",
+      "matcraft": "same 2-byte header, top bit clear",
+      "original": null,
+      "machine": "3 plain replies, top bit clear",
+      "how": "header MatCraft writes for the 49-byte session request",
+      "verdict": "Same"
+    },
+    {
+      "name": "new aes session",
+      "group": "commands",
+      "sheet": "199",
+      "matcraft": "199",
+      "original": "199",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4e9b70",
+      "verdict": "Same"
+    },
+    {
+      "name": "new aes key slot",
+      "group": "commands",
+      "sheet": "random % 12 + 2",
+      "matcraft": "random % 12 + 2",
+      "original": null,
+      "machine": null,
+      "how": "3000 session requests from MatCraft: every slot 2-13 and nothing else",
+      "verdict": "Same"
+    },
+    {
+      "name": "new aes random bytes",
+      "group": "commands",
+      "sheet": "47",
+      "matcraft": "47",
+      "original": null,
+      "machine": null,
+      "how": "bytes after the code and slot in MatCraft's request",
+      "verdict": "Same"
+    },
+    {
+      "name": "clear error",
+      "group": "commands",
+      "sheet": "10",
+      "matcraft": "10",
+      "original": "10",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4fe470",
+      "verdict": "Same"
+    },
+    {
+      "name": "read error severity",
+      "group": "commands",
+      "sheet": "11",
+      "matcraft": "11",
+      "original": "11",
+      "machine": "11",
+      "how": "first byte MatCraft sends; original's code getter at 0x4fe810",
+      "verdict": "Same"
+    },
+    {
+      "name": "set speed state",
+      "group": "commands",
+      "sheet": "49",
+      "matcraft": "49",
+      "original": "49",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4fce20",
+      "verdict": "Same"
+    },
+    {
+      "name": "set tool state",
+      "group": "commands",
+      "sheet": "55",
+      "matcraft": "55",
+      "original": "55",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4fdae0",
+      "verdict": "Same"
+    },
+    {
+      "name": "set full tool state",
+      "group": "commands",
+      "sheet": "62",
+      "matcraft": "62",
+      "original": "62",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4fded0",
+      "verdict": "Same"
+    },
+    {
+      "name": "cpr toggle",
+      "group": "commands",
+      "sheet": "63",
+      "matcraft": "63",
+      "original": "63",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4fec50",
+      "verdict": "Same"
+    },
+    {
+      "name": "abort cutting",
+      "group": "commands",
+      "sheet": "104",
+      "matcraft": "104",
+      "original": "104",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4eb0e0",
+      "verdict": "Same"
+    },
+    {
+      "name": "get interface state",
+      "group": "commands",
+      "sheet": "115",
+      "matcraft": "115",
+      "original": "115",
+      "machine": "115",
+      "how": "first byte MatCraft sends; original's code getter at 0x4fa2c0",
+      "verdict": "Same"
+    },
+    {
+      "name": "get persistent value count",
+      "group": "commands",
+      "sheet": "164",
+      "matcraft": "164",
+      "original": "164",
+      "machine": "164",
+      "how": "first byte MatCraft sends; original's code getter at 0x4fefc0",
+      "verdict": "Same"
+    },
+    {
+      "name": "scan for edge",
+      "group": "commands",
+      "sheet": "226",
+      "matcraft": "226",
+      "original": "226",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4effa0",
+      "verdict": "Same"
+    },
+    {
+      "name": "bluetooth alert",
+      "group": "commands",
+      "sheet": "229",
+      "matcraft": "229",
+      "original": "229",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4e3180",
+      "verdict": "Same"
+    },
+    {
+      "name": "home theta",
+      "group": "commands",
+      "sheet": "240",
+      "matcraft": "240",
+      "original": "240",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4fb140",
+      "verdict": "Same"
+    },
+    {
+      "name": "move 4d",
+      "group": "commands",
+      "sheet": "241",
+      "matcraft": "241",
+      "original": "241",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4ff460",
+      "verdict": "Same"
+    },
+    {
+      "name": "send zeros",
+      "group": "commands",
+      "sheet": "255",
+      "matcraft": "255",
+      "original": "255",
+      "machine": null,
+      "how": "first byte MatCraft sends; original's code getter at 0x4e3060",
+      "verdict": "Same"
+    },
+    {
+      "name": "move 4d axis mask",
+      "group": "commands",
+      "sheet": "23",
+      "matcraft": "23",
+      "original": "23",
+      "machine": null,
+      "how": "second byte MatCraft sends; original's `mov byte [ebp-0Dh], 17h` at 0x4ff4d1",
+      "verdict": "Same"
+    },
+    {
+      "name": "degrees to radians",
+      "group": "commands",
+      "sheet": "0.017453292519943295",
+      "matcraft": "0.017453292519943295",
+      "original": "0.017453292519943295",
+      "machine": null,
+      "how": "angle MatCraft sends for 180 degrees, divided by 180; original's constant at 0x95ebc0",
+      "verdict": "Same"
+    },
+    {
+      "name": "move 4d float order",
+      "group": "commands",
+      "sheet": "big-endian float32",
+      "matcraft": "big-endian float32",
+      "original": null,
+      "machine": null,
+      "how": "bytes MatCraft sends for 1 radian",
+      "verdict": "Same"
+    },
+    {
+      "name": "aes session key handshake",
+      "group": "commands",
+      "sheet": "not decoded; key typed in by the person",
+      "matcraft": "not decoded; key typed in by the person",
+      "original": null,
+      "machine": null,
+      "how": "MatCraft sends the request only",
+      "verdict": "NotYet"
+    },
+    {
+      "name": "cut path streaming",
+      "group": "commands",
+      "sheet": "not decoded; mats saved as SVG path data",
+      "matcraft": "not decoded; mats saved as SVG path data",
+      "original": null,
+      "machine": null,
+      "how": "MatCraft saves mats as SVG",
+      "verdict": "NotYet"
+    },
+    {
+      "name": "mat sizes",
+      "group": "mats",
+      "sheet": "12x12 in, 12x24 in",
+      "matcraft": "12x12 in, 12x24 in",
+      "original": null,
+      "machine": null,
+      "how": "mats MatCraft offers",
+      "verdict": "Estimated"
+    },
+    {
+      "name": "gap between pieces",
+      "group": "mats",
+      "sheet": "0.25",
+      "matcraft": "0.25",
+      "original": null,
+      "machine": null,
+      "how": "where MatCraft places two 2-inch pieces on a mat",
+      "verdict": "Estimated"
+    },
+    {
+      "name": "canvas scale",
+      "group": "canvas",
+      "sheet": "48",
+      "matcraft": "48",
+      "original": null,
+      "machine": null,
+      "how": "MatCraft's canvas at 100 %",
+      "verdict": "Estimated"
+    },
+    {
+      "name": "material pressures and passes",
+      "group": "materials",
+      "sheet": "table in app",
+      "matcraft": "table in app",
+      "original": null,
+      "machine": null,
+      "how": "MatCraft's material list",
+      "verdict": "Estimated"
+    },
+    {
+      "name": "engrave fill patterns",
+      "group": "engraving",
+      "sheet": "horizontal lines, vertical lines, grid, forward slash, backward slash, cross-hatch, concentric",
+      "matcraft": "horizontal lines, vertical lines, grid, forward slash, backward slash, cross-hatch, concentric",
+      "original": null,
+      "machine": null,
+      "how": "fill patterns MatCraft offers for engraving",
+      "verdict": "Same"
+    },
+    {
+      "name": "engrave default pattern",
+      "group": "engraving",
+      "sheet": "horizontal lines",
+      "matcraft": "horizontal lines",
+      "original": null,
+      "machine": null,
+      "how": "pattern a new engrave fill starts with",
+      "verdict": "Same"
+    },
+    {
+      "name": "engrave line spacing",
+      "group": "engraving",
+      "sheet": "0.01",
+      "matcraft": "0.01",
+      "original": null,
+      "machine": null,
+      "how": "line spacing a new engrave fill starts with",
+      "verdict": "Same"
+    },
+    {
+      "name": "engrave edge margin",
+      "group": "engraving",
+      "sheet": "0.01",
+      "matcraft": "0.01",
+      "original": null,
+      "machine": null,
+      "how": "edge margin a new engrave fill starts with",
+      "verdict": "Same"
+    },
+    {
+      "name": "engrave fill rule",
+      "group": "engraving",
+      "sheet": "non-zero",
+      "matcraft": "non-zero",
+      "original": null,
+      "machine": null,
+      "how": "fill rule a new engrave fill starts with",
+      "verdict": "Same"
+    },
+    {
+      "name": "engrave design area",
+      "group": "engraving",
+      "sheet": "11.5x11.5 in",
+      "matcraft": "11.5x11.5 in",
+      "original": null,
+      "machine": null,
+      "how": "design area of a new engrave project",
+      "verdict": "Same"
+    },
+    {
+      "name": "engrave tools",
+      "group": "engraving",
+      "sheet": "Engrave Tip, Engraving Tool",
+      "matcraft": "Engrave Tip, Engraving Tool",
+      "original": null,
+      "machine": null,
+      "how": "tool MatCraft asks for when engraving, without and with the Engraving Tool",
+      "verdict": "Same"
+    },
+    {
+      "name": "engraving tool machines",
+      "group": "engraving",
+      "sheet": "Maker 5",
+      "matcraft": "Maker 5",
+      "original": null,
+      "machine": null,
+      "how": "machines MatCraft gives the Engraving Tool",
+      "verdict": "Estimated"
+    },
+    {
+      "name": "usb vendor id",
+      "group": "connection",
+      "sheet": "20D3",
+      "matcraft": "20D3",
+      "original": null,
+      "machine": null,
+      "how": "vendor id MatCraft looks for on USB serial ports",
+      "verdict": "Same"
+    },
+    {
+      "name": "usb status reply",
+      "group": "connection",
+      "sheet": "73 CF 0F 00 03 00",
+      "matcraft": "73 CF 0F 00 03 00",
+      "original": null,
+      "machine": "73 CF 0F 00 03 00",
+      "how": "MatCraft's reader on the machine's recorded USB reply",
+      "verdict": "Same"
+    }
+  ]
+}

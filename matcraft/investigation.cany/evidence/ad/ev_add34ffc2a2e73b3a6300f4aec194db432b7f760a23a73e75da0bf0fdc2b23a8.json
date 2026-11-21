@@ -1,0 +1,388 @@
+{
+  "id": "ev_add34ffc2a2e73b3a6300f4aec194db432b7f760a23a73e75da0bf0fdc2b23a8",
+  "subject": {
+    "kind": "website",
+    "name": "https://hackaday.com/2026/08/21/spoofed-serial-number-unlocks-cricut-machine/"
+  },
+  "operation": "core_evidence_browse",
+  "params": {
+    "show": {
+      "fields": [
+        "role",
+        "name"
+      ],
+      "kind": "rows",
+      "limit": 80,
+      "list": "nodes",
+      "matching": {
+        "role": [
+          "paragraph",
+          "heading"
+        ]
+      }
+    },
+    "source": {
+      "evidence_id": "ev_29339913469636d7d2c1dbf66cd90c64d5cfbf597008b4b1314edcc0bd18a8d9",
+      "kind": "saved"
+    }
+  },
+  "result": {
+    "coverage": {
+      "at_end": false,
+      "examined": 80,
+      "next_offset": 80,
+      "status": "page",
+      "total": 90
+    },
+    "from_evidence": "ev_29339913469636d7d2c1dbf66cd90c64d5cfbf597008b4b1314edcc0bd18a8d9",
+    "from_tool": "web_page_show",
+    "shown": {
+      "items": [
+        {
+          "name": "HACKADAY",
+          "role": "heading"
+        },
+        {
+          "name": "NEVER MISS A HACK",
+          "role": "heading"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "POST NAVIGATION",
+          "role": "heading"
+        },
+        {
+          "name": "48 THOUGHTS ON “SPOOFED SERIAL NUMBER UNLOCKS CRICUT MACHINE”",
+          "role": "heading"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "SEARCH",
+          "role": "heading"
+        },
+        {
+          "name": "NEVER MISS A HACK",
+          "role": "heading"
+        },
+        {
+          "name": "SUBSCRIBE",
+          "role": "heading"
+        },
+        {
+          "name": "IF YOU MISSED IT",
+          "role": "heading"
+        },
+        {
+          "name": "OUR COLUMNS",
+          "role": "heading"
+        },
+        {
+          "name": "SPOOFED SERIAL NUMBER UNLOCKS CRICUT MACHINE",
+          "role": "heading"
+        },
+        {
+          "name": "Leave a Reply",
+          "role": "heading"
+        },
+        {
+          "name": "SERIAL: THE PORT THAT WON’T DIE",
+          "role": "heading"
+        },
+        {
+          "name": "THE $50 PER HOUR SEARCH ENGINE",
+          "role": "heading"
+        },
+        {
+          "name": "ON-DEMAND DEVELOPMENT BOARDS WITH REMOTE ACCESS METHODS",
+          "role": "heading"
+        },
+        {
+          "name": "THE SEXTANT: NAVIGATING THE OLD WAY",
+          "role": "heading"
+        },
+        {
+          "name": "EV BATTERIES ARE PROVING HARDIER THAN EXPECTED",
+          "role": "heading"
+        },
+        {
+          "name": "HACKADAY PODCAST EPISODE 395: PANCAKE SLICER, RGB LED ORIGAMI, AND FARTING SYNTHESIZERS",
+          "role": "heading"
+        },
+        {
+          "name": "THIS WEEK IN SECURITY: JAVA4SHELL, OPTIMIZELY MALWARE, SHRINKING DISCLOSURE DEADLINES, UNPATCHABLE FREEZERS",
+          "role": "heading"
+        },
+        {
+          "name": "WE’RE HIRING: COME JOIN US!",
+          "role": "heading"
+        },
+        {
+          "name": "THE FM-1: OPEN SOURCE HACKED OPEN, VIBE CODING, AND FARTING SYNTHESIZERS",
+          "role": "heading"
+        },
+        {
+          "name": "HOW METAL FOAM COULD MAKE CARS SAFER",
+          "role": "heading"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        },
+        {
+          "name": "",
+          "role": "paragraph"
+        }
+      ],
+      "list": "nodes",
+      "list_total": 2158,
+      "offset": 0,
+      "total": 90
+    }
+  },
+  "summary": "Part of web_page_show evidence (page).",
+  "confidence": "observed",
+  "authority": "earlier-record",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "partial",
+    "examined": 80,
+    "total": 90,
+    "next_offset": 80
+  },
+  "locations": [],
+  "links": [
+    "ev_29339913469636d7d2c1dbf66cd90c64d5cfbf597008b4b1314edcc0bd18a8d9"
+  ]
+}

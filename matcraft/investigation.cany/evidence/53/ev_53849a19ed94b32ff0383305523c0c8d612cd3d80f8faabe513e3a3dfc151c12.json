@@ -1,0 +1,169 @@
+{
+  "id": "ev_53849a19ed94b32ff0383305523c0c8d612cd3d80f8faabe513e3a3dfc151c12",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_strings_find",
+  "params": {
+    "case_sensitive": true,
+    "limit": 100,
+    "mode": "regex",
+    "offset": 0,
+    "pattern": "^\\.\\?AV\\w*(Codec|Protocol|Packet|Encod|Fram|Aes|AES|Crypt|Cipher|Format|Message|Serializer|Translator)\\w*@"
+  },
+  "result": {
+    "matches": [
+      {
+        "address": "0xa2ea78",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVINewAES@@"
+      },
+      {
+        "address": "0xa2f1b0",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVIResetAES@@"
+      },
+      {
+        "address": "0xa32d08",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVZorroResetAESCommand@@"
+      },
+      {
+        "address": "0xa32dbc",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVZorroNewAESCommand@@"
+      },
+      {
+        "address": "0xa3330c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaNewAESCommand@@"
+      },
+      {
+        "address": "0xa34948",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVMessage@protobuf@google@@"
+      },
+      {
+        "address": "0xa34970",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVMessageLite@protobuf@google@@"
+      },
+      {
+        "address": "0xa34e3c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVPBMaterialSettingsMessage@NativeModel@@"
+      },
+      {
+        "address": "0xa3a19c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVImplicitWeakMessage@internal@protobuf@google@@"
+      },
+      {
+        "address": "0xa3a5e4",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVMessageFactory@protobuf@google@@"
+      },
+      {
+        "address": "0xa3a7a8",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVRepeatedPtrFieldMessageAccessor@internal@protobuf@google@@"
+      },
+      {
+        "address": "0xa3a850",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVGeneratedMessageFactory@?A0x0732db1e@protobuf@google@@"
+      },
+      {
+        "address": "0xa3b918",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVMessageOptions@protobuf@google@@"
+      },
+      {
+        "address": "0xa3bd18",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVEncodedDescriptorDatabase@protobuf@google@@"
+      },
+      {
+        "address": "0xa3bdc0",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVDynamicMessageFactory@protobuf@google@@"
+      },
+      {
+        "address": "0xa3bdf4",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVDynamicMessage@protobuf@google@@"
+      },
+      {
+        "address": "0xa3bed0",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVMessageSetFieldSkipper@internal@protobuf@google@@"
+      },
+      {
+        "address": "0xa42430",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVNtstatusLogMessage@logging@@"
+      },
+      {
+        "address": "0xa4245c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVLogMessage@logging@@"
+      },
+      {
+        "address": "0xa42480",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVNtstatusLogMessageFatal@logging@@"
+      },
+      {
+        "address": "0xa426ec",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVWin32ErrorLogMessage@logging@@"
+      }
+    ],
+    "total": 21
+  },
+  "summary": "21 strings match \"^\\.\\?AV\\w*(Codec|Protocol|Packet|Encod|Fram|Aes|AES|Crypt|Cipher|Format|Message|Serializer|Translator)\\w*@\".",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "data_sections_only",
+      "message": "only strings stored in the file are searched (absence is not proof)"
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 21,
+    "total": 21
+  },
+  "locations": [],
+  "links": []
+}

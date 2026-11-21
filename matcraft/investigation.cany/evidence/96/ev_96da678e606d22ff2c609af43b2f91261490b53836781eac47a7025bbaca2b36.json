@@ -1,0 +1,199 @@
+{
+  "id": "ev_96da678e606d22ff2c609af43b2f91261490b53836781eac47a7025bbaca2b36",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_strings_find",
+  "params": {
+    "case_sensitive": true,
+    "limit": 300,
+    "mode": "regex",
+    "offset": 0,
+    "pattern": "^\\.\\?AV(Athena|Bluetooth|Cricut|Command|Packet|Frame|Aes|AES|Crypt|Transport|Serial|Device)"
+  },
+  "result": {
+    "matches": [
+      {
+        "address": "0xa2e9f8",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVCricutDevice@@"
+      },
+      {
+        "address": "0xa2ea14",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVBluetoothModuleDevice@@"
+      },
+      {
+        "address": "0xa2f230",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaBluetoothAlertCommand@@"
+      },
+      {
+        "address": "0xa2f43c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSetMachineStateCommand@@"
+      },
+      {
+        "address": "0xa30770",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVCricutIODevice@@"
+      },
+      {
+        "address": "0xa30790",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVDeviceWrapper@v2@device_communication@@"
+      },
+      {
+        "address": "0xa32748",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaDevice@@"
+      },
+      {
+        "address": "0xa32c08",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaCalcThetaBacklashCommand@@"
+      },
+      {
+        "address": "0xa3330c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaNewAESCommand@@"
+      },
+      {
+        "address": "0xa33330",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaGetMachineStatusCommand@@"
+      },
+      {
+        "address": "0xa3335c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSendZerosCommand@@"
+      },
+      {
+        "address": "0xa33384",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaGetInterfaceStateCommand@@"
+      },
+      {
+        "address": "0xa333b4",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaScanForEdgeFloatCommand@@"
+      },
+      {
+        "address": "0xa333e0",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaHomeThetaCommand@@"
+      },
+      {
+        "address": "0xa33408",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaAbortCuttingCommand@@"
+      },
+      {
+        "address": "0xa33430",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaToolDetectCommand@@"
+      },
+      {
+        "address": "0xa33458",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSetSpeedStateCommand@@"
+      },
+      {
+        "address": "0xa33484",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSetToolStateCommand@@"
+      },
+      {
+        "address": "0xa334ac",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSetFullToolStateCommand@@"
+      },
+      {
+        "address": "0xa334d8",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaClearErrorCommand@@"
+      },
+      {
+        "address": "0xa33500",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaReadErrorSeverityCommand@@"
+      },
+      {
+        "address": "0xa33530",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaCPRToggleCommand@@"
+      },
+      {
+        "address": "0xa33558",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaGetPersistentValueCountCommand@@"
+      },
+      {
+        "address": "0xa3358c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaMove4DCommand@@"
+      },
+      {
+        "address": "0xa33670",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaReadPosition4dCommand@@"
+      },
+      {
+        "address": "0xa3369c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaMoveZCommand@@"
+      }
+    ],
+    "total": 26
+  },
+  "summary": "26 strings match \"^\\.\\?AV(Athena|Bluetooth|Cricut|Command|Packet|Frame|Aes|AES|Crypt|Transport|Serial|Device)\".",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "data_sections_only",
+      "message": "only strings stored in the file are searched (absence is not proof)"
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 26,
+    "total": 26
+  },
+  "locations": [],
+  "links": []
+}

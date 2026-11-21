@@ -1,0 +1,117 @@
+{
+  "id": "ev_1381b215c6d5e13ab8c50dccb6cdefb69eb7ab90c5ee3c81f178b37805c6388b",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "core_target_triage",
+  "params": {
+    "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\plugins\\device-common\\CricutDevice.exe"
+  },
+  "result": {
+    "architecture": "x86",
+    "bits": 32,
+    "dotnet_arch": null,
+    "entry_point": "0x8942c0",
+    "format": "pe",
+    "format_name": "PE (Windows)",
+    "kind": "executable",
+    "libraries": [
+      "ADVAPI32.dll",
+      "HID.DLL",
+      "KERNEL32.dll",
+      "OLEAUT32.dll",
+      "SETUPAPI.dll",
+      "USER32.dll",
+      "WINTRUST.dll",
+      "WS2_32.dll",
+      "WSOCK32.dll",
+      "api-ms-win-core-comm-l1-1-0.dll",
+      "api-ms-win-core-console-l1-1-0.dll",
+      "api-ms-win-core-console-l2-1-0.dll",
+      "api-ms-win-core-datetime-l1-1-0.dll",
+      "api-ms-win-core-debug-l1-1-0.dll",
+      "api-ms-win-core-errorhandling-l1-1-0.dll",
+      "api-ms-win-core-file-l1-1-0.dll",
+      "api-ms-win-core-file-l1-2-0.dll",
+      "api-ms-win-core-file-l1-2-2.dll",
+      "api-ms-win-core-file-l2-1-0.dll",
+      "api-ms-win-core-file-l2-1-2.dll",
+      "api-ms-win-core-handle-l1-1-0.dll",
+      "api-ms-win-core-heap-l1-1-0.dll",
+      "api-ms-win-core-heap-l2-1-0.dll",
+      "api-ms-win-core-interlocked-l1-1-0.dll",
+      "api-ms-win-core-io-l1-1-0.dll",
+      "api-ms-win-core-io-l1-1-1.dll",
+      "api-ms-win-core-kernel32-legacy-l1-1-5.dll",
+      "api-ms-win-core-libraryloader-l1-2-0.dll",
+      "api-ms-win-core-libraryloader-l1-2-1.dll",
+      "api-ms-win-core-localization-l1-2-0.dll",
+      "api-ms-win-core-memory-l1-1-0.dll",
+      "api-ms-win-core-memory-l1-1-1.dll"
+    ],
+    "next_steps": [
+      {
+        "tool": "core_overview_show",
+        "why": "a one-page summary: sections, imports, counts"
+      },
+      {
+        "tool": "native_functions_list",
+        "why": "every function we found"
+      },
+      {
+        "tool": "native_strings_find",
+        "why": "find text the program shows or uses"
+      },
+      {
+        "tool": "native_function_study",
+        "why": "a full dossier on one function (start with main or the entry point)"
+      },
+      {
+        "tool": "core_feature_find",
+        "why": "follow a word you see in the app to the code behind it"
+      },
+      {
+        "tool": "native_pe_resources_list",
+        "why": "icons, version information and the manifest"
+      }
+    ],
+    "operating_system": "Windows",
+    "plain_english": "CricutDevice.exe is a program for Windows, built for x86 (32-bit). Its internal names were removed (stripped), so most functions will have generated names.",
+    "recommended_toolsets": [
+      "core",
+      "native",
+      "formats"
+    ],
+    "stripped": true,
+    "symbol_table_stripped": true,
+    "toolchain_hints": []
+  },
+  "summary": "CricutDevice.exe is a program for Windows, built for x86 (32-bit). Its internal names were removed (stripped), so most functions will have generated names.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "heuristic_hints",
+      "message": "toolchain and packer hints come from markers that can be faked or borrowed"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x8942c0",
+      "label": "entry point"
+    }
+  ],
+  "links": []
+}

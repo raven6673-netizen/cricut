@@ -1,0 +1,692 @@
+{
+  "id": "ev_15b8224909247a55139c08b7e334f291098b00d7b63042c720a81674562e8635",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_strings_find",
+  "params": {
+    "case_sensitive": false,
+    "limit": 120,
+    "mode": "regex",
+    "offset": 0,
+    "pattern": "maker|athena|helium|pin code|passkey|\"0000\"|machine_type"
+  },
+  "result": {
+    "matches": [
+      {
+        "address": "0x95be58",
+        "references": [
+          {
+            "from": "0x44db09",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA"
+      },
+      {
+        "address": "0x95be60",
+        "references": [
+          {
+            "from": "0x44dbed",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_DRAG"
+      },
+      {
+        "address": "0x95be6c",
+        "references": [
+          {
+            "from": "0x44dc7a",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_DEEP"
+      },
+      {
+        "address": "0x95be78",
+        "references": [
+          {
+            "from": "0x44dd07",
+            "function": "sub_44dac0"
+          },
+          {
+            "from": "0x44dd94",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_ROLLING"
+      },
+      {
+        "address": "0x95bea8",
+        "references": [
+          {
+            "from": "0x44de21",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_SCORING_WHEEL"
+      },
+      {
+        "address": "0x95bed0",
+        "references": [
+          {
+            "from": "0x44deae",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_DOUBLE_SCORING_WHEEL"
+      },
+      {
+        "address": "0x95bf00",
+        "references": [
+          {
+            "from": "0x44df3b",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_STYLUS"
+      },
+      {
+        "address": "0x95bf18",
+        "references": [
+          {
+            "from": "0x44dfc8",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_PEN"
+      },
+      {
+        "address": "0x95bf24",
+        "references": [
+          {
+            "from": "0x44e055",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_PERF"
+      },
+      {
+        "address": "0x95bf3c",
+        "references": [
+          {
+            "from": "0x44e0e2",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_DEBOSSING"
+      },
+      {
+        "address": "0x95bf60",
+        "references": [
+          {
+            "from": "0x44e170",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_ETCH"
+      },
+      {
+        "address": "0x95bf78",
+        "references": [
+          {
+            "from": "0x44e1fd",
+            "function": "sub_44dac0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "ATHENA_WAVE"
+      },
+      {
+        "address": "0x95c014",
+        "references": [
+          {
+            "from": "0x44cfef",
+            "function": "sub_44cf80"
+          },
+          {
+            "from": "0x456db5",
+            "function": "sub_456cb0"
+          },
+          {
+            "from": "0x456dcc",
+            "function": "sub_456cb0"
+          },
+          {
+            "from": "0x494043",
+            "function": "sub_493fe0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Helium"
+      },
+      {
+        "address": "0x95c024",
+        "references": [
+          {
+            "from": "0x44d011",
+            "function": "sub_44cf80"
+          },
+          {
+            "from": "0x456ded",
+            "function": "sub_456cb0"
+          },
+          {
+            "from": "0x456e04",
+            "function": "sub_456cb0"
+          },
+          {
+            "from": "0x495543",
+            "function": "sub_4954e0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Helium2"
+      },
+      {
+        "address": "0x95c02c",
+        "references": [
+          {
+            "from": "0x44d022",
+            "function": "sub_44cf80"
+          },
+          {
+            "from": "0x456e25",
+            "function": "sub_456cb0"
+          },
+          {
+            "from": "0x456e3c",
+            "function": "sub_456cb0"
+          },
+          {
+            "from": "0x48d64a",
+            "function": "sub_48d5c0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Athena"
+      },
+      {
+        "address": "0x95c160",
+        "references": [
+          {
+            "from": "0x44f65e",
+            "function": "sub_44f4c0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Maker3"
+      },
+      {
+        "address": "0x95c174",
+        "references": [
+          {
+            "from": "0x44f79c",
+            "function": "sub_44f4c0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Maker"
+      },
+      {
+        "address": "0x95c4f8",
+        "references": [
+          {
+            "from": "0x456549",
+            "function": "sub_456220"
+          },
+          {
+            "from": "0x95c434",
+            "function": null
+          }
+        ],
+        "section": ".rdata",
+        "text": "athena"
+      },
+      {
+        "address": "0x95c500",
+        "references": [
+          {
+            "from": "0x45657f",
+            "function": "sub_456220"
+          },
+          {
+            "from": "0x95c438",
+            "function": null
+          }
+        ],
+        "section": ".rdata",
+        "text": "maker"
+      },
+      {
+        "address": "0x95c564",
+        "references": [
+          {
+            "from": "0x45652a",
+            "function": "sub_456220"
+          },
+          {
+            "from": "0x95c46c",
+            "function": null
+          }
+        ],
+        "section": ".rdata",
+        "text": "maker3"
+      },
+      {
+        "address": "0x95c864",
+        "references": [
+          {
+            "from": "0x45f0e0",
+            "function": "sub_45ed80"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Maker-UN"
+      },
+      {
+        "address": "0x961a60",
+        "references": [
+          {
+            "from": "0x4e3351",
+            "function": "sub_4e3190"
+          }
+        ],
+        "section": ".rdata",
+        "text": "HeliumBluetoothAlertCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x962e30",
+        "references": [
+          {
+            "from": "0x4fa0b3",
+            "function": "sub_4f9f40"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaBluetoothAlertCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x962fc0",
+        "references": [
+          {
+            "from": "0x4fb480",
+            "function": "sub_4fb370"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaAbortCuttingCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x9633e0",
+        "references": [
+          {
+            "from": "0x4fe95e",
+            "function": "sub_4fe820"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaClearErrorCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x963450",
+        "references": [
+          {
+            "from": "0x4fed3b",
+            "function": "sub_4fec60"
+          }
+        ],
+        "section": ".rdata",
+        "text": "AthenaCPRToggleCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x9636b8",
+        "references": [
+          {
+            "from": "0x5034fe",
+            "function": "sub_5034b0"
+          }
+        ],
+        "section": ".rdata",
+        "text": "Helium2BluetoothAlertCommand - Unexpected response received from device!"
+      },
+      {
+        "address": "0x964852",
+        "references": [],
+        "section": ".rdata",
+        "text": "bluetooth_name_to_machine_type"
+      },
+      {
+        "address": "0x965655",
+        "references": [],
+        "section": ".rdata",
+        "text": "athena_home_theta_result"
+      },
+      {
+        "address": "0x96bd55",
+        "references": [],
+        "section": ".rdata",
+        "text": "LOMAKER_HRT"
+      },
+      {
+        "address": "0x96bd66",
+        "references": [],
+        "section": ".rdata",
+        "text": "SLOMAKER_HRT"
+      },
+      {
+        "address": "0x96bd78",
+        "references": [],
+        "section": ".rdata",
+        "text": "SCAMAKER_HRT"
+      },
+      {
+        "address": "0x972965",
+        "references": [],
+        "section": ".rdata",
+        "text": "machine_type"
+      },
+      {
+        "address": "0x97379e",
+        "references": [],
+        "section": ".rdata",
+        "text": "\r\n\tHELIUM_MT"
+      },
+      {
+        "address": "0x9737bc",
+        "references": [],
+        "section": ".rdata",
+        "text": "\n\nHELIUM2_MT"
+      },
+      {
+        "address": "0x9737cb",
+        "references": [],
+        "section": ".rdata",
+        "text": "\r\n\tATHENA_MT"
+      },
+      {
+        "address": "0x973e79",
+        "references": [],
+        "section": ".rdata",
+        "text": "MC_MAKER"
+      },
+      {
+        "address": "0x974f4a",
+        "references": [],
+        "section": ".rdata",
+        "text": "Helium"
+      },
+      {
+        "address": "0x974f7a",
+        "references": [],
+        "section": ".rdata",
+        "text": "Helium"
+      },
+      {
+        "address": "0x974fbc",
+        "references": [],
+        "section": ".rdata",
+        "text": "Helium2"
+      },
+      {
+        "address": "0x974fed",
+        "references": [],
+        "section": ".rdata",
+        "text": "Helium2"
+      },
+      {
+        "address": "0x974ff8",
+        "references": [],
+        "section": ".rdata",
+        "text": "Athena"
+      },
+      {
+        "address": "0x975028",
+        "references": [],
+        "section": ".rdata",
+        "text": "Athena"
+      },
+      {
+        "address": "0x9753d7",
+        "references": [],
+        "section": ".rdata",
+        "text": "@\n\nAthena_1_1"
+      },
+      {
+        "address": "0x9753ea",
+        "references": [],
+        "section": ".rdata",
+        "text": "2 .NativeModel.PBUserSettings7TypeR\nAthena_1_1"
+      },
+      {
+        "address": "0x975419",
+        "references": [],
+        "section": ".rdata",
+        "text": "@\n\nAthena_1_2"
+      },
+      {
+        "address": "0x97542c",
+        "references": [],
+        "section": ".rdata",
+        "text": "2 .NativeModel.PBUserSettings7TypeR\nAthena_1_2"
+      },
+      {
+        "address": "0x97e0e4",
+        "references": [],
+        "section": ".rdata",
+        "text": "riRailCleaningMakeReady"
+      },
+      {
+        "address": "0x9803b6",
+        "references": [],
+        "section": ".rdata",
+        "text": "machine_type"
+      },
+      {
+        "address": "0xa2f0d0",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVHeliumDevice@@"
+      },
+      {
+        "address": "0xa2f184",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVHeliumBluetoothAlertCommand@@"
+      },
+      {
+        "address": "0xa2f230",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaBluetoothAlertCommand@@"
+      },
+      {
+        "address": "0xa2f348",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVHelium2BluetoothAlertCommand@@"
+      },
+      {
+        "address": "0xa2f43c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSetMachineStateCommand@@"
+      },
+      {
+        "address": "0xa32748",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaDevice@@"
+      },
+      {
+        "address": "0xa327fc",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVHelium2Device@@"
+      },
+      {
+        "address": "0xa32c08",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaCalcThetaBacklashCommand@@"
+      },
+      {
+        "address": "0xa3330c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaNewAESCommand@@"
+      },
+      {
+        "address": "0xa33330",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaGetMachineStatusCommand@@"
+      },
+      {
+        "address": "0xa3335c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSendZerosCommand@@"
+      },
+      {
+        "address": "0xa33384",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaGetInterfaceStateCommand@@"
+      },
+      {
+        "address": "0xa333b4",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaScanForEdgeFloatCommand@@"
+      },
+      {
+        "address": "0xa333e0",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaHomeThetaCommand@@"
+      },
+      {
+        "address": "0xa33408",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaAbortCuttingCommand@@"
+      },
+      {
+        "address": "0xa33430",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaToolDetectCommand@@"
+      },
+      {
+        "address": "0xa33458",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSetSpeedStateCommand@@"
+      },
+      {
+        "address": "0xa33484",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSetToolStateCommand@@"
+      },
+      {
+        "address": "0xa334ac",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaSetFullToolStateCommand@@"
+      },
+      {
+        "address": "0xa334d8",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaClearErrorCommand@@"
+      },
+      {
+        "address": "0xa33500",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaReadErrorSeverityCommand@@"
+      },
+      {
+        "address": "0xa33530",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaCPRToggleCommand@@"
+      },
+      {
+        "address": "0xa33558",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaGetPersistentValueCountCommand@@"
+      },
+      {
+        "address": "0xa3358c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaMove4DCommand@@"
+      },
+      {
+        "address": "0xa33618",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVHelium2SetSpeedStateCommand@@"
+      },
+      {
+        "address": "0xa33644",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVHelium2SetMachineStateCommand@@"
+      },
+      {
+        "address": "0xa33670",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaReadPosition4dCommand@@"
+      },
+      {
+        "address": "0xa3369c",
+        "references": [],
+        "section": ".data",
+        "text": ".?AVAthenaMoveZCommand@@"
+      }
+    ],
+    "total": 77
+  },
+  "summary": "77 strings match \"maker|athena|helium|pin code|passkey|\"0000\"|machine_type\".",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "data_sections_only",
+      "message": "only strings stored in the file are searched (absence is not proof)"
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 77,
+    "total": 77
+  },
+  "locations": [],
+  "links": []
+}

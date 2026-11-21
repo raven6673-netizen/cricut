@@ -1,0 +1,168 @@
+{
+  "id": "ev_ea4ed85a43ad38a5e160cf19e8e6e2fb4907c1660f99e3d7acf92d2a3dd2bed4",
+  "subject": {
+    "kind": "capture",
+    "sha256": "9f68dd443b40ef22b71e539736509231a03b554a06c3d72b9697b1f524154f6a",
+    "name": "matcraft.exe"
+  },
+  "operation": "runtime_walkthrough_record",
+  "params": {
+    "argument_count": 2,
+    "event_count": 0,
+    "executable_name": "matcraft.exe",
+    "sandbox_requested": false,
+    "timeout_ms": 40000,
+    "watched_path_count": 0
+  },
+  "result": {
+    "cleanup": {
+      "process_group": "verified",
+      "temporary_root": "none"
+    },
+    "events": [],
+    "exit": {
+      "code": 0,
+      "finalized_with": null,
+      "leader_pid": null,
+      "reason": "exited"
+    },
+    "filesystem": null,
+    "limitations": [
+      {
+        "code": "no_terminal",
+        "message": "There's no terminal capture on Windows: the output was read through pipes, so a program that draws a full-screen terminal interface or colours its output looks different, and its error output follows its normal output instead of being interleaved."
+      },
+      {
+        "code": "job_object",
+        "message": "Every process the program started was ended with its Job Object, which the system empties when the run ends."
+      }
+    ],
+    "manifest": {
+      "architecture": "x86_64",
+      "argument_count": 2,
+      "completed_at_unix_ms": 1795219196412,
+      "executable_name": "matcraft.exe",
+      "executable_sha256": "9f68dd443b40ef22b71e539736509231a03b554a06c3d72b9697b1f524154f6a",
+      "platform": "windows",
+      "pty_backend": "pipes",
+      "run_id": "1a1fb670974-24972",
+      "sandbox": {
+        "available": false,
+        "kind": "none",
+        "reason": "no sandbox on this host",
+        "used": false
+      },
+      "started_at_unix_ms": 1795219196276
+    },
+    "normalization": {
+      "replacements": {
+        "paths": 0,
+        "patterns": 0,
+        "pids": 0,
+        "ports": 0,
+        "times": 0
+      },
+      "settings": {
+        "paths": false,
+        "patterns": [],
+        "pids": true,
+        "ports": true,
+        "time_step_ms": 10
+      }
+    },
+    "settlement": {
+      "status": "settled"
+    },
+    "still_unknown": [],
+    "terminal": {
+      "alternate_screen": false,
+      "columns": 220,
+      "cursor_col": 0,
+      "cursor_row": 0,
+      "lines": [
+        "Machine behaviour check: 38 same, 0 different, 6 estimates, 2 not yet",
+        "Read from C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\resources\\plugins\\device-common\\CricutDevice.exe (not run).",
+        "Real machine: USB 20D3:0015 serial 0580717011 on COM6, asked 3 read-only questions (saved in mechanics-live.json).",
+        "",
+        "[Same     ] machine bluetooth address    sheet: 00:06:66:8D:2B:FE                          matcraft: 00:06:66:8D:2B:FE                          original: -          machine: -",
+        "[Same     ] link type                    sheet: bluetooth rfcomm serial                    matcraft: bluetooth rfcomm serial                    original: -          machine: -",
+        "[Estimate ] rfcomm channel               sheet: 1                                          matcraft: 1                                          original: -          machine: -",
+        "[Same     ] header length                sheet: 2                                          matcraft: 2                                          original: -          machine: 2",
+        "[Same     ] encrypted flag               sheet: 0x80 in first header byte                  matcraft: 0x80 in first header byte                  original: 0x80 in first header byte machine: 3 plain replies, top bit clear",
+        "[Same     ] max reply body               sheet: 512                                        matcraft: 512                                        original: 512        machine: longest reply 6 bytes",
+        "[Same     ] aes key length               sheet: 32                                         matcraft: 32                                         original: -          machine: -",
+        "[Same     ] encrypted padding            sheet: len - len%16 + 16, last byte = 8-bit sum   matcraft: len - len%16 + 16, last byte = 8-bit sum   original: -          machine: -",
+        "[Same     ] reply byte swap              sheet: swap first two bytes if first != 0         matcraft: swap first two bytes if first != 0         original: -          machine: -",
+        "[Same     ] plain frame header           sheet: same 2-byte header, top bit clear          matcraft: same 2-byte header, top bit clear          original: -          machine: 3 plain replies, top bit clear",
+        "[Same     ] new aes session              sheet: 199                                        matcraft: 199                                        original: 199        machine: -",
+        "[Same     ] new aes key slot             sheet: random % 12 + 2                            matcraft: random % 12 + 2                            original: -          machine: -",
+        "[Same     ] new aes random bytes         sheet: 47                                         matcraft: 47                                         original: -          machine: -",
+        "[Same     ] clear error                  sheet: 10                                         matcraft: 10                                         original: 10         machine: -",
+        "[Same     ] read error severity          sheet: 11                                         matcraft: 11                                         original: 11         machine: 11",
+        "[Same     ] set speed state              sheet: 49                                         matcraft: 49                                         original: 49         machine: -",
+        "[Same     ] set tool state               sheet: 55                                         matcraft: 55                                         original: 55         machine: -",
+        "[Same     ] set full tool state          sheet: 62                                         matcraft: 62                                         original: 62         machine: -",
+        "[Same     ] cpr toggle                   sheet: 63                                         matcraft: 63                                         original: 63         machine: -",
+        "[Same     ] abort cutting                sheet: 104                                        matcraft: 104                                        original: 104        machine: -",
+        "[Same     ] get interface state          sheet: 115                                        matcraft: 115                                        original: 115        machine: 115",
+        "[Same     ] get persistent value count   sheet: 164                                        matcraft: 164                                        original: 164        machine: 164",
+        "[Same     ] scan for edge                sheet: 226                                        matcraft: 226                                        original: 226        machine: -",
+        "[Same     ] bluetooth alert              sheet: 229                                        matcraft: 229                                        original: 229        machine: -",
+        "[Same     ] home theta                   sheet: 240                                        matcraft: 240                                        original: 240        machine: -",
+        "[Same     ] move 4d                      sheet: 241                                        matcraft: 241                                        original: 241        machine: -",
+        "[Same     ] send zeros                   sheet: 255                                        matcraft: 255                                        original: 255        machine: -",
+        "[Same     ] move 4d axis mask            sheet: 23                                         matcraft: 23                                         original: 23         machine: -",
+        "[Same     ] degrees to radians           sheet: 0.017453292519943295                       matcraft: 0.017453292519943295                       original: 0.017453292519943295 machine: -",
+        "[Same     ] move 4d float order          sheet: big-endian float32                         matcraft: big-endian float32                         original: -          machine: -",
+        "[Not yet  ] aes session key handshake    sheet: not decoded; key typed in by the person    matcraft: not decoded; key typed in by the person    original: -          machine: -",
+        "[Not yet  ] cut path streaming           sheet: not decoded; mats saved as SVG path data   matcraft: not decoded; mats saved as SVG path data   original: -          machine: -",
+        "[Estimate ] mat sizes                    sheet: 12x12 in, 12x24 in                         matcraft: 12x12 in, 12x24 in                         original: -          machine: -",
+        "[Estimate ] gap between pieces           sheet: 0.25                                       matcraft: 0.25                                       original: -          machine: -",
+        "[Estimate ] canvas scale                 sheet: 48                                         matcraft: 48                                         original: -          machine: -",
+        "[Estimate ] material pressures and passes sheet: table in app                               matcraft: table in app                               original: -          machine: -",
+        "[Same     ] engrave fill patterns        sheet: horizontal lines, vertical lines, grid, forward slash, backward slash, cross-hatch, concentric matcraft: horizontal lines, vertical lines, grid, forward slash, backward slash, cross-hatch, concentric original: -          machine: -",
+        "[Same     ] engrave default pattern      sheet: horizontal lines                           matcraft: horizontal lines                           original: -          machine: -",
+        "[Same     ] engrave line spacing         sheet: 0.01                                       matcraft: 0.01                                       original: -          machine: -",
+        "[Same     ] engrave edge margin          sheet: 0.01                                       matcraft: 0.01                                       original: -          machine: -",
+        "[Same     ] engrave fill rule            sheet: non-zero                                   matcraft: non-zero                                   original: -          machine: -",
+        "[Same     ] engrave design area          sheet: 11.5x11.5 in                               matcraft: 11.5x11.5 in                               original: -          machine: -",
+        "[Same     ] engrave tools                sheet: Engrave Tip, Engraving Tool                matcraft: Engrave Tip, Engraving Tool                original: -          machine: -",
+        "[Estimate ] engraving tool machines      sheet: Maker 5                                    matcraft: Maker 5                                    original: -          machine: -",
+        "[Same     ] usb vendor id                sheet: 20D3                                       matcraft: 20D3                                       original: -          machine: -",
+        "[Same     ] usb status reply             sheet: 73 CF 0F 00 03 00                          matcraft: 73 CF 0F 00 03 00                          original: -          machine: 73 CF 0F 00 03 00",
+        "",
+        "Saved mechanics-measured.json"
+      ],
+      "output_bytes": 8670,
+      "output_truncated": false,
+      "rows": 60
+    },
+    "truncated": false
+  },
+  "summary": "Ran matcraft.exe (exited): exit 0. Terminal 220×60; 8670 bytes of output.",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "program-runs",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "no_terminal",
+      "message": "There's no terminal capture on Windows: the output was read through pipes, so a program that draws a full-screen terminal interface or colours its output looks different, and its error output follows its normal output instead of being interleaved."
+    },
+    {
+      "code": "job_object",
+      "message": "Every process the program started was ended with its Job Object, which the system empties when the run ends."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 1,
+    "total": 1
+  },
+  "locations": [],
+  "links": []
+}

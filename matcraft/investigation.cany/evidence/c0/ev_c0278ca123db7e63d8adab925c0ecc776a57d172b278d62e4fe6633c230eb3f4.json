@@ -1,0 +1,62 @@
+{
+  "id": "ev_c0278ca123db7e63d8adab925c0ecc776a57d172b278d62e4fe6633c230eb3f4",
+  "subject": {
+    "kind": "website",
+    "name": "https://hackaday.com/2026/08/21/spoofed-serial-number-unlocks-cricut-machine/"
+  },
+  "operation": "core_evidence_browse",
+  "params": {
+    "show": {
+      "fields": [
+        "name"
+      ],
+      "kind": "rows",
+      "limit": 200,
+      "list": "nodes",
+      "matching": {
+        "role": "staticText"
+      }
+    },
+    "source": {
+      "evidence_id": "ev_29339913469636d7d2c1dbf66cd90c64d5cfbf597008b4b1314edcc0bd18a8d9",
+      "kind": "saved"
+    }
+  },
+  "result": {
+    "coverage": {
+      "at_end": true,
+      "examined": 0,
+      "next_offset": null,
+      "status": "empty",
+      "total": 0
+    },
+    "from_evidence": "ev_29339913469636d7d2c1dbf66cd90c64d5cfbf597008b4b1314edcc0bd18a8d9",
+    "from_tool": "web_page_show",
+    "shown": {
+      "items": [],
+      "list": "nodes",
+      "list_total": 2158,
+      "offset": 0,
+      "total": 0
+    }
+  },
+  "summary": "Part of web_page_show evidence (empty).",
+  "confidence": "observed",
+  "authority": "earlier-record",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 0,
+    "total": 0
+  },
+  "locations": [],
+  "links": [
+    "ev_29339913469636d7d2c1dbf66cd90c64d5cfbf597008b4b1314edcc0bd18a8d9"
+  ]
+}

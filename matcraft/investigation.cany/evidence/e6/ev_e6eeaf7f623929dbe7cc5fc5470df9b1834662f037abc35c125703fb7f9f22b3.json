@@ -1,0 +1,117 @@
+{
+  "id": "ev_e6eeaf7f623929dbe7cc5fc5470df9b1834662f037abc35c125703fb7f9f22b3",
+  "subject": {
+    "kind": "pe",
+    "sha256": "3a8ea68ed002e1dc974eddef229bd03d7ce4cfbb60ad070fd89db2251b389a84",
+    "name": "Cricut Design Space.exe"
+  },
+  "operation": "core_target_triage",
+  "params": {
+    "path": "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\Cricut Design Space.exe"
+  },
+  "result": {
+    "architecture": "x86_64",
+    "bits": 64,
+    "dotnet_arch": null,
+    "entry_point": "0x143084220",
+    "format": "pe",
+    "format_name": "PE (Windows)",
+    "kind": "executable",
+    "libraries": [
+      "CRYPT32.dll",
+      "DWrite.dll",
+      "KERNEL32.dll",
+      "VERSION.dll",
+      "WINMM.dll",
+      "WS2_32.dll",
+      "ntdll.dll",
+      "ffmpeg.dll",
+      "COMCTL32.dll",
+      "UIAutomationCore.DLL",
+      "WTSAPI32.dll",
+      "ADVAPI32.dll",
+      "COMDLG32.dll",
+      "dbghelp.dll",
+      "GDI32.dll",
+      "OLEAUT32.dll",
+      "SHELL32.dll",
+      "SHLWAPI.dll",
+      "USER32.dll",
+      "WINSPOOL.DRV",
+      "ole32.dll",
+      "CRYPTUI.dll",
+      "dwmapi.dll",
+      "CFGMGR32.dll",
+      "api-ms-win-power-base-l1-1-0.dll",
+      "USERENV.dll",
+      "dhcpcsvc.DLL",
+      "Secur32.dll",
+      "api-ms-win-shcore-scaling-l1-1-1.dll",
+      "ncrypt.dll",
+      "api-ms-win-core-winrt-string-l1-1-0.dll",
+      "IPHLPAPI.DLL"
+    ],
+    "next_steps": [
+      {
+        "tool": "core_overview_show",
+        "why": "a one-page summary: sections, imports, counts"
+      },
+      {
+        "tool": "native_functions_list",
+        "why": "every function we found"
+      },
+      {
+        "tool": "native_strings_find",
+        "why": "find text the program shows or uses"
+      },
+      {
+        "tool": "native_function_study",
+        "why": "a full dossier on one function (start with main or the entry point)"
+      },
+      {
+        "tool": "core_feature_find",
+        "why": "follow a word you see in the app to the code behind it"
+      },
+      {
+        "tool": "native_pe_resources_list",
+        "why": "icons, version information and the manifest"
+      }
+    ],
+    "operating_system": "Windows",
+    "plain_english": "Cricut Design Space.exe is a program for Windows, built for x86_64 (64-bit). Its internal names were removed (stripped), so most functions will have generated names.",
+    "recommended_toolsets": [
+      "core",
+      "native",
+      "formats"
+    ],
+    "stripped": true,
+    "symbol_table_stripped": true,
+    "toolchain_hints": []
+  },
+  "summary": "Cricut Design Space.exe is a program for Windows, built for x86_64 (64-bit). Its internal names were removed (stripped), so most functions will have generated names.",
+  "confidence": "observed",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "heuristic_hints",
+      "message": "toolchain and packer hints come from markers that can be faked or borrowed"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x143084220",
+      "label": "entry point"
+    }
+  ],
+  "links": []
+}

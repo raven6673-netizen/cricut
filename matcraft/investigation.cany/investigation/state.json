@@ -1,0 +1,107 @@
+{
+  "revision": 19,
+  "brief": {
+    "question": "How does the desktop design app talk to a cutting machine (over Bluetooth serial at 00:06:66:8d:2b:fe), and what core features (canvas, shapes/text/images, mat preview, materials, cut) must a Linux-friendly rebuild provide?",
+    "purpose": "Interoperability: build the person's own design-and-cut app that runs on Linux (Bazzite) and drives their own Maker machine.",
+    "targets": [
+      "C:\\Users\\igpx1\\AppData\\Local\\Programs\\Cricut Design Space\\Cricut Design Space.exe"
+    ],
+    "constraints": [
+      "Rust + eframe/egui",
+      "No brand names or logos",
+      "Change files only in app/"
+    ],
+    "done_when": "app/ builds, supports designing on a mat and sending to the machine over a Bluetooth RFCOMM/serial link with the documented protocol facts, plus --screenshot."
+  },
+  "plan": [
+    {
+      "title": "Review the existing app and machine notes",
+      "status": "done"
+    },
+    {
+      "title": "Improve the machine connection",
+      "status": "done"
+    },
+    {
+      "title": "Build and test the app",
+      "status": "done",
+      "why": "Windows build, 22 tests, Linux compilation, and screenshot passed. Live pairing and cut streaming remain open."
+    }
+  ],
+  "hypotheses": [],
+  "findings": [
+    {
+      "id": "fnd_1",
+      "statement": "Machine link framing (CricutDevice.exe): each message starts with a 2-byte big-endian header; top bit = encrypted, low 15 bits = payload length (max 512). Encrypted payloads are AES-256 ECB in 16-byte blocks; before encryption the payload is zero-padded to (len - len%16)+16 bytes and the last byte is set to the 8-bit sum of all bytes before it. Responses echo the command opcode as the first byte.",
+      "evidence_ids": [
+        "ev_92c4299c10279aa7f20ec1ebb2d87d08313c02bc94d70884cb8d68d806a10fd9",
+        "ev_cf02af836d847a9b7b8057060689a64a2b6c578ba4d1304b1945f87d907fd37c",
+        "ev_37c8087820138ed375b4f7e24fb155557c1e150d0b595070f2f5e8664ba16972",
+        "ev_ed980f40e132a9e538a4cd424eb66c2065ff0c6cfd93e0684cf964537f26e057"
+      ],
+      "confidence": "derived"
+    },
+    {
+      "id": "fnd_2",
+      "statement": "Maker-family (\"Athena\") command opcodes read from each command class's opcode getter: ClearError 0x0A, ReadErrorSeverity 0x0B (severity 0-3), SetSpeedState 0x31, SetToolState 0x37, SetFullToolState 0x3E, CPRToggle 0x3F, AbortCutting 0x68, GetInterfaceState 0x73, GetPersistentValueCount 0xA4, ScanForEdgeFloat 0xE2, BluetoothAlert 0xE5, HomeTheta 0xF0, Move4D 0xF1 (payload: opcode, axis mask 0x17, then big-endian float32 x, y, z, theta in radians), SendZeros 0xFF. Connection is Bluetooth RFCOMM serial (bluetooth_serial_transport, Windows.Devices.Bluetooth.Rfcomm).",
+      "evidence_ids": [
+        "ev_e479cb38b8a49f6f40b1e6c0bcada51a7128b22c5bde38878626643009ceeab4",
+        "ev_677285ff471fd07d253345eb4115cd4f5b00c0b687b5892fcf538cdc18d4a91b",
+        "ev_1db2b3af295d621dc6a6b02e3eb7d448c34fe758f748ef6ec50ba1e5d95eaaa4",
+        "ev_77ca69813d4bfeba570ca99a872fb724c7c75ed9f8c2c07000bfbdca54af8399",
+        "ev_876d95c02e8b86dcc08c3de814feeef7fa333e59f12bb9fbe39e76854f08fd69",
+        "ev_f00a2ce707ddd1c48babcf8d69c14e8cedaf0580677994b975a6dc49a956a08a"
+      ],
+      "confidence": "derived"
+    },
+    {
+      "id": "fnd_3",
+      "statement": "The encrypted-session request (opcode 0xC7) is 51 bytes: plain header 00 31, code C7, a key slot chosen as random%12+2, then 47 random bytes; the slot selects one of 12 keys built into the original helper program. This also confirms plain frames use the same 2-byte length header with the top bit clear.",
+      "evidence_ids": [
+        "ev_c169e22fbdc3e809e811552c6b50d9b032b3614926bf1620c05ef34a213daa91",
+        "ev_93af5a6f1063a2ea4e8ec39d69d67c2802ba9082494fee1dac2ba7feb6d935ca",
+        "ev_671a35984e870e35377438a1808388e3df161a51f92c7a4a220cf70bf1d83c24"
+      ],
+      "confidence": "derived"
+    },
+    {
+      "id": "fnd_4",
+      "statement": "MatCraft's machine behaviour was measured by running its own framing, encryption, reply-reader, command-payload and mat-layout code and compared with the mechanics sheet and with the installed original's CricutDevice.exe bytes: 29 values match, 0 differ, 5 are estimates, 2 are not decoded. All 15 command codes, the Move4D mask 0x17, the degree constant 0.017453292519943295, the encrypted flag 0x80 and the 512-byte reply limit were read from the original file and agree.",
+      "evidence_ids": [
+        "ev_0048968858b3130dc6a7ac0f177eadd9c2738d1a24861f92fcf157d2f13772e7",
+        "ev_f50d5c5d3261df7e9b97503dd24b436d3542b6273ef469b1434de764be153a13",
+        "ev_d88ee5b81ebb5b0ab4cde62f541f5d02d1ba857b7df8e865f1fd1a74bae298ee",
+        "ev_876d95c02e8b86dcc08c3de814feeef7fa333e59f12bb9fbe39e76854f08fd69"
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "fnd_5",
+      "statement": "The real machine on USB (COM6, 20D3:0015) answered three read-only commands (get interface state 0x73, read error severity 0x0B, get persistent value count 0xA4) with plain 2-byte-header replies whose first body byte is the command code, matching the mechanics sheet; the full behaviour check shows 38 same, 0 different, 6 estimates, 2 not yet.",
+      "evidence_ids": [
+        "ev_7bb32a88e124e66c24421a359c9c2b4d3b71a3f7bcf07b416008fc52699b0e9e",
+        "ev_ea4ed85a43ad38a5e160cf19e8e6e2fb4907c1660f99e3d7acf92d2a3dd2bed4"
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "fnd_6",
+      "statement": "Per a Hackaday article (xssfox), the machine sends its serial number to the PC software in plaintext over USB and the deactivation lock is enforced host-side (the software refuses serials on a disabled list), not in firmware; the encrypted cut packets are AES-ECB. MatCraft reads and shows the USB serial, keeps no activation list (so a maker-deactivated machine still works), and deliberately does not spoof another machine's serial.",
+      "evidence_ids": [
+        "ev_cf43ee0182ad7d884e39f80a9c8566ee3fd8c492b9ce5d98a43176703429dd1f",
+        "ev_29866d57e56bf63920e3ee4af837ef6b205945a3b31f8e5258dc5bc09e196327"
+      ],
+      "confidence": "derived"
+    },
+    {
+      "id": "fnd_7",
+      "statement": "The NewAES reply parser at 0x4f9180 accepts a big-endian reply length of 48 bytes and copies the reply into the command object. Its body does not derive the session key.",
+      "evidence_ids": [
+        "ev_5cb1d3360d1f22d6531e0f92c86dcf2b5ac6d274000bf68f35456f4e5bf8f017"
+      ],
+      "confidence": "derived"
+    }
+  ],
+  "handoff": "USB and Bluetooth Connect now send a read-only interface status request and require the matching reply before reporting connected. USB background readers stop after disconnect. Linux cargo build and all 23 tests passed; rebuild_check passed build and screenshot. No live hardware verification was performed in this run. Bluetooth on Bazzite, automatic key derivation and cut streaming remain open.",
+  "updated": "2026-11-21T01:38:22Z"
+}

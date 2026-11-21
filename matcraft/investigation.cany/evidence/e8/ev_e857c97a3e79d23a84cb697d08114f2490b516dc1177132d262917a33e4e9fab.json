@@ -1,0 +1,45 @@
+{
+  "id": "ev_e857c97a3e79d23a84cb697d08114f2490b516dc1177132d262917a33e4e9fab",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_function_pseudocode",
+  "params": {
+    "function": "0x4526d0"
+  },
+  "result": {
+    "engine": "ghidra",
+    "entry": "0x4526d0",
+    "function": "FUN_004526d0",
+    "pseudo_code": "\r\nvoid __thiscall FUN_004526d0(int param_1,undefined4 param_2,int param_3,uint *param_4)\r\n\r\n{\r\n  uint uVar1;\r\n  int local_8;\r\n  \r\n  local_8 = 0;\r\n  uVar1 = (**(code **)(**(int **)(param_1 + 4) + 0x18))(param_3,&local_8);\r\n  *param_4 = uVar1 & 0xff;\r\n  FUN_00452220(local_8 + param_3,((uVar1 & 0xff) - (local_8 + param_3)) + local_8 + param_3);\r\n  return;\r\n}\r\n\r\n",
+    "signature": "void __thiscall FUN_004526d0(int param_1,undefined4 param_2,int param_3,uint *param_4);"
+  },
+  "summary": "Pseudo-C for FUN_004526d0 from the Deep engine (14 lines).",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "ghidra",
+    "engine_version": "12.1.4",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "deep_engine",
+      "message": "the pseudo-C comes from the external Deep engine (Ghidra), not the original source"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x4526d0"
+    }
+  ],
+  "links": [],
+  "carries_target_content": true
+}

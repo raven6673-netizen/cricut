@@ -1,0 +1,67 @@
+{
+  "id": "ev_cf43ee0182ad7d884e39f80a9c8566ee3fd8c492b9ce5d98a43176703429dd1f",
+  "subject": {
+    "kind": "website",
+    "name": "https://hackaday.com/2026/08/21/spoofed-serial-number-unlocks-cricut-machine/"
+  },
+  "operation": "web_site_open",
+  "params": {
+    "height": 900,
+    "url": "https://hackaday.com/2026/08/21/spoofed-serial-number-unlocks-cricut-machine/",
+    "width": 1440
+  },
+  "result": {
+    "browser": "Chrome/157.0.8103.80",
+    "facts": {
+      "elements": 1518,
+      "forms": 9,
+      "height": 13983,
+      "images": 28,
+      "lang": "en-US",
+      "links": 289,
+      "ready": "complete",
+      "title": "Spoofed Serial Number Unlocks Cricut Machine | Hackaday",
+      "url": "https://hackaday.com/2026/08/21/spoofed-serial-number-unlocks-cricut-machine/",
+      "width": 1425
+    },
+    "health": {
+      "errors": [],
+      "failed_requests": [
+        {
+          "error": "net::ERR_UNKNOWN_URL_SCHEME",
+          "type": "Image",
+          "url": "about:blank"
+        }
+      ]
+    },
+    "title": "Spoofed Serial Number Unlocks Cricut Machine | Hackaday",
+    "url": "https://hackaday.com/2026/08/21/spoofed-serial-number-unlocks-cricut-machine/"
+  },
+  "summary": "Opened https://hackaday.com/2026/08/21/spoofed-serial-number-unlocks-cricut-machine/: \"Spoofed Serial Number Unlocks Cricut Machine | Hackaday\". While loading: 0 error(s), 1 failed request(s).",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "private_profile",
+      "message": "A fresh private browser: pages behind a login show their signed-out state."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 1,
+    "total": 1
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://hackaday.com/2026/08/21/spoofed-serial-number-unlocks-cricut-machine/"
+    }
+  ],
+  "links": []
+}

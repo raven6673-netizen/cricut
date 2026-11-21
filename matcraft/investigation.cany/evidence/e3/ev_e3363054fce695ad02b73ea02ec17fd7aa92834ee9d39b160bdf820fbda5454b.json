@@ -1,0 +1,77 @@
+{
+  "id": "ev_e3363054fce695ad02b73ea02ec17fd7aa92834ee9d39b160bdf820fbda5454b",
+  "subject": {
+    "kind": "website",
+    "name": "https://help.cricut.com/hc/en-us/articles/42382613225751-How-to-engrave-with-Cricut-Maker-5"
+  },
+  "operation": "web_site_open",
+  "params": {
+    "height": 900,
+    "url": "https://help.cricut.com/hc/en-us/articles/42382613225751-How-to-engrave-with-Cricut-Maker-5",
+    "width": 1440
+  },
+  "result": {
+    "browser": "Chrome/157.0.8103.80",
+    "facts": {
+      "elements": 48,
+      "forms": 0,
+      "height": 900,
+      "images": 1,
+      "lang": "en-us",
+      "links": 2,
+      "ready": "complete",
+      "title": "Just a moment...",
+      "url": "https://help.cricut.com/hc/en-us/articles/42382613225751-How-to-engrave-with-Cricut-Maker-5",
+      "width": 1440
+    },
+    "health": {
+      "errors": [],
+      "failed_requests": [
+        {
+          "status": 403,
+          "type": "Document",
+          "url": "https://help.cricut.com/hc/en-us/articles/42382613225751-How-to-engrave-with-Cricut-Maker-5"
+        },
+        {
+          "status": 403,
+          "type": "Image",
+          "url": "https://help.cricut.com/hc/favicon.ico"
+        },
+        {
+          "status": 403,
+          "type": "Other",
+          "url": "https://help.cricut.com/hc/favicon.ico"
+        }
+      ]
+    },
+    "title": "Just a moment...",
+    "url": "https://help.cricut.com/hc/en-us/articles/42382613225751-How-to-engrave-with-Cricut-Maker-5"
+  },
+  "summary": "Opened https://help.cricut.com/hc/en-us/articles/42382613225751-How-to-engrave-with-Cricut-Maker-5: \"Just a moment...\". While loading: 0 error(s), 3 failed request(s).",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "private_profile",
+      "message": "A fresh private browser: pages behind a login show their signed-out state."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 1,
+    "total": 1
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://help.cricut.com/hc/en-us/articles/42382613225751-How-to-engrave-with-Cricut-Maker-5"
+    }
+  ],
+  "links": []
+}

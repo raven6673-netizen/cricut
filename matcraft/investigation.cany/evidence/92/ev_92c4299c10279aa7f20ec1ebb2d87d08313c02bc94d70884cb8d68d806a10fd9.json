@@ -1,0 +1,45 @@
+{
+  "id": "ev_92c4299c10279aa7f20ec1ebb2d87d08313c02bc94d70884cb8d68d806a10fd9",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_function_pseudocode",
+  "params": {
+    "function": "0x50f540"
+  },
+  "result": {
+    "engine": "ghidra",
+    "entry": "0x50f540",
+    "function": "FUN_0050f540",
+    "pseudo_code": "\r\n/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */\r\n\r\nbyte * FUN_0050f540(int *param_1,char *param_2,char param_3,char *param_4,int param_5)\r\n\r\n{\r\n  undefined1 uVar1;\r\n  byte bVar2;\r\n  char cVar3;\r\n  uint uVar4;\r\n  byte *pbVar5;\r\n  int iVar6;\r\n  int iVar7;\r\n  undefined2 uVar8;\r\n  int iVar9;\r\n  byte *pbVar10;\r\n  uint uVar11;\r\n  int local_120;\r\n  char *local_114;\r\n  ushort local_110;\r\n  byte local_10c;\r\n  byte local_10b [259];\r\n  uint local_8;\r\n  \r\n  local_8 = DAT_00a2d3c0 ^ (uint)&stack0xfffffffc;\r\n  *param_2 = '\\0';\r\n  local_114 = param_4;\r\n  if ((*(int *)(param_5 + 0x94) == 3) || (*(char *)(param_5 + 0xaf) != '\\0')) {\r\n    pbVar10 = (byte *)FUN_004e5c60(param_1,param_4,param_5);\r\n  }\r\n  else {\r\n    uVar1 = *(undefined1 *)(param_5 + 8);\r\n    pbVar10 = (byte *)0x0;\r\n    *param_1 = 0;\r\n    local_120 = 0;\r\n    *param_2 = '\\0';\r\n    cVar3 = FUN_004e5cb0(&local_10c,param_4,uVar1);\r\n    if ((cVar3 != '\\0') && (cVar3 = FUN_004e5cb0(local_10b,param_4,uVar1), cVar3 != '\\0')) {\r\n      if (0x7f < local_10c) {\r\n        *param_2 = '\\x01';\r\n      }\r\n      local_110 = CONCAT11(local_10c,local_10b[0]) & 0x7fff;\r\n      uVar11 = (uint)local_110;\r\n      if (uVar11 < 0x201) {\r\n        local_10c = local_10c & 0x7f;\r\n        pbVar10 = (byte *)FUN_008a4ba1(uVar11 + 2);\r\n        *pbVar10 = local_10c;\r\n        pbVar10[1] = local_10b[0];\r\n        *param_1 = uVar11 + 2;\r\n        for (; uVar11 != 0; uVar11 = uVar11 - uVar4) {\r\n          uVar4 = FUN_004e55b0(&local_10c,uVar11,uVar1,local_114);\r\n          if (uVar4 == 0) {\r\n            pbVar10 = (byte *)0x0;\r\n            break;\r\n          }\r\n          if (uVar11 < uVar4) {\r\n            FUN_00896f70(pbVar10 + local_120 + 2,&local_10c,uVar11);\r\n            break;\r\n          }\r\n          FUN_00896f70(pbVar10 + local_120 + 2,&local_10c,uVar4);\r\n          local_120 = local_120 + uVar4;\r\n        }\r\n      }\r\n      else {\r\n        pbVar10 = (byte *)0x0;\r\n        local_10c = local_10c & 0x7f;\r\n      }\r\n    }\r\n  }\r\n  pbVar5 = pbVar10;\r\n  if ((((*(int *)(param_5 + 0x114) != 0) && (*(char *)(param_5 + 0x118) != '\\0')) &&\r\n      (pbVar10 != (byte *)0x0)) && ((*(char *)(param_5 + 8) == '\\0' && (*param_2 != '\\0')))) {\r\n    pbVar5 = (byte *)FUN_004e56e0(*(int *)(param_5 + 0x114),pbVar10 + 2,*param_1 + -2,param_1);\r\n    if (pbVar5 == (byte *)0x0) {\r\n      FUN_008a4b86(pbVar10);\r\n      local_114 = \"CricutDevice::read_response(Unable to decrypt response!)\";\r\n                    /* WARNING: Subroutine does not return */\r\n      FUN_00896a6b(&local_114,&DAT_009dd154);\r\n    }\r\n    if (param_3 != '\\0') {\r\n      iVar6 = 0;\r\n      iVar9 = (uint)pbVar5[*param_1 + -1] << 8;\r\n      uVar8 = (undefined2)iVar9;\r\n      iVar7 = *param_1 + -1;\r\n      if (0 < iVar7) {\r\n        do {\r\n          iVar9 = CONCAT31((int3)((uint)iVar9 >> 8),(char)iVar9 + pbVar5[iVar6]);\r\n          uVar8 = (undefined2)iVar9;\r\n          iVar6 = iVar6 + 1;\r\n        } while (iVar6 < iVar7);\r\n      }\r\n      if ((char)uVar8 != (char)((ushort)uVar8 >> 8)) {\r\n        FUN_008a4b86(pbVar5);\r\n        local_114 = \"CricutDevice::read_response(CRC Mismatch!)\";\r\n                    /* WARNING: Subroutine does not return */\r\n        FUN_00896a6b(&local_114,&DAT_009dd154);\r\n      }\r\n    }\r\n    if ((1 < *param_1) && (bVar2 = *pbVar5, bVar2 != 0)) {\r\n      *pbVar5 = pbVar5[1];\r\n      pbVar5[1] = bVar2;\r\n    }\r\n    FUN_008a4b86(pbVar10);\r\n  }\r\n  return pbVar5;\r\n}\r\n\r\n",
+    "signature": "byte * FUN_0050f540(int *param_1,char *param_2,char param_3,char *param_4,int param_5);"
+  },
+  "summary": "Pseudo-C for FUN_0050f540 from the Deep engine (107 lines).",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "ghidra",
+    "engine_version": "12.1.4",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "deep_engine",
+      "message": "the pseudo-C comes from the external Deep engine (Ghidra), not the original source"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x50f540"
+    }
+  ],
+  "links": [],
+  "carries_target_content": true
+}

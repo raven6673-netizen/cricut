@@ -1,0 +1,45 @@
+{
+  "id": "ev_37c8087820138ed375b4f7e24fb155557c1e150d0b595070f2f5e8664ba16972",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_function_pseudocode",
+  "params": {
+    "function": "0x5cfbb0"
+  },
+  "result": {
+    "engine": "ghidra",
+    "entry": "0x5cfbb0",
+    "function": "FUN_005cfbb0",
+    "pseudo_code": "\r\nint FUN_005cfbb0(int param_1,int param_2,int param_3,uint *param_4)\r\n\r\n{\r\n  int iVar1;\r\n  uint uVar2;\r\n  int iVar3;\r\n  undefined1 local_20 [12];\r\n  int local_14;\r\n  void *local_10;\r\n  undefined1 *puStack_c;\r\n  undefined4 uStack_8;\r\n  \r\n  uStack_8 = 0xffffffff;\r\n  puStack_c = &LAB_00921d4d;\r\n  local_10 = ExceptionList;\r\n  ExceptionList = &local_10;\r\n  if (((param_1 != 0) && (param_2 != 0)) && (0 < param_3)) {\r\n    iVar1 = FUN_005cf0f0(param_3,param_4,DAT_00a2d3c0 ^ (uint)&stack0xfffffffc);\r\n    uVar2 = *param_4;\r\n    FUN_00896f70(iVar1,param_2,param_3);\r\n    local_14 = FUN_008a4ba1(*param_4);\r\n    if (((uVar2 & 0xf) == 0) && (uVar2 <= *param_4)) {\r\n      FUN_005d1170(local_20,param_1,0x20);\r\n      uVar2 = uVar2 >> 4;\r\n      if (uVar2 != 0) {\r\n        iVar3 = local_14 - iVar1;\r\n        do {\r\n          FUN_005d0d90(local_20,iVar1,iVar3 + iVar1);\r\n          iVar1 = iVar1 + 0x10;\r\n          uVar2 = uVar2 - 1;\r\n        } while (uVar2 != 0);\r\n      }\r\n      FUN_005d0470();\r\n      ExceptionList = local_10;\r\n      return local_14;\r\n    }\r\n    if (local_14 != 0) {\r\n      FUN_008a4b86(local_14);\r\n    }\r\n    if (iVar1 != 0) {\r\n      FUN_008a4b86(iVar1);\r\n    }\r\n  }\r\n  ExceptionList = local_10;\r\n  return 0;\r\n}\r\n\r\n",
+    "signature": "int FUN_005cfbb0(int param_1,int param_2,int param_3,uint *param_4);"
+  },
+  "summary": "Pseudo-C for FUN_005cfbb0 from the Deep engine (48 lines).",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "ghidra",
+    "engine_version": "12.1.4",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "deep_engine",
+      "message": "the pseudo-C comes from the external Deep engine (Ghidra), not the original source"
+    }
+  ],
+  "coverage": {
+    "status": "unknown"
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x5cfbb0"
+    }
+  ],
+  "links": [],
+  "carries_target_content": true
+}

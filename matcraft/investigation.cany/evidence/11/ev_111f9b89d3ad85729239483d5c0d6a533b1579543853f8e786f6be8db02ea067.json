@@ -1,0 +1,78 @@
+{
+  "id": "ev_111f9b89d3ad85729239483d5c0d6a533b1579543853f8e786f6be8db02ea067",
+  "subject": {
+    "kind": "asar",
+    "sha256": "b295a54672751a0d6cbf55981b8d41d7af34da9ee5aae83551b4e7b3e810330d",
+    "name": "app.asar"
+  },
+  "operation": "core_evidence_browse",
+  "params": {
+    "show": {
+      "kind": "rows",
+      "limit": 10,
+      "list": "routes"
+    },
+    "source": {
+      "evidence_id": "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e",
+      "kind": "saved"
+    }
+  },
+  "result": {
+    "coverage": {
+      "at_end": true,
+      "examined": 3,
+      "next_offset": null,
+      "status": "page",
+      "total": 3
+    },
+    "from_evidence": "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e",
+    "from_tool": "js_app_map",
+    "shown": {
+      "items": [
+        {
+          "line": 6,
+          "method": null,
+          "module": "design-space-login/main.js",
+          "path": "/",
+          "source": "router-config"
+        },
+        {
+          "line": 1,
+          "method": null,
+          "module": "plugins/@cricut/design-space-monogram-maker/dist/560.js",
+          "path": ":id",
+          "source": "router-config"
+        },
+        {
+          "line": 1,
+          "method": null,
+          "module": "plugins/@cricut/design-space-monogram-maker/dist/main.js",
+          "path": "/metadata/categories",
+          "source": "router-config"
+        }
+      ],
+      "list": "routes",
+      "offset": 0,
+      "total": 3
+    }
+  },
+  "summary": "Part of js_app_map evidence (page).",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 3,
+    "total": 3
+  },
+  "locations": [],
+  "links": [
+    "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e"
+  ]
+}

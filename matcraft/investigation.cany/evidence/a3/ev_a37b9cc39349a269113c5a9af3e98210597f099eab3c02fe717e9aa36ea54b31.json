@@ -1,0 +1,98 @@
+{
+  "id": "ev_a37b9cc39349a269113c5a9af3e98210597f099eab3c02fe717e9aa36ea54b31",
+  "subject": {
+    "kind": "pe",
+    "sha256": "7283020485a95ae00da67a72e6b89af4c4b8c8cfbf14d2c7ebbbbffc69aaa37c",
+    "name": "CricutDevice.exe"
+  },
+  "operation": "native_functions_decompile",
+  "params": {
+    "addresses": [
+      "0x4fe800",
+      "0x4fe810",
+      "0x4fe980",
+      "0x452860",
+      "0x4528b0"
+    ]
+  },
+  "result": {
+    "failed": 3,
+    "items": [
+      {
+        "error": "No function named or at 0x4fe800",
+        "input": "0x4fe800",
+        "ok": false
+      },
+      {
+        "error": "No function named or at 0x4fe810",
+        "input": "0x4fe810",
+        "ok": false
+      },
+      {
+        "entry": "0x4fe980",
+        "input": "0x4fe980",
+        "limitations": [
+          "register_level",
+          "calling_convention_assumed",
+          "conditions_from_flags",
+          "unstructured_flow"
+        ],
+        "ok": true,
+        "pseudo_code": "int64_t sub_4fe980()\n{\n    eax = fs:[0];\n    eax = *(uint32_t*)0xa2d3c0;\n    eax ^= ebp;\n    eax = &arg_fffffff4;\n    fs:[0] = eax;\n    arg_ffffffec = ecx;\n    arg_ffffffd4 = 0;\n    arg_ffffffd8 = 0;\n    arg_ffffffdc = 0;\n    eax = *(uint32_t*)(ecx);\n    arg_fffffffc = 0;\n    rax = (**(uint32_t*)(eax + 0x14))(0x91770d, -1);\n    esi = arg_ffffffd8;\n    ecx = arg_ffffffdc;\n    arg_fffffff3 = al;\n    if (esi == ecx) {\n        edx = arg_ffffffd4;\n        eax = esi;\n        eax -= edx;\n        arg_ffffffe4 = eax;\n        if (eax == 0x7fffffff) {\nlabel_4febc0:\n            sub_426c90();\nlabel_4febc5:\n            sub_4094a0();\n            sub_8a4b05(0, 0, 0, 0, 0);\n            __debugbreak();\n        } else {\n            ecx -= edx;\n            edi = eax + 1;\n            edx = ecx;\n            arg_ffffffe0 = edi;\n            edx >>= 1;\n            eax = 0x7fffffff;\n            eax -= edx;\n            if (ecx <= eax /* unsigned */) {\n                ebx = edx + ecx;\n                ebx = edi;\n            } else {\n                ebx = 0x7fffffff;\n            }\n            eax = &arg_ffffffe8;\n            arg_ffffffe8 = ebx;\n            eax = &arg_ffffffd4;\n            rax = sub_412eb0(eax, eax);\n            ecx = arg_ffffffe4;\n            edi = eax;\n            al = arg_fffffff3;\n            ecx += edi;\n            arg_ffffffe4 = ecx;\n            *(uint8_t*)(ecx) = al;\n            eax = arg_ffffffd8;\n            if (esi != eax) {\n                eax = arg_ffffffd4;\n                ecx = esi;\n                ecx -= eax;\n                sub_8974f0(edi, eax, ecx);\n                eax = arg_ffffffd8;\n                ecx = arg_ffffffe4;\n                eax -= esi;\n                ecx++;\n                sub_8974f0(ecx, esi, eax);\n            } else {\n                ecx = arg_ffffffd4;\n                eax -= ecx;\n                sub_8974f0(edi, ecx, eax);\n            }\n            ecx = arg_ffffffd4;\n            if (ecx == 0) {\nlabel_4feab8:\n                eax = arg_ffffffe0;\n                eax += edi;\n                arg_ffffffd4 = edi;\n                arg_ffffffd8 = eax;\n                eax = ebx + edi;\n                arg_ffffffdc = eax;\nlabel_4feac9:\n                eax = arg_ffffffec;\n                ebx = esp;\n                eax = *(uint32_t*)(eax);\n                *(uint32_t*)(ebx) = 0;\n                *(uint32_t*)(ebx + 4) = 0;\n                eax = *(uint32_t*)(eax + 0x20);\n                *(uint32_t*)(ebx + 8) = 0;\n                esi = arg_ffffffd8;\n                arg_ffffffe0 = eax;\n                esi -= arg_ffffffd4;\n                if (esi == 0) {\nlabel_4feb65:\n                    ecx = arg_ffffffec;\n                    rax = (*eax)();\n                    ecx = arg_ffffffd4;\n                    esi = eax;\n                    arg_fffffffc = 0xffffffff;\n                    if (ecx == 0) {\n                        eax = esi;\n                        ecx = arg_fffffff4;\n                        fs:[0] = ecx;\n                        return rax;\n                    } else {\n                        edx = arg_ffffffdc;\n                        eax = ecx;\n                        edx -= ecx;\n                        arg_fffffffc = 2;\n                        if (edx < 0x1000 /* unsigned */) {\nlabel_4feba0:\n                            sub_893258(ecx, edx);\n                            eax = esi;\n                            ecx = arg_fffffff4;\n                            fs:[0] = ecx;\n                            return rax;\n                        } else {\n                            ecx = *(uint32_t*)(eax + 0xfffffffc);\n                            edx += 0x23;\n                            eax -= ecx;\n                            eax += -4;\n                            if (eax > 0x1f /* unsigned */) {\n                                sub_8a4b05(0, 0, 0, 0, 0);\n                                __debugbreak();\n                            } else {\n                                goto label_4feba0;\n                            }\n                        }\n                    }\n                } else {\n                    if (esi > 0x7fffffff /* unsigned */) {\n                        goto label_4febc0;\n                    } else {\n                        if (esi < 0x1000 /* unsigned */) {\n                            rax = sub_893228(esi);\n                            edi = eax;\nlabel_4feb3e:\n                            *(uint32_t*)(ebx) = edi;\n                            ecx = edi + esi;\n                            *(uint32_t*)(ebx + 4) = edi;\n                            *(uint32_t*)(ebx + 8) = ecx;\n                            esi = arg_ffffffd8;\n                            ecx = arg_ffffffd4;\n                            esi -= ecx;\n                            sub_8974f0(edi, ecx, esi);\n                            eax = edi + esi;\n                            *(uint32_t*)(ebx + 4) = eax;\n                            eax = arg_ffffffe0;\n                            goto label_4feb65;\n                        } else {\n                            eax = esi + 0x23;\n                            if (eax <= esi /* unsigned */) {\n                                goto label_4febc5;\n                            } else {\n                                rax = sub_893228(eax);\n                                if (eax == 0) {\n                                    sub_8a4b05(0, 0, 0, 0, 0);\n                                    __debugbreak();\n                                } else {\n                                    edi = eax + 0x23;\n                                    edi &= -0x20;\n                                    *(uint32_t*)(edi + 0xfffffffc) = eax;\n                                    goto label_4feb3e;\n                                }\n                            }\n                        }\n                    }\n                }\n            } else {\n                edx = arg_ffffffdc;\n                eax = ecx;\n                edx -= ecx;\n                arg_fffffffc = 1;\n                if (edx < 0x1000 /* unsigned */) {\nlabel_4feaaa:\n                    sub_893258(ecx, edx);\n                    arg_fffffffc = 0;\n                    goto label_4feab8;\n                } else {\n                    ecx = *(uint32_t*)(eax + 0xfffffffc);\n                    edx += 0x23;\n                    eax -= ecx;\n                    eax += -4;\n                    if (eax > 0x1f /* unsigned */) {\n                        sub_8a4b05(0, 0, 0, 0, 0);\n                        __debugbreak();\n                    } else {\n                        goto label_4feaaa;\n                    }\n                }\n            }\n        }\n    } else {\n        *(uint8_t*)(esi) = al;\n        arg_ffffffd8++;\n        goto label_4feac9;\n    }\n}\n",
+        "signature": "int64_t sub_4fe980()",
+        "structured": false
+      },
+      {
+        "error": "No function named or at 0x452860",
+        "input": "0x452860",
+        "ok": false
+      },
+      {
+        "entry": "0x4528b0",
+        "input": "0x4528b0",
+        "limitations": [
+          "register_level",
+          "calling_convention_assumed",
+          "conditions_from_flags",
+          "unstructured_flow"
+        ],
+        "ok": true,
+        "pseudo_code": "int64_t sub_4528b0()\n{\n    eax = fs:[0];\n    eax = *(uint32_t*)0xa2d3c0;\n    eax ^= ebp;\n    eax = &arg_fffffff4;\n    fs:[0] = eax;\n    arg_fffffffc = 0;\n    arg_ffffffe8 = 0;\n    arg_ffffffec = 0;\n    arg_fffffff0 = 0;\n    ecx = *(uint32_t*)(ecx + 4);\n    edx = &arg_ffffffe8;\n    edx = &arg_8;\n    arg_fffffffc = 1;\n    eax = *(uint32_t*)(ecx);\n    (**(uint32_t*)(eax + 0x1c))(0x908ce5, -1);\n    ecx = arg_ffffffec;\n    eax = arg_ffffffe8;\n    ecx -= eax;\n    ecx = &arg_8;\n    sub_4523d0(arg_8);\n    edx = arg_ffffffe8;\n    arg_fffffffc = 0;\n    if (edx == 0) {\nlabel_452959:\n        eax = arg_c;\n        eax -= arg_8;\n        rax = sub_8a4ba1(eax);\n        ebx = eax;\n        if (ebx == 0) {\n            eax = &arg_14;\n            arg_14 = 0x95c244;\n            sub_896a6b(0x9dd154);\n            __debugbreak();\n        } else {\n            esi = arg_c;\n            edi = arg_8;\n            esi -= edi;\n            sub_896f70(ebx, edi, esi);\n            eax = arg_14;\n            *(uint32_t*)(eax) = esi;\n            if (edi != 0) {\n                eax = arg_10;\n                ecx = &arg_8;\n                eax -= edi;\n                sub_427980(edi, eax);\n            }\n            eax = ebx;\n            ecx = arg_fffffff4;\n            fs:[0] = ecx;\n            return rax;\n        }\n    } else {\n        ecx = arg_fffffff0;\n        eax = edx;\n        ecx -= edx;\n        arg_fffffffc = 2;\n        if (ecx < 0x1000 /* unsigned */) {\nlabel_45294b:\n            sub_893258(edx, ecx);\n            arg_fffffffc = 0;\n            goto label_452959;\n        } else {\n            edx = *(uint32_t*)(eax + 0xfffffffc);\n            ecx += 0x23;\n            eax -= edx;\n            eax += -4;\n            if (eax > 0x1f /* unsigned */) {\n                sub_8a4b05(0, 0, 0, 0, 0);\n                eax = &arg_14;\n                arg_14 = 0x95c244;\n                sub_896a6b(0x9dd154);\n                __debugbreak();\n            } else {\n                goto label_45294b;\n            }\n        }\n    }\n}\n",
+        "signature": "int64_t sub_4528b0()",
+        "structured": false
+      }
+    ],
+    "succeeded": 2
+  },
+  "summary": "Decompiled 2 of 5 functions.",
+  "confidence": "inferred",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "pseudo_code_inferred",
+      "message": "pseudo-C from the clean-room lifter is register-level and approximate"
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 5,
+    "total": 5
+  },
+  "locations": [
+    {
+      "kind": "address",
+      "value": "0x4fe980"
+    },
+    {
+      "kind": "address",
+      "value": "0x4528b0"
+    }
+  ],
+  "links": []
+}

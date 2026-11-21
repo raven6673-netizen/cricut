@@ -1,0 +1,64 @@
+{
+  "id": "ev_f4b421ed5d34cad677689ec73c72b374dc0361a62e97c9437eb54fd432e831e3",
+  "subject": {
+    "kind": "asar",
+    "sha256": "b295a54672751a0d6cbf55981b8d41d7af34da9ee5aae83551b4e7b3e810330d",
+    "name": "app.asar"
+  },
+  "operation": "core_evidence_browse",
+  "params": {
+    "show": {
+      "kind": "rows",
+      "limit": 10,
+      "list": "pages"
+    },
+    "source": {
+      "evidence_id": "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e",
+      "kind": "saved"
+    }
+  },
+  "result": {
+    "coverage": {
+      "at_end": true,
+      "examined": 7,
+      "next_offset": null,
+      "status": "page",
+      "total": 7
+    },
+    "from_evidence": "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e",
+    "from_tool": "js_app_map",
+    "shown": {
+      "items": [
+        "cricut-app-design-space-about2/index.html",
+        "design-space-app/index.html",
+        "design-space-home/index.html",
+        "design-space-login/index.html",
+        "design-space-performance-monitor/index.html",
+        "design-space-tabs/index.html",
+        "plugins/@cricut/design-space-monogram-maker/dist/index.html"
+      ],
+      "list": "pages",
+      "offset": 0,
+      "total": 7
+    }
+  },
+  "summary": "Part of js_app_map evidence (page).",
+  "confidence": "derived",
+  "authority": "original-files",
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.6.1",
+    "host": "windows-x86_64"
+  },
+  "limitations": [],
+  "coverage": {
+    "status": "complete",
+    "examined": 7,
+    "total": 7
+  },
+  "locations": [],
+  "links": [
+    "ev_109a990c7cf5f83cf95ff17d7714a308ff9e3bd303396b2d70f4d2a4f53fb00e"
+  ]
+}
