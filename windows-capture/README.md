@@ -90,8 +90,11 @@ Measured bytes-per-node (run 9): **≈ 84 B per node, near-linear, ~0 fixed over
 are 84×4 = 336 B, two squares 84×8 = 672 B, a 5-point star (10 nodes) 864 B (~86/node), and a 1 in circle
 1296 B fits ~15–16 polygon segments. Job size ≈ 84 B × node count.
 
-**A cut's end** (first captured in run 8): the busy status poll (18/s while cutting) drops back to the idle poll
-(every 3 s) when the machine finishes.
+**A full cut's lifecycle** (first captured whole in run 11, via `-MaxSeconds`): job frames → busy status poll at
+18/s while cutting (~52 s for a 1 in square) → back to the idle 3 s poll when the machine finishes. The cut
+**duration** is therefore visible on the wire even though the job content is encrypted. **Mat unload** shows no
+distinct traffic — the idle poll after a cut is uniform, so unloading is either silent to Design Space (a local
+Maker button) or simply wasn't exercised in capture. Treat unload as not-yet-characterised.
 
 **Not known yet:** the key exchange (how the `c7` frame relates to the nonces), the cipher mode, and the
 content of the 336-byte records. USB traffic alone can't answer these; it would take analysing the
@@ -111,10 +114,11 @@ rules out for the clean-room MatCraft work.
 | 8 | same session as 7 | one 3 in square | 64/32/32/32 + 336 + 32 (same ciphertext as 7's open/close) | circle's end captured; square mid-cut |
 | 9 | new (restart, 2 handshakes) | one 5-point star | 64/32/32/32 + 512 + 352 + 32 | no (stopped mid-cut) |
 | 10 | same session as 9 | one 1 in square (full-cut attempt) | 64/32/32/32 + 336 + 32 | no — STOP made ~33 s after Go, mid-cut |
+| 11 | same session as 9 | one 1 in square (timed 4-min capture) | 64/32/32/32 + 336 + 32 | **yes — full cut** (job → ~52 s cut → idle); no distinct unload traffic |
 
-Run 10 again stopped mid-cut: the manual STOP keeps arriving before the cut finishes. To finally capture a cut to
-mat unload, run the capture for a fixed generous duration (e.g. 4 min) instead of a hand-timed STOP, or verify
-Design Space shows "finished" and the mat is out before creating STOP.
+Run 11 used `-MaxSeconds 240` and captured a complete cut for the first time: a 1 in square cut for ~52 s, then the
+machine returned to the idle poll. Mat unload produced no distinguishable traffic. Still open: whether unload is
+genuinely silent on USB (vs. not performed), and bytes-per-node for curve vs. straight paths.
 
 Run 9 measured bytes-per-node: a 5-point star (10 nodes) is 864 B, so job size ≈ 84 B × node count (near-linear,
 ~0 overhead). A clean restart gave a fresh handshake and key. Still open: a capture kept running until after the mat
