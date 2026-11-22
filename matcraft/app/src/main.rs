@@ -112,7 +112,7 @@ fn main() -> eframe::Result<()> {
     if args.iter().any(|a| a == "--cut-dry-run") {
         let square = vec![vec![(1.0f32, 1.0), (2.0, 1.0), (2.0, 2.0), (1.0, 2.0)]];
         let records = machine::contours_to_records(&square, true);
-        let setup = machine::CutSetup { width_in: 12, height_in: 12, pressure: 150 };
+        let setup = machine::CutSetup { width_in: 12, height_in: 12, pressure: 150, pressure_override: true };
         let mut payloads = machine::setup_payloads(&setup);
         payloads.extend(machine::cut_job_payloads(&records, machine::MULTIDRAW_MAX_RECORDS));
         println!(

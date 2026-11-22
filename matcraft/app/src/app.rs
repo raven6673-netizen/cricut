@@ -635,6 +635,14 @@ struct MachineSettings {
     /// (read at connect), so the count stays in the firmware's stable range. 0 means "don't cut".
     #[serde(default = "default_grams")]
     pressure_grams: u16,
+    /// Set the SetMachineState (0x30) "state" bit (byte 1 → 0x88), a conditional variant Design Space
+    /// sends that may tell the firmware to apply the host-supplied pressure. Experimental; tune on HW.
+    #[serde(default = "default_true")]
+    pressure_override: bool,
+}
+
+fn default_true() -> bool {
+    true
 }
 
 fn default_grams() -> u16 {
@@ -658,6 +666,7 @@ impl Default for MachineSettings {
             key_hex: String::new(),
             pressure: 150,
             pressure_grams: default_grams(),
+            pressure_override: true,
         }
     }
 }
@@ -2371,7 +2380,7 @@ impl App {
         } else {
             machine::grams_to_counts(&self.calibration, self.settings.pressure_grams).unwrap_or(0)
         };
-        let setup = machine::CutSetup { width_in, height_in, pressure };
+        let setup = machine::CutSetup { width_in, height_in, pressure, pressure_override: self.settings.pressure_override };
         let _ = self.machine.tx.send(Request::Cut { records, setup });
     }
 }
@@ -5230,6 +5239,16 @@ impl App {
                                 .color(MUTED()),
                         );
                     }
+                });
+                ui.horizontal(|ui| {
+                    if ui.checkbox(&mut self.settings.pressure_override, "Force pressure (0x30 state bit → 0x88)").changed() {
+                        self.save_settings();
+                    }
+                    ui.label(
+                        RichText::new("experimental — if the blade bobs/stays light, toggle this and re-cut")
+                            .size(11.0)
+                            .color(MUTED()),
+                    );
                 });
                 ui.add_enabled_ui(self.connected.is_some(), |ui| {
                     ui.horizontal(|ui| {

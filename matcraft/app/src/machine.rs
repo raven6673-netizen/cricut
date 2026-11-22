@@ -1199,22 +1199,27 @@ pub const SET_TOOL_STATE: u8 = 0x37;
 pub const SET_FULL_TOOL_STATE: u8 = 0x3E;
 pub const CPR_TOGGLE: u8 = 0x3F;
 
-/// What the per-job setup needs: the work area in whole inches and the cut pressure (Z encoder
-/// counts) that goes in SetMachineState. Pressure 0 means "don't set it" — the machine won't cut.
+/// What the per-job setup needs: the work area in whole inches, the cut pressure (Z encoder counts)
+/// for SetMachineState, and whether to set the `0x30` "state" bit (byte 1 bit 7 → `0x88`), a
+/// conditional variant Design Space sends that may be the "apply this pressure" flag (CUT-INIT /
+/// the SetMachineState trace). Pressure 0 means "don't set it" — the machine won't cut.
 #[derive(Clone, Copy, Debug)]
 pub struct CutSetup {
     pub width_in: u8,
     pub height_in: u8,
     pub pressure: u16,
+    pub pressure_override: bool,
 }
 
-/// SetMachineState (0x30) for a drag blade: `30 08 00 00 W H 00 00 00 00 00 <pressure:u16 BE>`.
-/// Byte 1 `08` is the ordinary drag-blade flag/state; bytes 4–5 are the work-area width and height
-/// in inches; byte 10 is the pressure-table selector (0 for drag blade); the last two bytes are the
-/// cut pressure in Z encoder counts, big-endian.
-pub fn set_machine_state_body(width_in: u8, height_in: u8, pressure: u16) -> Vec<u8> {
+/// SetMachineState (0x30) for a drag blade: `30 <08|88> 00 00 W H 00 00 00 00 00 <pressure:u16 BE>`.
+/// Byte 1 is `08` normally; with `state_bit` it is `0x88` (bit 7 set) — the conditional variant the
+/// original sends that plausibly tells the firmware to use the host-supplied pressure. Bytes 4–5 are
+/// the work-area width/height in inches; byte 10 is the pressure-table selector (0 for drag blade);
+/// the last two bytes are the cut pressure in Z encoder counts, big-endian.
+pub fn set_machine_state_body(width_in: u8, height_in: u8, pressure: u16, state_bit: bool) -> Vec<u8> {
+    let flags = if state_bit { 0x88 } else { 0x08 };
     vec![
-        SET_MACHINE_STATE, 0x08, 0x00, 0x00, width_in, height_in, 0x00, 0x00, 0x00, 0x00, 0x00,
+        SET_MACHINE_STATE, flags, 0x00, 0x00, width_in, height_in, 0x00, 0x00, 0x00, 0x00, 0x00,
         (pressure >> 8) as u8, (pressure & 0xff) as u8,
     ]
 }
@@ -1379,7 +1384,7 @@ pub fn setup_payloads(setup: &CutSetup) -> Vec<Vec<u8>> {
     }
     let mut v = vec![
         vec![DRAW_END, 0, 0, 0], // pre-setup EndDraw: bring the draw state to a known point
-        set_machine_state_body(setup.width_in.max(1), setup.height_in.max(1), setup.pressure),
+        set_machine_state_body(setup.width_in.max(1), setup.height_in.max(1), setup.pressure, setup.pressure_override),
         set_speed_state_body(),
         set_tool_state_body(),
         set_full_tool_state_body(),
@@ -1525,7 +1530,9 @@ mod tests {
 
     #[test]
     fn setup_commands_have_the_traced_layout() {
-        let m = set_machine_state_body(12, 12, 150);
+        let m = set_machine_state_body(12, 12, 150, false);
+        let m88 = set_machine_state_body(12, 12, 150, true);
+        assert_eq!(m88[1], 0x88); // state bit sets byte 1 to 0x88
         // 30 08 00 00 0C 0C 00 00 00 00 00 <pressure BE> ; 13 bytes, pressure in the last two
         assert_eq!(m.len(), 13);
         assert_eq!(&m[..6], &[0x30, 0x08, 0x00, 0x00, 12, 12]);
@@ -1544,14 +1551,14 @@ mod tests {
 
     #[test]
     fn setup_sequence_matches_the_original_and_is_skipped_at_zero_pressure() {
-        let s = setup_payloads(&CutSetup { width_in: 12, height_in: 12, pressure: 1039 });
+        let s = setup_payloads(&CutSetup { width_in: 12, height_in: 12, pressure: 1039, pressure_override: true });
         let codes: Vec<u8> = s.iter().map(|c| c[0]).collect();
         // pre-EndDraw, machine/speed/tool/full-tool, four A1 writes, CPR
         assert_eq!(codes, vec![0x22, 0x30, 0x31, 0x37, 0x3E, 0xA1, 0xA1, 0xA1, 0xA1, 0x3F]);
         // the four A1 writes carry the original's fixed index/value pairs
         assert_eq!(write_persistent_body(0x005D, 10_000), vec![0xA1, 0x00, 0x5D, 0x00, 0x00, 0x27, 0x10]);
         assert_eq!(write_persistent_body(0x005F, 75_000), vec![0xA1, 0x00, 0x5F, 0x00, 0x01, 0x24, 0xF8]);
-        assert!(setup_payloads(&CutSetup { width_in: 6, height_in: 6, pressure: 0 }).is_empty());
+        assert!(setup_payloads(&CutSetup { width_in: 6, height_in: 6, pressure: 0, pressure_override: true }).is_empty());
     }
 
     #[test]
