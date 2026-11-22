@@ -88,6 +88,19 @@ anonymous session. `session.rs` implements it (clean-room boundary crossed at th
 - Tests pass (handshake agreement, AEGIS round-trip, tamper reject). Still blocked for a real
   encrypted cut on: validating the four params, then building the `PBMatCutExecutionPlan` protobuf.
 
+## Protobuf job builder (NEW — `app/src/job.rs`)
+Builds the official cut job as protobuf, from the schema recovered in `binary-check` (`proto/`,
+JOB-FORMAT.md). Clean-room boundary crossed at the user's direction.
+- `Pb` — a minimal protobuf writer (varint / fixed64 / length-delimited); no protobuf dep.
+- `build_cut_plan(id, op, contours_in_inches, custom_pressure)` → serialized `PBMatCutExecutionPlan`:
+  `grouped_executions → PBMatCutGroupExecution(tool_type, line_type) → PBMatPathData(custom_pressure)
+  → PBPathSplitData → PBDrawVectors → PBDrawVector{cut_type, point, command_number}`.
+- `tool_and_art(op)` maps MatCraft ops to `PBToolType`/`PBArtType` (Cut→DRAG_KNIFE/CUT, etc.).
+- `matcraft --job-dump` prints the protobuf bytes for a test square (verified: decodes correctly).
+- Tests pass. **Not yet sent to the machine** — needs the encrypted session (session.rs) validated,
+  and confirmation of which layer the wire carries (this high-level `PBMatCutExecutionPlan` vs the
+  lower-level machine-step `#46` node layout seen in the NtWriteFile capture, JOB-DECODED.md).
+
 ## Code map (`app/src/machine.rs`)
 - `Request::Cut { records, setup }` worker (line ~747): runs prep (B9/F0/EA), then `setup_payloads` + `cut_job_payloads`, streaming with ACK/retry + buffer-space flow control.
 - `setup_payloads` (~1342): pre-EndDraw, `set_machine_state_body`, speed/tool/full-tool, `ATHENA_SETUP_WRITES` (four A1), CPR.

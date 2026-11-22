@@ -9,6 +9,7 @@ mod mechanics_check;
 mod geometry;
 mod machine;
 mod session;
+mod job;
 mod materials;
 
 use std::sync::{Arc, Mutex};
@@ -95,6 +96,15 @@ fn main() -> eframe::Result<()> {
         for line in machine::probe_usb(&port, std::time::Duration::from_secs(5)) {
             println!("{line}");
         }
+        return Ok(());
+    }
+    // `--job-dump`: build a PBMatCutExecutionPlan protobuf for a 1-inch test square and print its
+    // bytes, without any device. Verifies the protobuf job builder (job.rs) against the schema.
+    if args.iter().any(|a| a == "--job-dump") {
+        let square = vec![vec![(1.0f64, 1.0), (2.0, 1.0), (2.0, 2.0), (1.0, 2.0)]];
+        let plan = job::build_cut_plan("matcraft-job", geometry::Operation::Cut, &square, Some(1039));
+        println!("PBMatCutExecutionPlan for a 1-inch square (pressure 1039): {} bytes", plan.len());
+        println!("{}", machine::hex(&plan));
         return Ok(());
     }
     // `--cut-dry-run`: encode a 1-inch test square as a cut job and print each command's framed
