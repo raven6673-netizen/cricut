@@ -667,6 +667,9 @@ pub enum Request {
     Cut { records: Vec<DrawRecord>, setup: CutSetup },
     /// Read the drag-blade pressure calibration (A0 indices 0x21..=0x30) from the machine.
     ReadCalibration,
+    /// Run the X25519 `c7` handshake and report whether the machine accepts an anonymous key and
+    /// returns a usable public key. Does not switch the link to encrypted frames (safe probe).
+    TestHandshake,
     Disconnect,
 }
 
@@ -935,6 +938,37 @@ pub fn spawn(ctx: egui::Context) -> MachineHandle {
                             )));
                         }
                         send(Event::Calibration { rows });
+                    }
+                }
+                Request::TestHandshake => {
+                    let Some(p) = port.as_mut() else {
+                        send(Event::Log("Not connected: can't run the handshake.".into()));
+                        continue;
+                    };
+                    let hs = crate::session::Handshake::new();
+                    let frame = frame_plain(&hs.request_body());
+                    send(Event::Log(format!("→ handshake (c7, X25519): {}", hex(&frame))));
+                    if let Err(e) = p.write_all(&frame) {
+                        port = None;
+                        send(Event::Disconnected(format!("Handshake write failed: {e}")));
+                        continue;
+                    }
+                    // The c7 handshake is plaintext; the reply carries the machine's public key.
+                    match read_reply(p.as_mut(), None, Duration::from_secs(5)) {
+                        Ok(Some(reply)) => {
+                            send(Event::Log(format!("← handshake reply ({} bytes): {}", reply.len(), hex(&reply))));
+                            match hs.complete(&reply) {
+                                Ok(_session) => send(Event::Log(
+                                    "Handshake OK: the machine returned a public key and we derived a shared secret — it accepts an anonymous X25519 key. (Session cipher still needs validation before encrypted cutting.)".into(),
+                                )),
+                                Err(e) => send(Event::Log(format!("Handshake reply didn't parse as a public key: {e}"))),
+                            }
+                        }
+                        Ok(None) => send(Event::Log("No handshake reply within 5 s.".into())),
+                        Err(e) => {
+                            port = None;
+                            send(Event::Disconnected(e));
+                        }
                     }
                 }
                 Request::Disconnect => {

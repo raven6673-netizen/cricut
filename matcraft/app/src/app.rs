@@ -5236,6 +5236,9 @@ impl App {
                         if primary_button(ui, "Cut design on machine").clicked() {
                             self.cut_on_machine();
                         }
+                        if secondary_button(ui, "Test encrypted handshake").clicked() {
+                            let _ = self.machine.tx.send(Request::TestHandshake);
+                        }
                         let n = self.machine_cut_records().len();
                         ui.label(
                             RichText::new(format!(

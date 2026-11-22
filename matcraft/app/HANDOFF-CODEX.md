@@ -72,6 +72,22 @@ MatCraft jumps straight to prep+setup+cut and **skips Design Space's entire powe
 - The Maker's Adaptive Tool System may expect a tool/profile other than "passive drag-knife" (flags `03`, zero lift threshold). Verify the actual installed blade's profile against a captured cut.
 - Confirm whether the firmware needs the mat-load/**Go**-button wait (interface state `0x73`, reply offset 3: bit2=Go, bit1=Mat) before motion; MatCraft currently does not poll for Go.
 
+## Wire session (NEW — `app/src/session.rs`)
+Per the `binary-check` README, the official wire is **X25519 handshake + AEGIS AEAD** over an
+anonymous session. `session.rs` implements it (clean-room boundary crossed at the user's direction):
+- `Handshake` — ephemeral X25519 keypair, `request_body()` builds the plaintext `c7` frame (code +
+  our 32-byte pubkey, padded to the observed 49 bytes), `complete(reply)` derives the shared secret.
+- `Session` — AEGIS-256 `seal`/`open` of wire bodies as `tag(16) || ciphertext`.
+- **Four parameters are hypotheses, not confirmed:** AEGIS variant (256 chosen), key derivation
+  (shared secret used raw), nonce (per-direction counter), frame layout (tag-prepended). Confirm with
+  `session::validate_against_capture(key, ctr, wire_body, plaintext)` against a captured
+  (NtWriteFile plaintext, USBPcap ciphertext) pair before trusting it.
+- Live probe: `Request::TestHandshake` ("Test encrypted handshake" button) sends `c7` and reports
+  whether the machine returns a public key — i.e. whether it accepts an **anonymous** key (open Q #2).
+  It does NOT switch the link to encrypted frames; the plaintext cut path is unchanged.
+- Tests pass (handshake agreement, AEGIS round-trip, tamper reject). Still blocked for a real
+  encrypted cut on: validating the four params, then building the `PBMatCutExecutionPlan` protobuf.
+
 ## Code map (`app/src/machine.rs`)
 - `Request::Cut { records, setup }` worker (line ~747): runs prep (B9/F0/EA), then `setup_payloads` + `cut_job_payloads`, streaming with ACK/retry + buffer-space flow control.
 - `setup_payloads` (~1342): pre-EndDraw, `set_machine_state_body`, speed/tool/full-tool, `ATHENA_SETUP_WRITES` (four A1), CPR.

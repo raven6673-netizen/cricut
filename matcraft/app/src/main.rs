@@ -8,6 +8,7 @@ mod imaging;
 mod mechanics_check;
 mod geometry;
 mod machine;
+mod session;
 mod materials;
 
 use std::sync::{Arc, Mutex};
